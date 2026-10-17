@@ -1,0 +1,25 @@
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+**/target/
+*.class
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Uploaded evidence and generated reports
+uploads/
+evidence/
+reports/
