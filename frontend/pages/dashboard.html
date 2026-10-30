@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — TraceVault</title>
+  <link rel="stylesheet" href="../css/veriables.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/dashboard.css" />
+</head>
+<body>
+<div class="app-shell">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__head">
+    <img src="../assets/logo.svg" class="sidebar__logo" alt="" />
+    <span class="sidebar__brand">TraceVault</span>
+  </div>
+  <nav class="sidebar__nav">
+
+    <span class="sidebar__label">Main</span>
+
+    <a href="dashboard.html" class="nav-item active">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </span>
+      Dashboard
+    </a>
+
+    <a href="dashboard.html#upload" class="nav-item" id="navUpload">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
+      </span>
+      New Analysis
+    </a>
+
+    <a href="history.html" class="nav-item">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
+      History
+      <span class="nav-badge" id="histBadge">0</span>
+    </a>
+
+    <span class="sidebar__label" style="margin-top:var(--sp-2);">Analysis</span>
+
+    <a href="#" class="nav-item">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </span>
+      Email Forensics
+    </a>
+
+    <a href="#" class="nav-item">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </span>
+      File Analysis
+    </a>
+
+    <a href="#" class="nav-item">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </span>
+      Malware Triage
+    </a>
+
+    <span class="sidebar__label" style="margin-top:var(--sp-2);">Account</span>
+
+    <a href="settings.html" class="nav-item">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      </span>
+      Settings
+    </a>
+
+  </nav>
+  <div class="sidebar__foot">
+    <div class="sidebar__user" onclick="window.location.href='settings.html'">
+      <div class="user-avatar" id="sidebarAvatar">JD</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name" id="sidebarName">Jane Doe</div>
+        <div class="sidebar__user-role" id="sidebarRole">Forensic Investigator</div>
+      </div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--clr-text-hint);flex-shrink:0;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <button class="topbar__btn" id="sidebarToggle" aria-label="Toggle sidebar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <span class="topbar__title">Dashboard</span>
+    <div class="topbar__gap"></div>
+    <div class="topbar__search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" placeholder="Search analyses…" id="globalSearch" />
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--sp-2);">
+      <button class="topbar__btn" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      </button>
+      <a href="dashboard.html#upload" class="btn btn-primary btn-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Analysis
+      </a>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="page">
+
+    <!-- Welcome -->
+    <div class="welcome">
+      <div class="welcome__txt">
+        <h2 class="welcome__hey">Good morning, <span id="welcomeName">Investigator</span> 👋</h2>
+        <p class="welcome__sub">You have <strong id="pendingCount">0</strong> analyses pending review.</p>
+      </div>
+      <div class="welcome__cta">
+        <a href="#upload" class="btn btn-primary" id="newAnaBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Analysis
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-card__icon stat-card__icon--teal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="stat-card__val" id="statTotal">0</div>
+          <div class="stat-card__lbl">Total Analyses</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon stat-card__icon--red">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="stat-card__val" id="statThreats">0</div>
+          <div class="stat-card__lbl">Threats Detected</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon stat-card__icon--green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="stat-card__val" id="statClean">0</div>
+          <div class="stat-card__lbl">Clean Files</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon stat-card__icon--amber">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="stat-card__val" id="statReports">0</div>
+          <div class="stat-card__lbl">Reports Generated</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-col -->
+    <div class="dash-cols">
+
+      <!-- LEFT -->
+      <div>
+
+        <!-- Upload card -->
+        <div class="card" id="upload" style="margin-bottom:var(--sp-5);">
+          <div class="card__head">
+            <div>
+              <div class="card__title">New Analysis</div>
+              <div class="card__sub">Upload evidence to begin forensic inspection</div>
+            </div>
+          </div>
+
+          <!-- Step 1: Type -->
+          <div class="upload-step-lbl"><em>1</em> Choose analysis type</div>
+          <div class="analysis-type-sel" id="typeSelector">
+            <label class="type-opt sel">
+              <input type="radio" name="atype" value="file" checked />
+              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+              <span class="type-opt__lbl">File</span>
+              <span class="type-opt__sub">Metadata &amp; hash</span>
+            </label>
+            <label class="type-opt">
+              <input type="radio" name="atype" value="email" />
+              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <span class="type-opt__lbl">Email</span>
+              <span class="type-opt__sub">Headers &amp; links</span>
+            </label>
+            <label class="type-opt">
+              <input type="radio" name="atype" value="malware" />
+              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <span class="type-opt__lbl">Malware</span>
+              <span class="type-opt__sub">Indicators</span>
+            </label>
+          </div>
+
+          <!-- Step 2: Dropzone -->
+          <div class="upload-step-lbl"><em>2</em> Upload evidence file</div>
+          <div class="dropzone" id="dropzone">
+            <div class="dropzone__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="dropzone__title">Drop your file here</div>
+            <div class="dropzone__sub">or click to browse</div>
+            <div class="dropzone__chips">
+              <span class="dropzone__chip">.pdf</span>
+              <span class="dropzone__chip">.eml</span>
+              <span class="dropzone__chip">.docx</span>
+              <span class="dropzone__chip">.exe</span>
+              <span class="dropzone__chip">.zip</span>
+              <span class="dropzone__chip">.jpg</span>
+            </div>
+            <input type="file" id="fileInput" style="display:none;"
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.eml,.msg,.jpg,.jpeg,.png,.exe,.dll,.zip,.tar,.gz,.txt,.csv" />
+          </div>
+
+          <!-- File preview -->
+          <div class="file-prev" id="filePrev" style="display:none;">
+            <div class="file-prev__ico" id="filePrevIco">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="file-prev__info">
+              <div class="file-prev__name" id="filePrevName">—</div>
+              <div class="file-prev__meta" id="filePrevMeta">—</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="clearFileBtn">✕ Remove</button>
+          </div>
+
+          <!-- Step 3: Notes -->
+          <div class="upload-step-lbl" style="margin-top:var(--sp-5);"><em>3</em> Case notes <span style="font-weight:400;color:var(--clr-text-hint);">(optional)</span></div>
+          <textarea class="form-ctrl" id="caseNotes" rows="3"
+            placeholder="Case number, source, acquisition method…"
+            style="resize:vertical;"></textarea>
+
+          <div style="display:flex;align-items:center;gap:var(--sp-4);margin-top:var(--sp-5);">
+            <button class="btn btn-primary" id="startBtn" disabled>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Start Analysis
+            </button>
+            <span style="font-size:var(--fz-12);color:var(--clr-text-hint);">Max 50 MB</span>
+          </div>
+        </div>
+
+        <!-- Recent -->
+        <div class="card">
+          <div class="card__head">
+            <div class="card__title">Recent Analyses</div>
+            <a href="history.html" class="btn btn-ghost btn-sm">View all →</a>
+          </div>
+          <div id="recentList" style="display:flex;flex-direction:column;gap:var(--sp-3);">
+            <div class="empty" id="recentEmpty" style="padding:var(--sp-8);">
+              <div class="empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+              <div class="empty__title" style="font-size:var(--fz-15);">No analyses yet</div>
+              <div class="empty__desc">Upload your first evidence file above to get started.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div>
+
+        <!-- Quick actions -->
+        <div class="card" style="margin-bottom:var(--sp-5);">
+          <div class="card__head"><div class="card__title">Quick Actions</div></div>
+          <div class="qa-grid">
+            <button class="qa-btn" onclick="document.getElementById('dropzone').click()">
+              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></div>
+              <span class="qa-btn__lbl">Upload File</span>
+            </button>
+            <button class="qa-btn" onclick="window.location.href='history.html'">
+              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <span class="qa-btn__lbl">History</span>
+            </button>
+            <button class="qa-btn" id="qaLastReport" onclick="TraceVaultDashboard.openLastReport()">
+              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <span class="qa-btn__lbl">Last Report</span>
+            </button>
+            <button class="qa-btn" onclick="window.location.href='settings.html'">
+              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+              <span class="qa-btn__lbl">Settings</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Risk overview -->
+        <div class="card" style="margin-bottom:var(--sp-5);">
+          <div class="card__head">
+            <div class="card__title">Risk Overview</div>
+            <span class="badge badge-muted">All time</span>
+          </div>
+          <div class="risk-bars">
+            <div class="risk-bar">
+              <span class="risk-bar__lbl">Critical</span>
+              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--red" id="rCritical" style="width:0%"></div></div>
+              <span class="risk-bar__num" id="rCriticalN">0</span>
+            </div>
+            <div class="risk-bar">
+              <span class="risk-bar__lbl">Warning</span>
+              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--amber" id="rWarning" style="width:0%"></div></div>
+              <span class="risk-bar__num" id="rWarningN">0</span>
+            </div>
+            <div class="risk-bar">
+              <span class="risk-bar__lbl">Info</span>
+              <div class="risk-bar__track"><div class="risk-bar__fill" id="rInfo" style="width:0%"></div></div>
+              <span class="risk-bar__num" id="rInfoN">0</span>
+            </div>
+            <div class="risk-bar">
+              <span class="risk-bar__lbl">Clean</span>
+              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--green" id="rClean" style="width:0%"></div></div>
+              <span class="risk-bar__num" id="rCleanN">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="card">
+          <div class="card__head"><div class="card__title">Recent Activity</div></div>
+          <div class="timeline" id="actTimeline">
+            <p style="font-size:var(--fz-13);color:var(--clr-text-hint);padding:var(--sp-4) 0;" id="actEmpty">No recent activity.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /page -->
+</div><!-- /main -->
+
+</div><!-- /app-shell -->
+
+<!-- Analysis progress modal -->
+<div class="modal-overlay" id="anaModal">
+  <div class="modal">
+    <div class="ana-prog">
+      <div class="ana-prog__spinner"><div class="spinner spinner-lg"></div></div>
+      <div class="ana-prog__title">Analyzing evidence…</div>
+      <div class="ana-prog__sub" id="anaProgFile">Processing file</div>
+      <div class="ana-prog__steps">
+        <div class="prog-step" id="ps1">
+          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          Computing SHA-256 hash
+        </div>
+        <div class="prog-step" id="ps2">
+          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          Extracting metadata
+        </div>
+        <div class="prog-step" id="ps3">
+          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          Running forensic checks
+        </div>
+        <div class="prog-step" id="ps4">
+          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          Generating AI summary
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/upload.js"></script>
+<script src="../js/dashboard.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    TraceVaultAuth.requireAuth();
+    TraceVaultDashboard.init();
+    TraceVaultUpload.init();
+  });
+</script>
+</body>
+</html>

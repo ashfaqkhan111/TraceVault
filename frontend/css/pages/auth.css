@@ -1,0 +1,88 @@
+/* ============================================================
+   TraceVault — Auth Pages  (prototype-matched)
+   ============================================================ */
+
+/* ── Auth brand at top of card ── */
+.auth-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: var(--sp-6);
+}
+.auth-logo__img { width: 36px; height: 36px; }
+.auth-logo__name { font-size: var(--fz-18); font-weight: var(--fw-7); color: var(--clr-text); }
+
+/* ── Heading ── */
+.auth-head { text-align: center; margin-bottom: var(--sp-6); }
+.auth-head__title { font-size: var(--fz-22); font-weight: var(--fw-7); color: var(--clr-text); margin-bottom: 6px; }
+.auth-head__sub   { font-size: var(--fz-14); color: var(--clr-text-sec); line-height: var(--lh-normal); }
+
+/* ── Error / success alert ── */
+.auth-err {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: 10px 14px; border-radius: var(--r-md);
+  font-size: var(--fz-13); margin-bottom: var(--sp-4);
+}
+.auth-err svg { width: 15px; height: 15px; flex-shrink: 0; }
+.auth-err--danger  { background: var(--clr-red-glass);   color: var(--clr-red);   border: 1px solid var(--clr-red-border); }
+.auth-err--success { background: var(--clr-green-glass); color: var(--clr-green); border: 1px solid rgba(16,185,129,.25); }
+
+/* ── Social button ── */
+.social-btn {
+  display: flex; align-items: center; justify-content: center; gap: var(--sp-3);
+  width: 100%; padding: 10px 16px;
+  background: var(--clr-bg-input); border: 1px solid var(--clr-border);
+  border-radius: var(--r-md); color: var(--clr-text);
+  font-size: var(--fz-14); font-weight: var(--fw-5); cursor: pointer;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  text-decoration: none;
+}
+.social-btn:hover { background: var(--clr-bg-hover); border-color: var(--clr-border-md); }
+.social-btn__ico { width: 18px; height: 18px; display: flex; align-items: center; }
+.social-btn__ico svg { width: 18px; height: 18px; }
+
+/* ── Footer link ── */
+.auth-foot {
+  text-align: center; font-size: var(--fz-13); color: var(--clr-text-sec);
+  margin-top: var(--sp-5);
+}
+.auth-foot a { color: var(--clr-teal); font-weight: var(--fw-5); transition: color var(--t-fast) var(--ease); }
+.auth-foot a:hover { color: #fff; text-decoration: underline; }
+
+/* ── Forgot link ── */
+.forgot-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: var(--sp-4);
+}
+.forgot-row a { font-size: var(--fz-13); color: var(--clr-teal); transition: color var(--t-fast) var(--ease); }
+.forgot-row a:hover { text-decoration: underline; }
+
+/* ── Back link ── */
+.back-link {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  font-size: var(--fz-13); color: var(--clr-text-sec);
+  margin-bottom: var(--sp-5); transition: color var(--t-fast) var(--ease);
+}
+.back-link svg { width: 16px; height: 16px; }
+.back-link:hover { color: var(--clr-teal); }
+
+/* ── Reset success ── */
+.reset-ok {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: var(--sp-4);
+}
+.reset-ok__ico {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--clr-green-glass);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-green);
+}
+.reset-ok__ico svg { width: 28px; height: 28px; }
+.reset-ok__title { font-size: var(--fz-20); font-weight: var(--fw-7); color: var(--clr-text); }
+.reset-ok__desc  { font-size: var(--fz-14); color: var(--clr-text-sec); line-height: var(--lh-relaxed); }
+
+/* ── Terms ── */
+.auth-terms {
+  font-size: var(--fz-11); color: var(--clr-text-hint);
+  text-align: center; margin-top: var(--sp-4); line-height: var(--lh-loose);
+}
+.auth-terms a { color: var(--clr-teal); }
+.auth-terms a:hover { text-decoration: underline; }

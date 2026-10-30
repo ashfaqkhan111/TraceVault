@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TraceVault — AI-Assisted Digital Forensics</title>
+  <meta name="description" content="TraceVault helps investigators analyze digital evidence, identify suspicious activities, and generate professional forensic reports with AI." />
+  <link rel="stylesheet" href="frontend/css/veriables.css" />
+  <link rel="stylesheet" href="frontend/css/layout.css" />
+  <link rel="stylesheet" href="frontend/css/components.css" />
+  <link rel="stylesheet" href="frontend/css/pages/landing.css" />
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="pub-nav">
+  <a href="index.html" class="pub-nav__brand">
+    <img src="frontend/assets/logo.svg" class="pub-nav__logo" alt="TraceVault" />
+    TraceVault
+  </a>
+  <div class="pub-nav__links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#analysis-types">Analysis</a>
+  </div>
+  <div class="pub-nav__actions">
+    <a href="frontend/pages/login.html" class="btn btn-ghost btn-sm">Log In</a>
+    <a href="frontend/pages/signup.html" class="btn btn-primary btn-sm">Get Started</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero__inner">
+
+    <!-- Left copy -->
+    <div class="hero__copy">
+      <div class="hero__tag">
+        <span class="hero__tag-dot"></span>
+        AI-Assisted Digital Forensics Platform
+      </div>
+      <h1 class="hero__title">
+        Digital evidence.<br/>
+        <span class="hero__accent">Clearer insights.</span>
+      </h1>
+      <p class="hero__desc">
+        TraceVault helps investigators analyze email artifacts, file metadata, and potential malware — then organizes findings into professional forensic reports.
+      </p>
+      <div class="hero__cta">
+        <a href="frontend/pages/signup.html" class="btn btn-primary btn-lg">Start Investigating</a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">See How It Works</a>
+      </div>
+      <div class="hero__dots">
+        <span class="hero__dots-sep"></span><span>Email forensics</span>
+        <span class="hero__dots-sep"></span><span>File integrity</span>
+        <span class="hero__dots-sep"></span><span>Malware triage</span>
+        <span class="hero__dots-sep"></span><span>AI reports</span>
+      </div>
+    </div>
+
+    <!-- Right — browser mock -->
+    <div class="hero__visual">
+      <div class="hero__browser">
+        <div class="browser__bar">
+          <div class="browser__dots">
+            <div class="browser__dot browser__dot--r"></div>
+            <div class="browser__dot browser__dot--y"></div>
+            <div class="browser__dot browser__dot--g"></div>
+          </div>
+          <div class="browser__url">tracevault.app/dashboard</div>
+        </div>
+        <div class="browser__body">
+          <div class="mini-dash">
+            <!-- mini stat cards -->
+            <div class="mini-stat-row">
+              <div class="mini-stat">
+                <div class="mini-stat__val">24</div>
+                <div class="mini-stat__lbl">Analyses</div>
+                <div class="mini-stat__badge mini-stat__badge--teal">+3 today</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat__val">7</div>
+                <div class="mini-stat__lbl">Threats found</div>
+                <div class="mini-stat__badge mini-stat__badge--red">High risk</div>
+              </div>
+            </div>
+            <!-- progress bars -->
+            <div class="mini-progress">
+              <div class="mini-prog-item">
+                <span class="mini-prog-item__lbl">Critical</span>
+                <div class="mini-prog-item__bar"><div class="mini-prog-item__fill mini-prog-item__fill--red" style="width:35%"></div></div>
+                <span class="mini-prog-item__num">7</span>
+              </div>
+              <div class="mini-prog-item">
+                <span class="mini-prog-item__lbl">Warning</span>
+                <div class="mini-prog-item__bar"><div class="mini-prog-item__fill mini-prog-item__fill--amber" style="width:55%"></div></div>
+                <span class="mini-prog-item__num">11</span>
+              </div>
+              <div class="mini-prog-item">
+                <span class="mini-prog-item__lbl">Clean</span>
+                <div class="mini-prog-item__bar"><div class="mini-prog-item__fill mini-prog-item__fill--green" style="width:70%"></div></div>
+                <span class="mini-prog-item__num">14</span>
+              </div>
+            </div>
+            <!-- recent file -->
+            <div class="mini-file">
+              <div class="mini-file__ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div>
+                <div class="mini-file__name">invoice_Q3.pdf</div>
+                <div class="mini-file__sub">204 KB · File Analysis</div>
+              </div>
+              <span class="mini-file__badge badge-amber" style="background:var(--clr-amber-glass);color:var(--clr-amber);font-size:var(--fz-10);padding:2px 8px;border-radius:var(--r-full);font-weight:600;">Medium Risk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- floating badges -->
+      <div class="hero__float hero__float--tl">
+        <div class="hero__float__icon" style="background:var(--clr-green-glass);color:var(--clr-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="hero__float__val">SHA-256</div>
+          <div class="hero__float__lbl">Integrity verified</div>
+        </div>
+      </div>
+      <div class="hero__float hero__float--br">
+        <div class="hero__float__icon" style="background:var(--clr-amber-glass);color:var(--clr-amber);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="hero__float__val">72/100</div>
+          <div class="hero__float__lbl">Risk score</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ STATS BAR ═══════════════ -->
+<div class="stats-bar">
+  <div class="stats-bar__inner">
+    <div><div class="stats-bar__num">3</div><div class="stats-bar__lbl">Analysis types</div></div>
+    <div><div class="stats-bar__num">SHA-256</div><div class="stats-bar__lbl">Hash verification</div></div>
+    <div><div class="stats-bar__num">AI</div><div class="stats-bar__lbl">Powered summaries</div></div>
+    <div><div class="stats-bar__num">PDF</div><div class="stats-bar__lbl">Report export</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<section class="section" id="features">
+  <div class="section__inner">
+    <div class="sec-head">
+      <span class="sec-head__eyebrow">Features</span>
+      <h2 class="sec-head__title">Everything you need for digital forensics</h2>
+      <p class="sec-head__desc">From file upload to PDF report — TraceVault covers the full investigation workflow in one platform.</p>
+    </div>
+    <div class="feat-grid">
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3 class="feat-card__title">Email Forensics</h3>
+        <p class="feat-card__desc">Inspect email headers, trace routing paths, detect spoofing, and analyze suspicious links in .eml files.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="feat-card__title">File Metadata</h3>
+        <p class="feat-card__desc">Extract creation dates, author info, GPS coordinates, software versions, and hidden properties from common file types.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h3 class="feat-card__title">Hash Verification</h3>
+        <p class="feat-card__desc">Calculate SHA-256 hashes to verify evidence integrity and confirm files haven't been tampered with.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="feat-card__title">Malware Triage</h3>
+        <p class="feat-card__desc">Identify suspicious indicators — embedded macros, obfuscated scripts, unusual PE headers, and known signatures.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3 class="feat-card__title">AI Summaries</h3>
+        <p class="feat-card__desc">AI-assisted explanations that summarize findings in plain language, identify risks, and suggest next investigative steps.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-card__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3 class="feat-card__title">PDF Reports</h3>
+        <p class="feat-card__desc">Generate professional forensic reports containing evidence details, analysis results, findings, and timeline — ready to share.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section class="section section--alt" id="how-it-works">
+  <div class="section__inner">
+    <div class="sec-head">
+      <span class="sec-head__eyebrow">Workflow</span>
+      <h2 class="sec-head__title">Four steps from evidence to report</h2>
+      <p class="sec-head__desc">TraceVault is designed around a repeatable, structured investigation workflow.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div>
+          <div class="step__title">Upload Evidence</div>
+          <p class="step__desc">Drag and drop or browse to submit a supported evidence file. TraceVault validates type and size before processing.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div>
+          <div class="step__title">Automatic Analysis</div>
+          <p class="step__desc">The backend calculates a SHA-256 hash, extracts metadata, and runs applicable forensic checks for the file type.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div>
+          <div class="step__title">Review Findings</div>
+          <p class="step__desc">Inspect structured findings, suspicious indicators, and AI-generated explanations tied to observable evidence.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__num">4</div>
+        <div>
+          <div class="step__title">Export Report</div>
+          <p class="step__desc">Download a professional PDF report or revisit saved analysis history at any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ANALYSIS TYPES ═══════════════ -->
+<section class="section" id="analysis-types">
+  <div class="section__inner">
+    <div class="sec-head">
+      <span class="sec-head__eyebrow">Analysis Types</span>
+      <h2 class="sec-head__title">Specialized checks for every evidence type</h2>
+      <p class="sec-head__desc">Each analysis type runs a tailored set of forensic checks designed for that evidence category.</p>
+    </div>
+    <div class="atype-grid">
+
+      <div class="atype-card atype-card--email">
+        <div class="atype-card__head">
+          <div class="atype-card__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="atype-card__title">Email Forensics</div>
+        </div>
+        <ul class="atype-list">
+          <li>Header routing analysis</li>
+          <li>Sender spoofing detection</li>
+          <li>SPF / DKIM / DMARC checks</li>
+          <li>Suspicious link extraction</li>
+          <li>Attachment indicator analysis</li>
+          <li>Timestamp anomaly detection</li>
+        </ul>
+      </div>
+
+      <div class="atype-card atype-card--file">
+        <div class="atype-card__head">
+          <div class="atype-card__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="atype-card__title">File Forensics</div>
+        </div>
+        <ul class="atype-list">
+          <li>SHA-256 hash calculation</li>
+          <li>Metadata extraction (EXIF, XMP)</li>
+          <li>Author &amp; creation timestamp</li>
+          <li>GPS coordinate extraction</li>
+          <li>Hidden stream detection</li>
+          <li>File signature verification</li>
+        </ul>
+      </div>
+
+      <div class="atype-card atype-card--malware">
+        <div class="atype-card__head">
+          <div class="atype-card__ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="atype-card__title">Malware Triage</div>
+        </div>
+        <ul class="atype-list">
+          <li>Macro &amp; script detection</li>
+          <li>Obfuscation indicators</li>
+          <li>PE header analysis</li>
+          <li>String extraction &amp; entropy</li>
+          <li>Known signature matching</li>
+          <li>Behavioral indicators</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta-sec">
+  <div class="cta-box">
+    <h2 class="cta-box__title">Start your first investigation</h2>
+    <p class="cta-box__desc">Create a free account and upload your first evidence file in minutes. No prior forensics experience required.</p>
+    <div class="cta-box__btns">
+      <a href="frontend/pages/signup.html" class="btn btn-primary btn-lg">Create Free Account</a>
+      <a href="frontend/pages/login.html" class="btn btn-ghost btn-lg">Log In</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="land-foot">
+  <div class="land-foot__inner">
+    <div class="land-foot__brand">
+      <img src="frontend/assets/logo.svg" class="land-foot__brand-logo" alt="" />
+      TraceVault
+    </div>
+    <p class="land-foot__copy">© 2026 TraceVault · Built for Arbiter Hacks V1</p>
+    <div class="land-foot__links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Docs</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container" id="toastContainer"></div>
+</body>
+</html>

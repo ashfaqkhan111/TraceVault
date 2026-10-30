@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — TraceVault</title>
+  <link rel="stylesheet" href="../css/veriables.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/dashboard.css" />
+</head>
+<body>
+<div class="app-shell">
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar__head">
+    <img src="../assets/logo.svg" class="sidebar__logo" alt="" />
+    <span class="sidebar__brand">TraceVault</span>
+  </div>
+  <nav class="sidebar__nav">
+    <span class="sidebar__label">Main</span>
+    <a href="dashboard.html" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Dashboard</a>
+    <a href="dashboard.html#upload" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></span>New Analysis</a>
+    <a href="history.html" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>History</a>
+    <span class="sidebar__label" style="margin-top:var(--sp-2);">Analysis</span>
+    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Email Forensics</a>
+    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>File Analysis</a>
+    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Malware Triage</a>
+    <span class="sidebar__label" style="margin-top:var(--sp-2);">Account</span>
+    <a href="settings.html" class="nav-item active"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>Settings</a>
+  </nav>
+  <div class="sidebar__foot">
+    <div class="sidebar__user">
+      <div class="user-avatar" id="sidebarAvatar">JD</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name" id="sidebarName">Jane Doe</div>
+        <div class="sidebar__user-role" id="sidebarRole">Forensic Investigator</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <button class="topbar__btn" id="sidebarToggle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <span class="topbar__title">Settings</span>
+    <div class="topbar__gap"></div>
+  </div>
+
+  <div class="page">
+    <div class="page-header">
+      <div class="page-header__title">Account Settings</div>
+      <div class="page-header__sub">Manage your profile, security, and preferences</div>
+    </div>
+
+    <div class="sett-layout">
+
+      <!-- Left nav -->
+      <div class="sett-nav">
+        <div class="sett-nav-item active" data-sec="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Profile
+        </div>
+        <div class="sett-nav-item" data-sec="security">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Security
+        </div>
+        <div class="sett-nav-item" data-sec="notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          Notifications
+        </div>
+        <div class="sett-nav-item" data-sec="analysis">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Analysis
+        </div>
+        <div class="sett-nav-item" data-sec="danger" style="color:var(--clr-red);margin-top:var(--sp-3);border-top:1px solid var(--clr-border);padding-top:var(--sp-3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--clr-red);"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Danger Zone
+        </div>
+      </div>
+
+      <!-- Right sections -->
+      <div>
+
+        <!-- PROFILE -->
+        <div class="sett-section active" id="sec-profile">
+          <div class="sett-card">
+            <div class="sett-card__head">
+              <div class="sett-card__title">Profile Information</div>
+              <div class="sett-card__sub">Update your personal information and public profile.</div>
+            </div>
+            <!-- Avatar -->
+            <div class="avatar-row">
+              <div class="avatar-img" id="avatarPreview"><span id="avatarInitials">JD</span></div>
+              <div class="avatar-acts">
+                <button class="btn btn-ghost btn-sm" id="btnChangeAvatar">Change photo</button>
+                <button class="btn btn-danger-ghost btn-sm" id="btnRemoveAvatar">Remove</button>
+                <input type="file" id="avatarInput" accept="image/*" style="display:none;" />
+                <span style="font-size:var(--fz-11);color:var(--clr-text-hint);">JPG, PNG up to 2 MB</span>
+              </div>
+            </div>
+            <form id="profileForm">
+              <div class="g2">
+                <div class="form-group">
+                  <label class="form-label" for="firstName">First name</label>
+                  <input type="text" id="firstName" class="form-ctrl" placeholder="Jane" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastName">Last name</label>
+                  <input type="text" id="lastName" class="form-ctrl" placeholder="Smith" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profEmail">Email address</label>
+                <input type="email" id="profEmail" class="form-ctrl" placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profRole">Role / Profession</label>
+                <select id="profRole" class="form-ctrl">
+                  <option value="forensic_investigator">Digital Forensic Investigator</option>
+                  <option value="security_analyst">Cybersecurity Analyst</option>
+                  <option value="incident_responder">Incident Responder</option>
+                  <option value="law_enforcement">Law Enforcement</option>
+                  <option value="researcher">Security Researcher</option>
+                  <option value="student">Student</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profOrg">Organization <span style="color:var(--clr-text-hint);font-weight:400;">(optional)</span></label>
+                <input type="text" id="profOrg" class="form-ctrl" placeholder="Your organization" />
+              </div>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- SECURITY -->
+        <div class="sett-section" id="sec-security">
+          <div class="sett-card">
+            <div class="sett-card__head">
+              <div class="sett-card__title">Change Password</div>
+              <div class="sett-card__sub">Use a strong, unique password for your account.</div>
+            </div>
+            <form id="pwdForm">
+              <div class="form-group">
+                <label class="form-label" for="curPwd">Current password</label>
+                <div class="input-wrap input-wrap--r">
+                  <input type="password" id="curPwd" class="form-ctrl" placeholder="Your current password" />
+                  <button type="button" class="input-icon-r" onclick="togglePwdVis('curPwd')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPwd">New password</label>
+                <div class="input-wrap input-wrap--r">
+                  <input type="password" id="newPwd" class="form-ctrl" placeholder="Choose a strong password" />
+                  <button type="button" class="input-icon-r" onclick="togglePwdVis('newPwd')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="confPwd">Confirm new password</label>
+                <div class="input-wrap input-wrap--r">
+                  <input type="password" id="confPwd" class="form-ctrl" placeholder="Repeat new password" />
+                  <button type="button" class="input-icon-r" onclick="togglePwdVis('confPwd')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Update password</button>
+            </form>
+          </div>
+          <div class="sett-card">
+            <div class="sett-card__head"><div class="sett-card__title">Active Sessions</div></div>
+            <div class="meta-row">
+              <div class="meta-row__k">This device</div>
+              <div class="meta-row__v" style="font-family:var(--ff-sans);"><span class="badge badge-teal" style="margin-right:var(--sp-2);">Current</span><span id="sessionInfo">—</span></div>
+            </div>
+            <div style="margin-top:var(--sp-4);">
+              <button class="btn btn-ghost btn-sm" onclick="showToast('Other sessions revoked.','success')">Log out all other sessions</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTIFICATIONS -->
+        <div class="sett-section" id="sec-notifications">
+          <div class="sett-card">
+            <div class="sett-card__head"><div class="sett-card__title">Notification Preferences</div><div class="sett-card__sub">Choose which events send you notifications.</div></div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Analysis complete</div><div class="tog-row__desc">Notify when an analysis finishes.</div></div>
+              <label class="toggle"><input type="checkbox" id="nAnalysis" checked /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Critical findings</div><div class="tog-row__desc">Alert when critical-severity indicators are detected.</div></div>
+              <label class="toggle"><input type="checkbox" id="nCritical" checked /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Report exported</div><div class="tog-row__desc">Confirm when a PDF report is ready.</div></div>
+              <label class="toggle"><input type="checkbox" id="nReport" /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Security alerts</div><div class="tog-row__desc">Notify about new logins and suspicious activity.</div></div>
+              <label class="toggle"><input type="checkbox" id="nSecurity" checked /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div style="margin-top:var(--sp-5);"><button class="btn btn-primary" onclick="showToast('Preferences saved.','success')">Save preferences</button></div>
+          </div>
+        </div>
+
+        <!-- ANALYSIS -->
+        <div class="sett-section" id="sec-analysis">
+          <div class="sett-card">
+            <div class="sett-card__head"><div class="sett-card__title">Analysis Defaults</div><div class="sett-card__sub">Configure default options for new analyses.</div></div>
+            <div class="form-group">
+              <label class="form-label" for="defType">Default analysis type</label>
+              <select id="defType" class="form-ctrl"><option value="file">File Analysis</option><option value="email">Email Forensics</option><option value="malware">Malware Triage</option></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="defHash">Hash algorithm</label>
+              <select id="defHash" class="form-ctrl"><option value="sha256" selected>SHA-256 (recommended)</option><option value="md5">MD5 (legacy)</option><option value="both">Both SHA-256 &amp; MD5</option></select>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Auto-generate AI summary</div><div class="tog-row__desc">Automatically run AI analysis on every submission.</div></div>
+              <label class="toggle"><input type="checkbox" id="autoAI" checked /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Save analysis history</div><div class="tog-row__desc">Store results for later review and report generation.</div></div>
+              <label class="toggle"><input type="checkbox" id="saveHist" checked /><span class="toggle__track"></span><span class="toggle__thumb"></span></label>
+            </div>
+            <div style="margin-top:var(--sp-5);"><button class="btn btn-primary" onclick="showToast('Defaults saved.','success')">Save defaults</button></div>
+          </div>
+        </div>
+
+        <!-- DANGER -->
+        <div class="sett-section" id="sec-danger">
+          <div class="sett-card sett-card--danger">
+            <div class="sett-card__head"><div class="sett-card__title">Danger Zone</div><div class="sett-card__sub">Irreversible actions. Proceed with caution.</div></div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Clear all analysis history</div><div class="tog-row__desc">Permanently delete all analyses and findings.</div></div>
+              <button class="btn btn-danger btn-sm" onclick="if(confirm('Delete all history?')){localStorage.removeItem('tv_analyses');showToast('History cleared.','success');}">Clear History</button>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Export all data</div><div class="tog-row__desc">Download a full JSON export of your analyses.</div></div>
+              <button class="btn btn-ghost btn-sm" onclick="exportAllData()">Export Data</button>
+            </div>
+            <div class="tog-row">
+              <div><div class="tog-row__lbl">Delete account</div><div class="tog-row__desc">Permanently delete your account and all data.</div></div>
+              <button class="btn btn-danger btn-sm" onclick="document.getElementById('delAccModal').classList.add('open')">Delete Account</button>
+            </div>
+            <div style="margin-top:var(--sp-5);">
+              <button class="btn btn-ghost" onclick="TraceVaultAuth.logout()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Log Out
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Delete account modal -->
+<div class="modal-overlay" id="delAccModal">
+  <div class="modal">
+    <div class="modal__head">
+      <span class="modal__title">Delete Account?</span>
+      <button class="modal__close" onclick="document.getElementById('delAccModal').classList.remove('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <p style="color:var(--clr-text-sec);font-size:var(--fz-14);margin-bottom:var(--sp-4);">This will permanently delete your account and all data. This <strong>cannot</strong> be undone.</p>
+    <div class="form-group">
+      <label class="form-label">Type <strong>DELETE</strong> to confirm</label>
+      <input type="text" id="delConfirmInput" class="form-ctrl" placeholder="DELETE" />
+    </div>
+    <div style="display:flex;gap:var(--sp-3);justify-content:flex-end;margin-top:var(--sp-4);">
+      <button class="btn btn-ghost" onclick="document.getElementById('delAccModal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-danger" id="confirmDelAcc" disabled>Delete My Account</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script>
+function showToast(msg, type='info') {
+  const icons = {success:'✅',error:'⚠',warning:'⚠',info:'ℹ'};
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.innerHTML = `<span style="font-size:15px;">${icons[type]||'ℹ'}</span><span class="toast__msg">${msg}</span>`;
+  c.appendChild(t); setTimeout(()=>t.remove(), 3500);
+}
+function togglePwdVis(id) { const el=document.getElementById(id); el.type=el.type==='password'?'text':'password'; }
+function exportAllData() {
+  const d={analyses:JSON.parse(localStorage.getItem('tv_analyses')||'[]')};
+  const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const u=URL.createObjectURL(b); const a=document.createElement('a');
+  a.href=u; a.download='tracevault-export.json'; a.click(); URL.revokeObjectURL(u);
+  showToast('Data exported.','success');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  TraceVaultAuth.requireAuth();
+  // Nav switching
+  document.querySelectorAll('.sett-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.sett-nav-item').forEach(i=>i.classList.remove('active'));
+      document.querySelectorAll('.sett-section').forEach(s=>s.classList.remove('active'));
+      item.classList.add('active');
+      document.getElementById('sec-'+item.dataset.sec).classList.add('active');
+    });
+  });
+  // Sidebar toggle
+  document.getElementById('sidebarToggle')?.addEventListener('click',()=>document.getElementById('sidebar')?.classList.toggle('open'));
+  // Load user
+  const user = TraceVaultAuth.getUser();
+  if (user) {
+    document.getElementById('firstName').value = user.firstName||'';
+    document.getElementById('lastName').value  = user.lastName||'';
+    document.getElementById('profEmail').value = user.email||'';
+    document.getElementById('profRole').value  = user.role||'';
+    const initials = ((user.firstName||'?')[0]+(user.lastName||'?')[0]).toUpperCase();
+    document.getElementById('avatarInitials').textContent = initials;
+    document.getElementById('sidebarAvatar').textContent  = initials;
+    const name=[user.firstName,user.lastName].filter(Boolean).join(' ')||'User';
+    document.getElementById('sidebarName').textContent=name;
+    document.getElementById('sidebarRole').textContent=user.role||'Investigator';
+    document.getElementById('sessionInfo').textContent = navigator.platform+' · '+new Date().toLocaleDateString();
+  }
+  // Profile form
+  document.getElementById('profileForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const u=TraceVaultAuth.getUser()||{};
+    u.firstName=document.getElementById('firstName').value.trim();
+    u.lastName =document.getElementById('lastName').value.trim();
+    u.email    =document.getElementById('profEmail').value.trim();
+    u.role     =document.getElementById('profRole').value;
+    u.org      =document.getElementById('profOrg').value.trim();
+    localStorage.setItem('tv_user',JSON.stringify(u));
+    showToast('Profile updated.','success');
+  });
+  // Password form
+  document.getElementById('pwdForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const np=document.getElementById('newPwd').value;
+    const cp=document.getElementById('confPwd').value;
+    if (np!==cp){showToast('Passwords do not match.','error');return;}
+    if (np.length<8){showToast('Password must be at least 8 characters.','error');return;}
+    showToast('Password updated.','success');
+    document.getElementById('pwdForm').reset();
+  });
+  // Avatar
+  document.getElementById('btnChangeAvatar').addEventListener('click',()=>document.getElementById('avatarInput').click());
+  document.getElementById('avatarInput').addEventListener('change',e=>{
+    const f=e.target.files[0]; if(!f)return;
+    const r=new FileReader(); r.onload=ev=>{
+      document.getElementById('avatarPreview').innerHTML=`<img src="${ev.target.result}" alt="Avatar"/>`;
+    }; r.readAsDataURL(f);
+  });
+  document.getElementById('btnRemoveAvatar').addEventListener('click',()=>{
+    const init=document.getElementById('avatarInitials')?.textContent||'U';
+    document.getElementById('avatarPreview').innerHTML=`<span id="avatarInitials">${init}</span>`;
+  });
+  // Delete account confirm
+  document.getElementById('delConfirmInput').addEventListener('input',e=>{
+    document.getElementById('confirmDelAcc').disabled=e.target.value!=='DELETE';
+  });
+  document.getElementById('confirmDelAcc').addEventListener('click',()=>{
+    localStorage.clear(); window.location.href='../../index.html';
+  });
+});
+</script>
+</body>
+</html>

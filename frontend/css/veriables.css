@@ -1,0 +1,124 @@
+/* ============================================================
+   TraceVault — Design Tokens  (prototype-matched)
+   ============================================================ */
+
+:root {
+  /* ── Brand / Accent ─────────────────────────────────────── */
+  --clr-teal:          #2DD4BF;   /* primary teal – buttons, highlights  */
+  --clr-teal-hov:      #26B8A5;   /* hover darken                        */
+  --clr-teal-dim:      #14B8A6;   /* slightly deeper variant             */
+  --clr-teal-glass:    rgba(45,212,191,0.12);
+  --clr-teal-glass-hv: rgba(45,212,191,0.20);
+  --clr-teal-border:   rgba(45,212,191,0.30);
+
+  /* ── Backgrounds ─────────────────────────────────────────  */
+  --clr-bg:        #0B1120;   /* page / outermost                      */
+  --clr-bg-card:   #111827;   /* card / panel surface                  */
+  --clr-bg-input:  #1A2333;   /* input / inner surface                 */
+  --clr-bg-hover:  #1E2B3C;   /* hover state for items                 */
+  --clr-bg-active: rgba(45,212,191,0.08);
+
+  /* ── Borders ─────────────────────────────────────────────  */
+  --clr-border:     #1E2D3D;
+  --clr-border-md:  #263547;
+  --clr-border-lt:  #2E4158;
+
+  /* ── Text ────────────────────────────────────────────────  */
+  --clr-text:        #F1F5F9;   /* primary                              */
+  --clr-text-sec:    #94A3B8;   /* secondary / muted                    */
+  --clr-text-hint:   #4E6A85;   /* placeholder / disabled               */
+  --clr-text-inv:    #0B1120;   /* on teal buttons                      */
+
+  /* ── Semantic ────────────────────────────────────────────  */
+  --clr-red:        #EF4444;
+  --clr-red-glass:  rgba(239,68,68,0.12);
+  --clr-red-border: rgba(239,68,68,0.25);
+
+  --clr-amber:      #F59E0B;
+  --clr-amber-glass:rgba(245,158,11,0.12);
+
+  --clr-green:      #10B981;
+  --clr-green-glass:rgba(16,185,129,0.12);
+
+  --clr-blue:       #3B82F6;
+  --clr-blue-glass: rgba(59,130,246,0.12);
+
+  /* ── Typography ──────────────────────────────────────────  */
+  --ff-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ff-mono: 'JetBrains Mono','Fira Code','Courier New', monospace;
+
+  --fz-10: 0.625rem;
+  --fz-11: 0.6875rem;
+  --fz-12: 0.75rem;
+  --fz-13: 0.8125rem;
+  --fz-14: 0.875rem;
+  --fz-15: 0.9375rem;
+  --fz-16: 1rem;
+  --fz-18: 1.125rem;
+  --fz-20: 1.25rem;
+  --fz-22: 1.375rem;
+  --fz-24: 1.5rem;
+  --fz-28: 1.75rem;
+  --fz-32: 2rem;
+  --fz-40: 2.5rem;
+  --fz-48: 3rem;
+
+  --fw-4: 400;
+  --fw-5: 500;
+  --fw-6: 600;
+  --fw-7: 700;
+
+  --lh-tight:  1.2;
+  --lh-snug:   1.375;
+  --lh-normal: 1.5;
+  --lh-relaxed:1.65;
+  --lh-loose:  1.8;
+
+  /* ── Spacing ─────────────────────────────────────────────  */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* ── Radius ──────────────────────────────────────────────  */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-xl:   16px;
+  --r-2xl:  20px;
+  --r-full: 9999px;
+
+  /* ── Shadows ─────────────────────────────────────────────  */
+  --sh-sm:   0 1px 4px rgba(0,0,0,.40);
+  --sh-md:   0 4px 16px rgba(0,0,0,.45);
+  --sh-lg:   0 8px 28px rgba(0,0,0,.50);
+  --sh-xl:   0 16px 48px rgba(0,0,0,.55);
+  --sh-teal: 0 0 24px rgba(45,212,191,.22);
+
+  /* ── Layout ──────────────────────────────────────────────  */
+  --sidebar-w:    220px;
+  --topbar-h:      60px;
+  --max-w:        1200px;
+  --auth-w:        420px;
+
+  /* ── Motion ──────────────────────────────────────────────  */
+  --ease:  cubic-bezier(.4,0,.2,1);
+  --t-fast:  150ms;
+  --t-base:  250ms;
+  --t-slow:  400ms;
+
+  /* ── Z-layers ────────────────────────────────────────────  */
+  --z-base:    1;
+  --z-drop:  100;
+  --z-sticky:200;
+  --z-modal: 400;
+  --z-toast: 500;
+}
