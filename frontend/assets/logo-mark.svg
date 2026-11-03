@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74 66" fill="none">
+  <rect width="74" height="66" rx="6" fill="#1D2B3A"/>
+  <!-- green hexagon -->
+  <polygon points="37,8 58.6,20.5 58.6,45.5 37,58 15.4,45.5 15.4,20.5" fill="#0EAA80"/>
+  <!-- keyhole -->
+  <circle cx="35" cy="25" r="5.2" fill="#1D2B3A"/>
+  <path d="M32.6 27.5h4.8l2 10.5h-8.8z" fill="#1D2B3A"/>
+  <!-- trace line -->
+  <path d="M35 38v4.5h5" stroke="#1D2B3A" stroke-width="1.4"/>
+  <circle cx="42.2" cy="42.5" r="2.4" fill="#1D2B3A"/>
+</svg>
