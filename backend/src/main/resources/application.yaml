@@ -1,3 +1,43 @@
 spring:
   application:
-    name: backend
+    name: tracevault-backend
+
+  # --- Koneksi database PostgreSQL ---
+  # Nilai di kanan tanda ":" adalah nilai default untuk laptop sendiri.
+  # Kalau berbeda, set environment variable DB_URL / DB_USERNAME / DB_PASSWORD.
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/tracevault}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: none        # tabel dibuat oleh Flyway, bukan Hibernate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  # --- Batas ukuran upload (sama dengan batas di frontend/js/upload.js) ---
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    # WAJIB diganti di server sungguhan (minimal 32 karakter acak).
+    secret: ${APP_JWT_SECRET:dev-only-secret-change-me-please-32chars-min}
+    expiration-hours: 24
+  cors:
+    # Alamat frontend yang boleh memanggil API (pisahkan dengan koma).
+    # 5500 = VS Code Live Server, 3000/5173/8000 = dev server umum.
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:5500,http://127.0.0.1:5500,http://localhost:3000,http://localhost:5173,http://localhost:8000,http://127.0.0.1:8000}
