@@ -125,20 +125,21 @@ body .auth-shell .auth-logo__img {
   height: 60px;
   border-radius: 12px;
 }
-body .auth-shell .auth-logo__name {
-  content: 'Trace';
-  color: var(--tv-ink);
-  content: 'Vault';
-  color: var(--tv-green);
+bbody .auth-shell .auth-logo__name {
   display: flex;
   flex-direction: column;
   font-size: 24px;
   font-weight: 800;
   line-height: 1.1;
   color: #0f172a;
-  -webkit-text-fill-color: #0f172a;   /* beats old gradient/white text */
+  -webkit-text-fill-color: #0f172a;
   background: none;
 }
+body .auth-shell .auth-logo__name .auth-logo__accent {
+  color: #10b981;
+  -webkit-text-fill-color: #10b981;
+}
+
 body .auth-shell .auth-logo__name::after {
   content: 'Verify Before You Trust';
   margin-top: 4px;
@@ -232,4 +233,21 @@ body .auth-shell .input-wrap.input-wrap--r > .input-icon svg {
   display: block !important;
   width: 18px;
   height: 18px;
+}
+/* Logo text: "Trace" dark + "Vault" green on the same line */
+body .auth-shell .auth-logo__name .auth-logo__word {
+  display: block;
+  white-space: nowrap;
+}
+body .auth-shell .auth-logo__name .auth-logo__trace {
+  display: inline;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  background: none !important;
+}
+body .auth-shell .auth-logo__name .auth-logo__accent {
+  display: inline;
+  color: #10b981 !important;
+  -webkit-text-fill-color: #10b981 !important;
+  background: none !important;
 }

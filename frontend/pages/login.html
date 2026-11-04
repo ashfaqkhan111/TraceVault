@@ -16,8 +16,10 @@
 
     <!-- Logo -->
     <div class="auth-logo">
-      <img src="../assets/logo.svg" class="auth-logo__img" alt="TraceVault" />
-      <span class="auth-logo__name">TraceVault</span>
+      <img src="../assets/logo-mark.svg" class="auth-logo__img" alt="TraceVault" />
+      <span class="auth-logo__name">
+  <span class="auth-logo__word"><span class="auth-logo__trace">Trace</span><span class="auth-logo__accent">Vault</span></span>
+</span>
     </div>
 
     <!-- Heading -->
@@ -48,22 +50,26 @@
       </div>
 
       <div class="form-group" id="grpPwd">
-        <span class="input-icon">
-          <svg viewBox="0 0 20 20 " fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.7503 6.66664C13.9804 6.66664 14.167 6.48009 14.167 6.24997C14.167 6.01985 13.9804 5.8333 13.7503 5.8333C13.5202 5.8333 13.3337 6.01985 13.3337 6.24997C13.3337 6.48009 13.5202 6.66664 13.7503 6.66664Z" fill="currentColor"/><path d="M2.15533 14.5116C1.84274 14.8241 1.66709 15.248 1.66699 15.69V17.5C1.66699 17.721 1.75479 17.9329 1.91107 18.0892C2.06735 18.2455 2.27931 18.3333 2.50033 18.3333H5.00033C5.22134 18.3333 5.4333 18.2455 5.58958 18.0892C5.74586 17.9329 5.83366 17.721 5.83366 17.5V16.6666C5.83366 16.4456 5.92146 16.2337 6.07774 16.0774C6.23402 15.9211 6.44598 15.8333 6.66699 15.8333H7.50033C7.72134 15.8333 7.9333 15.7455 8.08958 15.5892C8.24586 15.4329 8.33366 15.221 8.33366 15V14.1666C8.33366 13.9456 8.42146 13.7337 8.57774 13.5774C8.73402 13.4211 8.94598 13.3333 9.16699 13.3333H9.31033C9.75232 13.3332 10.1762 13.1576 10.4887 12.845L11.167 12.1666C12.3252 12.5701 13.586 12.5685 14.7432 12.1623C15.9004 11.756 16.8855 10.969 17.5373 9.93007C18.1891 8.89115 18.469 7.66178 18.3313 6.44309C18.1935 5.22439 17.6463 4.08851 16.779 3.22128C15.9118 2.35404 14.7759 1.80679 13.5572 1.66905C12.3385 1.5313 11.1091 1.81122 10.0702 2.46301C9.0313 3.11479 8.24432 4.09986 7.83803 5.25707C7.43175 6.41428 7.4302 7.67511 7.83366 8.8333L2.15533 14.5116ZM14.167 6.24997C14.167 6.48009 13.9804 6.66664 13.7503 6.66664C13.5202 6.66664 13.3337 6.48009 13.3337 6.24997C13.3337 6.01985 13.5202 5.8333 13.7503 5.8333C13.9804 5.8333 14.167 6.01985 14.167 6.24997Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          
-      </span>
-        <label class="form-label" for="password">Password</label>
-        <div class="input-wrap input-wrap--r">
-          <input type="password" id="password" class="form-ctrl" placeholder="Enter your password" autocomplete="current-password" required />
-          <button type="button" class="input-icon-r" id="togglePwd" aria-label="Toggle password">
-          
-            <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-        <span class="form-err" id="pwdErr">Please enter your password.</span>
-      </div>
+  <label class="form-label" for="password">Password</label>
+
+  <div class="input-wrap input-wrap--r">
+    <!-- Key icon: now INSIDE the wrap, before the input -->
+    <span class="input-icon">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.15533 14.5116C1.84274 14.8241 1.66709 15.248 1.66699 15.69V17.5C1.66699 17.721 1.75479 17.9329 1.91107 18.0892C2.06735 18.2455 2.27931 18.3333 2.50033 18.3333H5.00033C5.22134 18.3333 5.4333 18.2455 5.58958 18.0892C5.74586 17.9329 5.83366 17.721 5.83366 17.5V16.6666C5.83366 16.4456 5.92146 16.2337 6.07774 16.0774C6.23402 15.9211 6.44598 15.8333 6.66699 15.8333H7.50033C7.72134 15.8333 7.9333 15.7455 8.08958 15.5892C8.24586 15.4329 8.33366 15.221 8.33366 15V14.1666C8.33366 13.9456 8.42146 13.7337 8.57774 13.5774C8.73402 13.4211 8.94598 13.3333 9.16699 13.3333H9.31033C9.75232 13.3332 10.1762 13.1576 10.4887 12.845L11.167 12.1666C12.3252 12.5701 13.586 12.5685 14.7432 12.1623C15.9004 11.756 16.8855 10.969 17.5373 9.93007C18.1891 8.89115 18.469 7.66178 18.3313 6.44309C18.1935 5.22439 17.6463 4.08851 16.779 3.22128C15.9118 2.35404 14.7759 1.80679 13.5572 1.66905C12.3385 1.5313 11.1091 1.81122 10.0702 2.46301C9.0313 3.11479 8.24432 4.09986 7.83803 5.25707C7.43175 6.41428 7.4302 7.67511 7.83366 8.8333L2.15533 14.5116Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="13.75" cy="6.25" r="0.6" fill="currentColor"/>
+      </svg>
+    </span>
+
+    <input type="password" id="password" class="form-ctrl" placeholder="Enter your password" autocomplete="current-password" required />
+
+    <button type="button" class="input-icon-r" id="togglePwd" aria-label="Toggle password">
+      <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+  </div>
+
+  <span class="form-err" id="pwdErr">Please enter your password.</span>
+</div>
 
       <!-- Remember + Forgot -->
       <div class="forgot-row">
@@ -95,6 +101,7 @@
     </div>
 
   </div>
+  
 </div>
 
 <div class="toast-container" id="toastContainer"></div>
