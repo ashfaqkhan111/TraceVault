@@ -1,388 +1,582 @@
 <!DOCTYPE html>
+<!--
+  TraceVault — Dashboard (Static, Light Theme)
+  =============================================
+  Self-contained page: no JavaScript, no external frameworks.
+  Uses Inter from Google Fonts + inline SVG icons (Lucide/Feather style).
+  Linked stylesheet: ../css/pages/dashboard-static.css
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — TraceVault</title>
-  <link rel="stylesheet" href="../css/veriables.css" />
-  <link rel="stylesheet" href="../css/layout.css" />
-  <link rel="stylesheet" href="../css/components.css" />
-  <link rel="stylesheet" href="../css/pages/dashboard.css" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Our light-theme dashboard stylesheet -->
+  <link rel="stylesheet" href="../css/pages/dashboard-static.css" />
 </head>
 <body>
-<div class="app-shell">
 
-<!-- ═══ SIDEBAR ═══ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar__head">
-    <img src="../assets/logo.svg" class="sidebar__logo" alt="" />
-    <span class="sidebar__brand">TraceVault</span>
+  <!-- ════════════════════════════════════════════════════════
+       APP SHELL — two-column grid: sidebar + main
+       ════════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ══════════════════════════════════════════════════════
+         SIDEBAR — fixed left column, 185px wide
+         ══════════════════════════════════════════════════════ -->
+    <aside class="sidebar">
+
+      <!-- Logo block -->
+      <div class="sidebar__logo-block">
+        <!-- Dark-green rounded square with hexagon + keyhole icon -->
+        <div class="sidebar__logo-icon" aria-hidden="true">
+          <!-- Hexagon shape (shield-like) -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Hexagon outline -->
+            <path d="M12 2 L20.5 7 L20.5 17 L12 22 L3.5 17 L3.5 7 Z" />
+            <!-- Keyhole: circle + slot -->
+            <circle cx="12" cy="10" r="2.2" />
+            <path d="M10.5 12.5 L9.5 16 L14.5 16 L13.5 12.5" />
+          </svg>
+        </div>
+        <!-- Brand name: "Trace" dark + "Vault" green -->
+        <div class="sidebar__brand">
+          <span class="sidebar__brand-name">
+            Trace<span class="sidebar__brand-accent">Vault</span>
+          </span>
+          <span class="sidebar__brand-sub">Forensic Intelligence Suite</span>
+        </div>
+      </div>
+
+      <!-- Navigation links -->
+      <nav class="sidebar__nav" aria-label="Main navigation">
+        <ul class="nav-list">
+
+          <!-- Dashboard — ACTIVE state -->
+          <li>
+            <a href="dashboard.html" class="nav-item nav-item--active" aria-current="page">
+              <!-- Grid / squares icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+
+          <!-- New Verification -->
+          <li>
+            <a href="#" class="nav-item">
+              <!-- Plus / upload icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="16" />
+                <line x1="8" y1="12" x2="16" y2="12" />
+              </svg>
+              New Verification
+            </a>
+          </li>
+
+          <!-- My Reports -->
+          <li>
+            <a href="#" class="nav-item">
+              <!-- Document / file icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="8" y1="13" x2="16" y2="13" />
+                <line x1="8" y1="17" x2="12" y2="17" />
+              </svg>
+              My Reports
+            </a>
+          </li>
+
+          <!-- History -->
+          <li>
+            <a href="history.html" class="nav-item">
+              <!-- Clock icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              History
+            </a>
+          </li>
+
+          <!-- Profile -->
+          <li>
+            <a href="#" class="nav-item">
+              <!-- User / person icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              Profile
+            </a>
+          </li>
+
+          <!-- Settings -->
+          <li>
+            <a href="settings.html" class="nav-item">
+              <!-- Gear / cog icon -->
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+              Settings
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </aside>
+    <!-- /SIDEBAR -->
+
+
+    <!-- ══════════════════════════════════════════════════════
+         MAIN — scrollable content area
+         ══════════════════════════════════════════════════════ -->
+    <main class="main-content">
+
+      <!-- ════════════════════════════════════════════════════
+           TOP HEADER — title left, user controls right
+           ════════════════════════════════════════════════════ -->
+      <header class="page-header">
+        <!-- Left: page title + subtitle -->
+        <div class="page-header__left">
+          <h1 class="page-header__title">Dashboard</h1>
+          <p class="page-header__subtitle">Welcome back! Here's today's verification overview.</p>
+        </div>
+
+        <!-- Right: bell + avatar + name -->
+        <div class="page-header__right">
+          <!-- Bell notification button (no JS needed) -->
+          <button class="header-bell" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.75"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </button>
+
+          <!-- Green circle avatar + user name -->
+          <div class="header-user">
+            <div class="header-user__avatar" aria-hidden="true">AK</div>
+            <span class="header-user__name">Ashfaq Khan</span>
+          </div>
+        </div>
+      </header>
+      <!-- /TOP HEADER -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           SECTION 1: STAT CARDS (2 equal columns)
+           ════════════════════════════════════════════════════ -->
+      <section class="stats-grid" aria-label="Summary statistics">
+
+        <!-- Stat card: Total Submissions -->
+        <div class="stat-card">
+          <!-- Icon in green tint square -->
+          <div class="stat-card__icon-wrap" aria-hidden="true">
+            <!-- Box / package icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.75"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73L11 21.73a2 2 0 0 0 2 0L20 17.73A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+          </div>
+          <!-- Text content -->
+          <div class="stat-card__body">
+            <p class="stat-card__label">Total Submissions</p>
+            <p class="stat-card__value">30</p>
+            <p class="stat-card__caption">Files submitted this month</p>
+          </div>
+        </div>
+
+        <!-- Stat card: Suspicious Findings -->
+        <div class="stat-card">
+          <div class="stat-card__icon-wrap" aria-hidden="true">
+            <!-- Document with lines icon -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.75"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="8" y1="13" x2="16" y2="13" />
+              <line x1="8" y1="17" x2="12" y2="17" />
+            </svg>
+          </div>
+          <div class="stat-card__body">
+            <p class="stat-card__label">Suspicious Findings</p>
+            <p class="stat-card__value">12</p>
+            <p class="stat-card__caption">Reports created this month</p>
+          </div>
+        </div>
+
+      </section>
+      <!-- /STAT CARDS -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           SECTION 2: RECENT VERIFICATIONS TABLE
+           ════════════════════════════════════════════════════ -->
+      <section class="card" aria-label="Recent verifications">
+
+        <!-- Card header row -->
+        <div class="card__header">
+          <h2 class="card__title">Recent Verifications</h2>
+          <a href="#" class="link-green">View All →</a>
+        </div>
+
+        <!-- Horizontally scrollable table wrapper (for small screens) -->
+        <div class="table-scroll-wrap">
+          <table class="verif-table">
+            <thead>
+              <tr>
+                <th scope="col">FILE NAME</th>
+                <th scope="col">STATUS</th>
+                <th scope="col">DATE</th>
+                <th scope="col" class="col-action">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- Row 1: passport.pdf — Completed -->
+              <tr>
+                <td class="verif-table__filename">passport.pdf</td>
+                <td>
+                  <!-- Green "Completed" pill with check icon -->
+                  <span class="badge badge--green">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.5"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Completed
+                  </span>
+                </td>
+                <td class="verif-table__date">Jul 31, 2026</td>
+                <td class="col-action">
+                  <!-- Green "Download" action link -->
+                  <a href="#" class="action-link action-link--green">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.75"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download
+                  </a>
+                </td>
+              </tr>
+
+              <!-- Row 2: medical.pdf — Processing -->
+              <tr>
+                <td class="verif-table__filename">medical.pdf</td>
+                <td>
+                  <!-- Amber "Processing" pill with clock icon -->
+                  <span class="badge badge--amber">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2.5"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Processing
+                  </span>
+                </td>
+                <td class="verif-table__date">Jul 31, 2026</td>
+                <td class="col-action">
+                  <!-- Amber "View Status" action link -->
+                  <a href="#" class="action-link action-link--amber">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="1.75"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    View Status
+                  </a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+      <!-- /RECENT VERIFICATIONS -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           SECTION 3: ANALYSIS BREAKDOWN (3 equal cards)
+           ════════════════════════════════════════════════════ -->
+      <section aria-label="Analysis breakdown">
+        <h2 class="section-heading">Analysis Breakdown</h2>
+
+        <!-- Three equal-width cards -->
+        <div class="breakdown-grid">
+
+          <!-- Card 1: Email Forensics -->
+          <div class="breakdown-card">
+            <!-- Top row: icon left, big number right -->
+            <div class="breakdown-card__top">
+              <!-- Icon in green tint square -->
+              <div class="breakdown-card__icon-wrap" aria-hidden="true">
+                <!-- Mail / envelope icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <span class="breakdown-card__value">14</span>
+            </div>
+            <!-- Label and caption -->
+            <h3 class="breakdown-card__title">Email Forensics</h3>
+            <p class="breakdown-card__caption">Headers and suspicious links checked</p>
+            <!-- Progress bar: ~47% -->
+            <div class="progress" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="47% complete">
+              <div class="progress__fill" style="width: 47%"></div>
+            </div>
+          </div>
+
+          <!-- Card 2: File Forensics -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__top">
+              <div class="breakdown-card__icon-wrap" aria-hidden="true">
+                <!-- File with corner fold icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+              </div>
+              <span class="breakdown-card__value">11</span>
+            </div>
+            <h3 class="breakdown-card__title">File Forensics</h3>
+            <p class="breakdown-card__caption">Metadata and SHA-256 integrity checks</p>
+            <!-- Progress bar: ~37% -->
+            <div class="progress" role="progressbar" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100" aria-label="37% complete">
+              <div class="progress__fill" style="width: 37%"></div>
+            </div>
+          </div>
+
+          <!-- Card 3: Malware Triage -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__top">
+              <div class="breakdown-card__icon-wrap" aria-hidden="true">
+                <!-- Shield icon -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="1.75"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span class="breakdown-card__value">5</span>
+            </div>
+            <h3 class="breakdown-card__title">Malware Triage</h3>
+            <p class="breakdown-card__caption">Trojan and suspicious file screening</p>
+            <!-- Progress bar: ~17% -->
+            <div class="progress" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100" aria-label="17% complete">
+              <div class="progress__fill" style="width: 17%"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- /ANALYSIS BREAKDOWN -->
+
+
+      <!-- ════════════════════════════════════════════════════
+           SECTION 4: BOTTOM ROW — Timeline (left) + AI cards (right)
+           1.6fr / 1fr grid columns
+           ════════════════════════════════════════════════════ -->
+      <div class="bottom-row">
+
+        <!-- ── LEFT: Investigation Timeline ── -->
+        <section class="card" aria-label="Investigation timeline">
+          <div class="card__header">
+            <h2 class="card__title">Investigation Timeline</h2>
+            <a href="#" class="link-green">Full timeline →</a>
+          </div>
+
+          <!-- Timeline list: each item has icon + content + divider line -->
+          <ul class="timeline">
+
+            <!-- Item 1: green check — completed -->
+            <li class="timeline__item">
+              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__event">passport.pdf verification completed</p>
+                <p class="timeline__meta">Hash verified, no tampering detected · Jul 31, 2026</p>
+              </div>
+            </li>
+
+            <!-- Item 2: yellow warning — flagged -->
+            <li class="timeline__item">
+              <div class="timeline__icon timeline__icon--amber" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__event">Suspicious link found in email header</p>
+                <p class="timeline__meta">Flagged for investigator review · Jul 31, 2026</p>
+              </div>
+            </li>
+
+            <!-- Item 3: green spinner/refresh — in progress -->
+            <li class="timeline__item">
+              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 4 23 10 17 10" />
+                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+                </svg>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__event">medical.pdf analysis started</p>
+                <p class="timeline__meta">Metadata extraction in progress · Jul 31, 2026</p>
+              </div>
+            </li>
+
+            <!-- Item 4: green plus — new evidence -->
+            <li class="timeline__item">
+              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__event">New evidence added to case</p>
+                <p class="timeline__meta">Chain of custody record created · Jul 30, 2026</p>
+              </div>
+            </li>
+
+            <!-- Item 5: green user — case opened (last item, no divider below) -->
+            <li class="timeline__item timeline__item--last">
+              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__event">Case TV-2026-014 opened</p>
+                <p class="timeline__meta">Investigator assigned · Jul 30, 2026</p>
+              </div>
+            </li>
+
+          </ul>
+        </section>
+        <!-- /TIMELINE -->
+
+
+        <!-- ── RIGHT: two stacked cards ── -->
+        <div class="right-stack">
+
+          <!-- Card A: AI Analysis Summary -->
+          <section class="card" aria-label="AI analysis summary">
+            <h2 class="card__title card__title--standalone">AI Analysis Summary</h2>
+            <p class="ai-summary__text">
+              12 of 30 submissions this month contain suspicious characteristics.
+              Most findings relate to email header mismatches and altered file metadata.
+              Review flagged items before finalizing reports.
+            </p>
+            <!-- Green CTA button with document icon -->
+            <button class="btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.75"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              Generate PDF Report
+            </button>
+          </section>
+
+          <!-- Card B: Evidence Integrity -->
+          <section class="card" aria-label="Evidence integrity">
+            <h2 class="card__title card__title--standalone">Evidence Integrity</h2>
+
+            <ul class="integrity-list">
+
+              <!-- Row 1: passport.pdf — Verified -->
+              <li class="integrity-item">
+                <div class="integrity-item__info">
+                  <span class="integrity-item__filename">passport.pdf</span>
+                  <span class="integrity-item__hash">SHA-256 · 9f2c4a...e71b</span>
+                </div>
+                <span class="badge badge--green">Verified</span>
+              </li>
+
+              <!-- Row 2: medical.pdf — Pending -->
+              <li class="integrity-item">
+                <div class="integrity-item__info">
+                  <span class="integrity-item__filename">medical.pdf</span>
+                  <span class="integrity-item__hash">SHA-256 · calculating...</span>
+                </div>
+                <span class="badge badge--amber">Pending</span>
+              </li>
+
+            </ul>
+          </section>
+
+        </div>
+        <!-- /RIGHT STACK -->
+
+      </div>
+      <!-- /BOTTOM ROW -->
+
+    </main>
+    <!-- /MAIN CONTENT -->
+
   </div>
-  <nav class="sidebar__nav">
+  <!-- /APP SHELL -->
 
-    <span class="sidebar__label">Main</span>
-
-    <a href="dashboard.html" class="nav-item active">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      </span>
-      Dashboard
-    </a>
-
-    <a href="dashboard.html#upload" class="nav-item" id="navUpload">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg>
-      </span>
-      New Analysis
-    </a>
-
-    <a href="history.html" class="nav-item">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </span>
-      History
-      <span class="nav-badge" id="histBadge">0</span>
-    </a>
-
-    <span class="sidebar__label" style="margin-top:var(--sp-2);">Analysis</span>
-
-    <a href="#" class="nav-item">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </span>
-      Email Forensics
-    </a>
-
-    <a href="#" class="nav-item">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-      </span>
-      File Analysis
-    </a>
-
-    <a href="#" class="nav-item">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </span>
-      Malware Triage
-    </a>
-
-    <span class="sidebar__label" style="margin-top:var(--sp-2);">Account</span>
-
-    <a href="settings.html" class="nav-item">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-      </span>
-      Settings
-    </a>
-
-  </nav>
-  <div class="sidebar__foot">
-    <div class="sidebar__user" onclick="window.location.href='settings.html'">
-      <div class="user-avatar" id="sidebarAvatar">JD</div>
-      <div class="sidebar__user-info">
-        <div class="sidebar__user-name" id="sidebarName">Jane Doe</div>
-        <div class="sidebar__user-role" id="sidebarRole">Forensic Investigator</div>
-      </div>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--clr-text-hint);flex-shrink:0;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-    </div>
-  </div>
-</aside>
-
-<!-- ═══ MAIN ═══ -->
-<div class="main">
-
-  <!-- Topbar -->
-  <div class="topbar">
-    <button class="topbar__btn" id="sidebarToggle" aria-label="Toggle sidebar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-    <span class="topbar__title">Dashboard</span>
-    <div class="topbar__gap"></div>
-    <div class="topbar__search">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Search analyses…" id="globalSearch" />
-    </div>
-    <div style="display:flex;align-items:center;gap:var(--sp-2);">
-      <button class="topbar__btn" title="Notifications">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-      </button>
-      <a href="dashboard.html#upload" class="btn btn-primary btn-sm">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        New Analysis
-      </a>
-    </div>
-  </div>
-
-  <!-- Page content -->
-  <div class="page">
-
-    <!-- Welcome -->
-    <div class="welcome">
-      <div class="welcome__txt">
-        <h2 class="welcome__hey">Good morning, <span id="welcomeName">Investigator</span> 👋</h2>
-        <p class="welcome__sub">You have <strong id="pendingCount">0</strong> analyses pending review.</p>
-      </div>
-      <div class="welcome__cta">
-        <a href="#upload" class="btn btn-primary" id="newAnaBtn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          New Analysis
-        </a>
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-card__icon stat-card__icon--teal">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div>
-          <div class="stat-card__val" id="statTotal">0</div>
-          <div class="stat-card__lbl">Total Analyses</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__icon stat-card__icon--red">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div>
-          <div class="stat-card__val" id="statThreats">0</div>
-          <div class="stat-card__lbl">Threats Detected</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__icon stat-card__icon--green">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div>
-          <div class="stat-card__val" id="statClean">0</div>
-          <div class="stat-card__lbl">Clean Files</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-card__icon stat-card__icon--amber">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <div>
-          <div class="stat-card__val" id="statReports">0</div>
-          <div class="stat-card__lbl">Reports Generated</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Two-col -->
-    <div class="dash-cols">
-
-      <!-- LEFT -->
-      <div>
-
-        <!-- Upload card -->
-        <div class="card" id="upload" style="margin-bottom:var(--sp-5);">
-          <div class="card__head">
-            <div>
-              <div class="card__title">New Analysis</div>
-              <div class="card__sub">Upload evidence to begin forensic inspection</div>
-            </div>
-          </div>
-
-          <!-- Step 1: Type -->
-          <div class="upload-step-lbl"><em>1</em> Choose analysis type</div>
-          <div class="analysis-type-sel" id="typeSelector">
-            <label class="type-opt sel">
-              <input type="radio" name="atype" value="file" checked />
-              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
-              <span class="type-opt__lbl">File</span>
-              <span class="type-opt__sub">Metadata &amp; hash</span>
-            </label>
-            <label class="type-opt">
-              <input type="radio" name="atype" value="email" />
-              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-              <span class="type-opt__lbl">Email</span>
-              <span class="type-opt__sub">Headers &amp; links</span>
-            </label>
-            <label class="type-opt">
-              <input type="radio" name="atype" value="malware" />
-              <span class="type-opt__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-              <span class="type-opt__lbl">Malware</span>
-              <span class="type-opt__sub">Indicators</span>
-            </label>
-          </div>
-
-          <!-- Step 2: Dropzone -->
-          <div class="upload-step-lbl"><em>2</em> Upload evidence file</div>
-          <div class="dropzone" id="dropzone">
-            <div class="dropzone__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            </div>
-            <div class="dropzone__title">Drop your file here</div>
-            <div class="dropzone__sub">or click to browse</div>
-            <div class="dropzone__chips">
-              <span class="dropzone__chip">.pdf</span>
-              <span class="dropzone__chip">.eml</span>
-              <span class="dropzone__chip">.docx</span>
-              <span class="dropzone__chip">.exe</span>
-              <span class="dropzone__chip">.zip</span>
-              <span class="dropzone__chip">.jpg</span>
-            </div>
-            <input type="file" id="fileInput" style="display:none;"
-              accept=".pdf,.doc,.docx,.xls,.xlsx,.eml,.msg,.jpg,.jpeg,.png,.exe,.dll,.zip,.tar,.gz,.txt,.csv" />
-          </div>
-
-          <!-- File preview -->
-          <div class="file-prev" id="filePrev" style="display:none;">
-            <div class="file-prev__ico" id="filePrevIco">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div class="file-prev__info">
-              <div class="file-prev__name" id="filePrevName">—</div>
-              <div class="file-prev__meta" id="filePrevMeta">—</div>
-            </div>
-            <button class="btn btn-ghost btn-sm" id="clearFileBtn">✕ Remove</button>
-          </div>
-
-          <!-- Step 3: Notes -->
-          <div class="upload-step-lbl" style="margin-top:var(--sp-5);"><em>3</em> Case notes <span style="font-weight:400;color:var(--clr-text-hint);">(optional)</span></div>
-          <textarea class="form-ctrl" id="caseNotes" rows="3"
-            placeholder="Case number, source, acquisition method…"
-            style="resize:vertical;"></textarea>
-
-          <div style="display:flex;align-items:center;gap:var(--sp-4);margin-top:var(--sp-5);">
-            <button class="btn btn-primary" id="startBtn" disabled>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Start Analysis
-            </button>
-            <span style="font-size:var(--fz-12);color:var(--clr-text-hint);">Max 50 MB</span>
-          </div>
-        </div>
-
-        <!-- Recent -->
-        <div class="card">
-          <div class="card__head">
-            <div class="card__title">Recent Analyses</div>
-            <a href="history.html" class="btn btn-ghost btn-sm">View all →</a>
-          </div>
-          <div id="recentList" style="display:flex;flex-direction:column;gap:var(--sp-3);">
-            <div class="empty" id="recentEmpty" style="padding:var(--sp-8);">
-              <div class="empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-              <div class="empty__title" style="font-size:var(--fz-15);">No analyses yet</div>
-              <div class="empty__desc">Upload your first evidence file above to get started.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT -->
-      <div>
-
-        <!-- Quick actions -->
-        <div class="card" style="margin-bottom:var(--sp-5);">
-          <div class="card__head"><div class="card__title">Quick Actions</div></div>
-          <div class="qa-grid">
-            <button class="qa-btn" onclick="document.getElementById('dropzone').click()">
-              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></div>
-              <span class="qa-btn__lbl">Upload File</span>
-            </button>
-            <button class="qa-btn" onclick="window.location.href='history.html'">
-              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <span class="qa-btn__lbl">History</span>
-            </button>
-            <button class="qa-btn" id="qaLastReport" onclick="TraceVaultDashboard.openLastReport()">
-              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-              <span class="qa-btn__lbl">Last Report</span>
-            </button>
-            <button class="qa-btn" onclick="window.location.href='settings.html'">
-              <div class="qa-btn__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-              <span class="qa-btn__lbl">Settings</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Risk overview -->
-        <div class="card" style="margin-bottom:var(--sp-5);">
-          <div class="card__head">
-            <div class="card__title">Risk Overview</div>
-            <span class="badge badge-muted">All time</span>
-          </div>
-          <div class="risk-bars">
-            <div class="risk-bar">
-              <span class="risk-bar__lbl">Critical</span>
-              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--red" id="rCritical" style="width:0%"></div></div>
-              <span class="risk-bar__num" id="rCriticalN">0</span>
-            </div>
-            <div class="risk-bar">
-              <span class="risk-bar__lbl">Warning</span>
-              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--amber" id="rWarning" style="width:0%"></div></div>
-              <span class="risk-bar__num" id="rWarningN">0</span>
-            </div>
-            <div class="risk-bar">
-              <span class="risk-bar__lbl">Info</span>
-              <div class="risk-bar__track"><div class="risk-bar__fill" id="rInfo" style="width:0%"></div></div>
-              <span class="risk-bar__num" id="rInfoN">0</span>
-            </div>
-            <div class="risk-bar">
-              <span class="risk-bar__lbl">Clean</span>
-              <div class="risk-bar__track"><div class="risk-bar__fill risk-bar__fill--green" id="rClean" style="width:0%"></div></div>
-              <span class="risk-bar__num" id="rCleanN">0</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Activity -->
-        <div class="card">
-          <div class="card__head"><div class="card__title">Recent Activity</div></div>
-          <div class="timeline" id="actTimeline">
-            <p style="font-size:var(--fz-13);color:var(--clr-text-hint);padding:var(--sp-4) 0;" id="actEmpty">No recent activity.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div><!-- /page -->
-</div><!-- /main -->
-
-</div><!-- /app-shell -->
-
-<!-- Analysis progress modal -->
-<div class="modal-overlay" id="anaModal">
-  <div class="modal">
-    <div class="ana-prog">
-      <div class="ana-prog__spinner"><div class="spinner spinner-lg"></div></div>
-      <div class="ana-prog__title">Analyzing evidence…</div>
-      <div class="ana-prog__sub" id="anaProgFile">Processing file</div>
-      <div class="ana-prog__steps">
-        <div class="prog-step" id="ps1">
-          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-          Computing SHA-256 hash
-        </div>
-        <div class="prog-step" id="ps2">
-          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-          Extracting metadata
-        </div>
-        <div class="prog-step" id="ps3">
-          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-          Running forensic checks
-        </div>
-        <div class="prog-step" id="ps4">
-          <span class="prog-step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-          Generating AI summary
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="toast-container" id="toastContainer"></div>
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/upload.js"></script>
-<script src="../js/dashboard.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    TraceVaultAuth.requireAuth();
-    TraceVaultDashboard.init();
-    TraceVaultUpload.init();
-  });
-</script>
 </body>
 </html>
