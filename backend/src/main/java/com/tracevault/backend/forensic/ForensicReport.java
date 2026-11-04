@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Wadah hasil pemeriksaan satu file: hash, metadata, dan daftar temuan.
- * Dipakai oleh semua inspector (file, email, malware).
+ * Container for the results of a single-file scan: hash, metadata, and list of findings.
+ * Used by all inspectors (file, email, malware).
  */
 public class ForensicReport {
 

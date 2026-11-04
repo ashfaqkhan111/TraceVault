@@ -16,9 +16,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Membuat dan memeriksa token JWT (format: header.payload.tanda-tangan).
- * Tanda tangan HMAC-SHA256 memastikan token tidak bisa dipalsukan tanpa tahu "secret".
- * Ditulis tanpa library tambahan supaya mudah dibaca.
+ * Creates and verifies a JWT token (format: header.payload.signature).
+ * The HMAC-SHA256 signature ensures the token cannot be forged without knowing the “secret.”
+ * Written without additional libraries for readability.
  */
 @Service
 public class JwtService {
@@ -47,7 +47,7 @@ public class JwtService {
         return unsigned + "." + B64.encodeToString(sign(unsigned));
     }
 
-    /** @return id user jika token asli dan belum kedaluwarsa; kosong jika tidak valid. */
+    /** @return the user ID if the token is valid and not expired; empty if invalid. */
     public Optional<UUID> validate(String token) {
         try {
             String[] parts = token.split("\\.");

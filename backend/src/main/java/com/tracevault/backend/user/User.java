@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
 
-/** Tabel "users": akun yang bisa login ke TraceVault. */
+/** “users” table: accounts that can log in to TraceVault. */
 @Entity
 @Table(name = "users")
 public class User {
@@ -28,7 +28,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    /** Password TIDAK disimpan asli, hanya hasil BCrypt. */
+    /** Passwords are NOT stored in plain text; only the BCrypt hash is stored. */
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
@@ -38,7 +38,7 @@ public class User {
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 
-    protected User() {} // dibutuhkan JPA
+    protected User() {} // JPA Requirement
 
     public User(String firstName, String lastName, String email, String passwordHash, String role) {
         this.firstName = firstName;

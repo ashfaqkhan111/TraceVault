@@ -16,8 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Map;
 
 /**
- * Mengubah semua error menjadi JSON { "message": "..." }.
- * Frontend (api.js) menampilkan isi "message" ini ke user.
+ * Converts all errors to JSON { “message”: “...” }.
+ * The frontend (api.js) displays the contents of “message” to the user.
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleOther(Exception e) {
-        log.error("Unexpected error", e); // detail hanya di log server, tidak dikirim ke user
+        log.error("Unexpected error", e); // Details are only in the server log; they are not sent to the user
         return body(HttpStatus.INTERNAL_SERVER_ERROR, "Something went wrong on the server. Please try again.");
     }
 

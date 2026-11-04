@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface AnalysisRepository extends JpaRepository<Analysis, UUID> {
 
-    /** Riwayat milik satu user, terbaru di atas. */
+    /** A single user's history; the most recent entry is at the top. */
     List<Analysis> findByOwnerIdOrderByCreatedAtDesc(UUID ownerId);
 
-    /** Selalu cari berdasarkan id + pemilik, supaya user A tidak bisa membuka analisis user B. */
+        /** Always search by ID and owner, so that User A cannot view User B's analytics. */
     Optional<Analysis> findByIdAndOwnerId(UUID id, UUID ownerId);
 }

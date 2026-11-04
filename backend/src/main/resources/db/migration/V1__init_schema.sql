@@ -1,6 +1,6 @@
--- TraceVault: skema awal database
--- File ini dijalankan otomatis oleh Flyway saat backend pertama kali start.
--- JANGAN mengubah file ini setelah sudah dijalankan; buat file baru V2__....sql
+-- TraceVault: initial database schema
+-- This file is automatically executed by Flyway when the backend starts for the first time.
+-- DO NOT modify this file after it has been executed; create a new file named V2__....sql
 
 CREATE TABLE users (
     id            UUID         PRIMARY KEY,

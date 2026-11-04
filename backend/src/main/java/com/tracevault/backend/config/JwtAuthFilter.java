@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Dijalankan di setiap request: membaca header "Authorization: Bearer <token>".
- * Jika token valid, Spring tahu siapa user-nya (dipakai oleh @AuthenticationPrincipal).
+ * Runs on every request: reads the “Authorization: Bearer <token>” header.
+ * If the token is valid, Spring knows who the user is (used by @AuthenticationPrincipal).
  *
- * Sengaja TIDAK diberi @Component, karena dibuat di SecurityConfig
- * (kalau diberi @Component, filter ini bisa terpasang dua kali).
+ * Intentionally NOT annotated with @Component, because it is defined in SecurityConfig
+ * (if annotated with @Component, this filter could be applied twice).
  */
 public class JwtAuthFilter extends OncePerRequestFilter {
 

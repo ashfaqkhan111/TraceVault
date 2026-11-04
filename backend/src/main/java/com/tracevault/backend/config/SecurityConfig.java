@@ -20,10 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Aturan keamanan:
- * - /api/auth/** boleh diakses tanpa login
- * - /api/** lainnya WAJIB membawa token
- * - CORS: hanya alamat frontend yang terdaftar di application.yaml yang boleh memanggil API
+ * Security rules:
+ * - /api/auth/** can be accessed without logging in
+ * - All other /api/** endpoints MUST include a token
+ * - CORS: Only frontend addresses listed in application.yaml are allowed to call the API
  */
 @Configuration
 public class SecurityConfig {
@@ -37,8 +37,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtService jwtService, UserRepository users)
             throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // aman dimatikan karena kita pakai token, bukan cookie
-                .cors(cors -> {})              // memakai bean corsConfigurationSource di bawah
+                .csrf(csrf -> csrf.disable()) // It's safe to disable this because we use tokens, not cookies
+                .cors(cors -> {})              // Use the cornsConfigurationSource bean below
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
@@ -46,7 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().denyAll())
                 .exceptionHandling(e -> e.authenticationEntryPoint((req, res, ex) -> {
-                    // Frontend membaca field "message" dari JSON error
+                    // The frontend reads the “message” field from the JSON error
                     res.setStatus(401);
                     res.setContentType(MediaType.APPLICATION_JSON_VALUE);
                     res.getWriter().write("{\"message\":\"Please log in again.\"}");

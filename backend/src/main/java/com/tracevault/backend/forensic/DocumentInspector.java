@@ -14,13 +14,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 /**
- * Memeriksa dokumen: PDF, Office modern (docx/xlsx/pptx = ZIP), Office lama (OLE), dan gambar.
- * File TIDAK pernah dibuka/dijalankan — hanya dibaca sebagai deretan byte.
+ * Checks documents: PDF, modern Office formats (docx/xlsx/pptx = ZIP), legacy Office formats (OLE), and images.
+ * Files are NEVER opened or executed—they are read only as a sequence of bytes.
  */
+
 public class DocumentInspector {
 
     private static final int MAX_ZIP_ENTRIES = 2000;
-    private static final int MAX_ENTRY_READ = 2 * 1024 * 1024; // baca maksimal 2 MB per isi ZIP (cegah zip bomb)
+    private static final int MAX_ENTRY_READ = 2 * 1024 * 1024; // read maximum 2 MB per ZIP entry (prevent zip bomb)
     private static final Set<String> DANGEROUS_EXT = Set.of(
             "exe", "dll", "scr", "bat", "cmd", "com", "js", "jse", "vbs", "vbe", "ps1", "hta", "lnk", "msi", "jar", "wsf");
 
@@ -30,7 +31,7 @@ public class DocumentInspector {
             case "ZIP" -> inspectZip(data, fileName, r);
             case "OLE" -> inspectOle(data, r);
             case "JPEG", "PNG", "GIF" -> inspectImage(data, signature, r);
-            default -> { /* jenis lain: cukup pemeriksaan umum */ }
+            default -> { /* Other types: a general examination is sufficient */ }
         }
     }
 
@@ -93,7 +94,7 @@ public class DocumentInspector {
         return value.isBlank() ? null : value;
     }
 
-    /** Format tanggal PDF: D:20240115103000+07'00' → 2024-01-15 10:30:00 +07:00 */
+    /** PDF date format: D:20240115103000+07'00' → 2024-01-15 10:30:00 +07:00 */
     private static String pdfDate(String raw) {
         if (raw == null) return null;
         Matcher m = Pattern.compile("D:(\\d{4})(\\d{2})?(\\d{2})?(\\d{2})?(\\d{2})?(\\d{2})?([Zz+\\-])?(\\d{2})?'?(\\d{2})?").matcher(raw);
@@ -195,7 +196,7 @@ public class DocumentInspector {
         }
     }
 
-    // ---------------------------------------------------------------- Gambar
+    // ---------------------------------------------------------------- Pictures/img
     private void inspectImage(byte[] data, String signature, ForensicReport r) {
         String s = ForensicUtils.asLatin1(data);
         if ("JPEG".equals(signature) && s.contains("Exif")) {

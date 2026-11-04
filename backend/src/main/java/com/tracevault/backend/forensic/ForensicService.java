@@ -6,9 +6,9 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * "Pintu masuk" pemeriksaan forensik.
- * 1) Pemeriksaan umum untuk SEMUA file (hash, ukuran, jenis asli, entropi)
- * 2) Pemeriksaan khusus sesuai tipe yang dipilih user: file / email / malware
+ * “Entry point” for forensic analysis.
+ * 1) General analysis of ALL files (hash, size, original type, entropy)
+ * 2) Specific analysis based on the type selected by the user: files / emails / malware
  */
 @Service
 public class ForensicService {

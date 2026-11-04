@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-/** Alur utama: terima file → periksa → simpan hasil → kirim balik ke frontend. */
+/** Main workflow: receive file → check → save results → send back to the frontend. */
 @Service
 public class AnalysisService {
 
@@ -36,7 +36,7 @@ public class AnalysisService {
 
     @Transactional
     public AnalysisResponse submit(UUID ownerId, MultipartFile file, String type, String notes) {
-        // 1. Validasi input (jangan percaya pemeriksaan di browser saja)
+        // 1. Validate input (don't rely solely on the browser's validation)
         if (file == null || file.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Please choose a file to analyze.");
         }
@@ -52,12 +52,12 @@ public class AnalysisService {
 
         byte[] data;
         try {
-            data = file.getBytes(); // hanya dibaca di memori, tidak disimpan ke disk
+            data = file.getBytes(); // Read-only in memory; not saved to disk
         } catch (IOException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The file could not be read.");
         }
 
-        // 2. Pemeriksaan forensik
+        // 2. Forensic Examination
         Instant started = Instant.now();
         Analysis analysis = new Analysis(ownerId, fileName, data.length, safeType, cleanNotes, started);
         List<TimelineItem> timeline = analysis.getTimeline();
@@ -71,7 +71,7 @@ public class AnalysisService {
                 report.getFindings().size() + " findings identified (" + report.count("critical") + " critical, "
                         + report.count("warning") + " warnings)."));
 
-        // 3. Skor, ringkasan, rekomendasi
+        // 3. Score, summary, recommendations
         int score = SummaryWriter.riskScore(report);
         String summary = SummaryWriter.summary(report, safeType);
         Instant done = Instant.now();
@@ -86,7 +86,7 @@ public class AnalysisService {
         analysis.getRecommendations().addAll(SummaryWriter.recommendations(report, safeType));
         analysis.complete(report.getSha256(), report.getMd5(), score, SummaryWriter.riskLevel(score), summary, done);
 
-        // 4. Simpan ke database
+        // 4. Save to database
         return AnalysisResponse.of(analyses.save(analysis));
     }
 
@@ -111,7 +111,7 @@ public class AnalysisService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Analysis not found."));
     }
 
-    /** Buang path folder dan karakter aneh dari nama file. */
+    /** Remove folder paths and unusual characters from the file name. */
     private static String cleanFileName(String original) {
         if (original == null || original.isBlank()) return "unnamed";
         String name = original.replace('\\', '/');

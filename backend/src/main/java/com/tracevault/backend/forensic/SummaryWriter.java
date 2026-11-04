@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Membuat skor risiko, ringkasan, dan rekomendasi dari temuan.
+ * Generates a risk score, summary, and recommendations based on the findings.
  *
- * Catatan: ringkasan ini dibuat dengan ATURAN (bukan model AI sungguhan), jadi selalu
- * sesuai dengan temuan yang benar-benar ada. Kalau nanti tim ingin memakai AI (LLM),
- * cukup ganti isi method summary() dan kirim daftar temuan sebagai bahan.
+ * Note: This summary is generated using RULES (not an actual AI model), so it always
+ * aligns with the actual findings. If the team later wants to use AI (LLM),
+ * simply replace the contents of the `summary()` method and provide the list of findings as input.
  */
 public final class SummaryWriter {
 
     private SummaryWriter() {}
 
-    /** Sama dengan rumus di frontend: critical 30, warning 15, info 5, maksimal 100. */
+    /** Same as the formula in the frontend: critical 30, warning 15, info 5, maximum 100. */
     public static int riskScore(ForensicReport r) {
         long score = r.count("critical") * 30 + r.count("warning") * 15 + r.count("info") * 5;
         return (int) Math.min(100, score);

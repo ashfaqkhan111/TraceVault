@@ -18,14 +18,14 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Semua endpoint di sini butuh login (header Authorization: Bearer <token>).
- * userId diambil dari token, BUKAN dari data yang dikirim user.
+ * All endpoints here require authentication (Authorization: Bearer <token> header).
+ * The userId is derived from the token, NOT from the data submitted by the user.
  *
- * POST   /api/analyses              → upload file (form-data: file, type, notes)
- * GET    /api/analyses              → riwayat analisis milik user
- * GET    /api/analyses/{id}         → detail satu analisis
- * DELETE /api/analyses/{id}         → hapus analisis
- * GET    /api/analyses/{id}/report  → laporan untuk diunduh
+ * POST   /api/analyses              → upload a file (form-data: file, type, notes)
+ * GET    /api/analyses              → user's analysis history
+ * GET    /api/analyses/{id}         → details of a single analysis
+ * DELETE /api/analyses/{id}         → delete analysis
+ * GET    /api/analyses/{id}/report  → report for download
  */
 @RestController
 @RequestMapping("/api/analyses")

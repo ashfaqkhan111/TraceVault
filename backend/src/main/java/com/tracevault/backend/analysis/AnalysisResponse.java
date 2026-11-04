@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Bentuk JSON hasil analisis yang dikirim ke frontend.
- * Nama field dibuat SAMA PERSIS dengan mockAnalysisResult() di frontend/js/api.js,
- * supaya halaman results/history/dashboard tidak perlu diubah.
+ * The JSON format of the analysis results sent to the frontend.
+ * Field names must be EXACTLY THE SAME as those in mockAnalysisResult() in frontend/js/api.js,
+ * so that the results/history/dashboard pages do not need to be modified.
  */
 public record AnalysisResponse(
         String id,

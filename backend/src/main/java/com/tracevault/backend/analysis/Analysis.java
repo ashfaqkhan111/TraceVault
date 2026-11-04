@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Tabel "analyses": satu baris = satu file yang pernah dianalisis.
- * Daftar temuan, metadata, rekomendasi, dan timeline disimpan di tabel anak masing-masing.
- * File aslinya TIDAK disimpan (hanya hash dan hasil pemeriksaan).
+ * The “analyses” table: one row = one file that has been analyzed.
+ * Lists of findings, metadata, recommendations, and timelines are stored in their respective child tables.
+ * The original files are NOT stored (only hashes and analysis results).
  */
 @Entity
 @Table(name = "analyses")
@@ -92,7 +92,7 @@ public class Analysis {
     @OrderColumn(name = "position")
     private List<TimelineItem> timeline = new ArrayList<>();
 
-    protected Analysis() {} // dibutuhkan JPA
+    protected Analysis() {}  // JPA is required
 
     public Analysis(UUID ownerId, String fileName, long fileSize, String type, String notes, Instant createdAt) {
         this.ownerId = ownerId;
@@ -136,7 +136,7 @@ public class Analysis {
     public List<String> getRecommendations() { return recommendations; }
     public List<TimelineItem> getTimeline() { return timeline; }
 
-    // ---------------------------------------------------------- tabel anak
+    // ---------------------------------------------------------- table
 
     @Embeddable
     public static class FindingItem {

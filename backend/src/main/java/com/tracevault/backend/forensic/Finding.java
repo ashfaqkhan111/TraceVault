@@ -1,8 +1,8 @@
 package com.tracevault.backend.forensic;
 
 /**
- * Satu temuan hasil pemeriksaan.
- * severity: "critical", "warning", "info", atau "ok" (sama seperti di frontend).
+ * A single audit finding.
+ * severity: “critical”, “warning”, ‘info’, or “ok” (same as in the frontend).
  */
 public record Finding(String severity, String title, String desc, String category) {
 

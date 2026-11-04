@@ -11,8 +11,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Alat bantu umum: hash, entropi, dan pengenalan jenis file dari "magic bytes"
- * (beberapa byte pertama yang menjadi ciri khas tiap jenis file).
+ * General utilities: hashes, entropy, and file type recognition based on “magic bytes”
+ * (the first few bytes that are unique to each file type).
  */
 public final class ForensicUtils {
 
@@ -31,8 +31,8 @@ public final class ForensicUtils {
     }
 
     /**
-     * Entropi Shannon (0 sampai 8). Makin dekat ke 8, makin "acak" isinya.
-     * Data terenkripsi/terkompresi biasanya di atas 7.2.
+     * Shannon entropy (0 to 8). The closer the value is to 8, the more “random” the content is.
+     * Encrypted or compressed data is typically above 7.2.
      */
     public static double entropy(byte[] data) {
         if (data.length == 0) return 0;
@@ -47,7 +47,7 @@ public final class ForensicUtils {
         return result;
     }
 
-    /** Menebak jenis file asli berdasarkan isi (bukan nama). */
+    /** Guess the original file type based on its contents (not its name). */
     public static String detectSignature(byte[] d) {
         if (startsWith(d, 0x25, 0x50, 0x44, 0x46)) return "PDF";
         if (startsWith(d, 0x50, 0x4B, 0x03, 0x04) || startsWith(d, 0x50, 0x4B, 0x05, 0x06)) return "ZIP";
@@ -65,7 +65,7 @@ public final class ForensicUtils {
         return "UNKNOWN";
     }
 
-    /** Jenis isi yang wajar untuk tiap ekstensi. */
+    /** Examples of appropriate content for each extension. */
     private static final Map<String, Set<String>> EXPECTED = Map.ofEntries(
             Map.entry("pdf", Set.of("PDF")),
             Map.entry("docx", Set.of("ZIP")), Map.entry("xlsx", Set.of("ZIP")), Map.entry("pptx", Set.of("ZIP")),
@@ -80,7 +80,7 @@ public final class ForensicUtils {
             Map.entry("csv", Set.of("TEXT")), Map.entry("html", Set.of("TEXT")), Map.entry("htm", Set.of("TEXT"))
     );
 
-    /** null = ekstensi tidak dikenal (tidak bisa dibandingkan). */
+    /** null = unknown extension (cannot be compared). */
     public static Set<String> expectedSignatures(String extension) {
         return EXPECTED.get(extension);
     }
@@ -116,7 +116,7 @@ public final class ForensicUtils {
         return String.format(Locale.ROOT, "%.1f MB", bytes / (1024.0 * 1024));
     }
 
-    /** Mengambil potongan teks ASCII yang bisa dibaca (seperti perintah `strings` di Linux). */
+    /** Retrieves a readable ASCII text snippet (similar to the `strings` command in Linux). */
     public static List<String> printableStrings(byte[] data, int minLength, int maxCount) {
         List<String> out = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -136,7 +136,7 @@ public final class ForensicUtils {
         return out;
     }
 
-    /** Isi file sebagai teks Latin-1 (setiap byte jadi satu karakter, aman untuk pencarian pola). */
+    /** Save the file as Latin-1 text (each byte is one character; safe for pattern matching). */
     public static String asLatin1(byte[] data) {
         return new String(data, StandardCharsets.ISO_8859_1);
     }

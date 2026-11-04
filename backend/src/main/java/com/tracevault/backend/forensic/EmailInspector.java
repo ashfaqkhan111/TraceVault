@@ -14,8 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Memeriksa file email mentah (.eml): header pengirim, hasil SPF/DKIM/DMARC,
- * jalur server (Received), link mencurigakan, dan lampiran berbahaya.
+ * Checks raw email files (.eml) for: sender headers, SPF/DKIM/DMARC results,
+ * server path (Received), suspicious links, and malicious attachments.
  */
 public class EmailInspector {
 
@@ -142,12 +142,12 @@ public class EmailInspector {
         if (fromDomain != null) checkDomain(fromDomain, "sender address", r);
     }
 
-    // ---------------------------------------------------------------- jalur server
+    // ---------------------------------------------------------------- server path
     private void checkRouting(List<String[]> headers, ForensicReport r) {
         List<String> received = all(headers, "received");
         r.meta("Received hops", String.valueOf(received.size()));
 
-        // Header Received paling bawah = server pertama (asal)
+        // The bottom-most “Received” header = the first (origin) server
         if (!received.isEmpty()) {
             String origin = received.get(received.size() - 1);
             Matcher ip = IPV4.matcher(origin);
@@ -163,7 +163,7 @@ public class EmailInspector {
             }
         }
 
-        // Cari jeda waktu yang aneh antar server
+        // Look for unusual time differences between servers
         List<ZonedDateTime> times = new ArrayList<>();
         for (String h : received) {
             int semi = h.lastIndexOf(';');
@@ -211,7 +211,7 @@ public class EmailInspector {
         }
     }
 
-    /** @return true jika ada temuan untuk domain ini */
+    /** @return true if there are any findings for this domain */
     private boolean checkDomain(String host, String where, ForensicReport r) {
         String registered = registeredDomain(host);
         String label = registered.contains(".") ? registered.substring(0, registered.indexOf('.')) : registered;
@@ -248,8 +248,8 @@ public class EmailInspector {
     }
 
     /**
-     * Nama merek pendek (bri, bca, ovo, dana) harus berdiri sendiri, misalnya "bri-login.com",
-     * supaya kata seperti "cambridge" atau "canadian" tidak ikut dianggap merek.
+     * Short brand names (bri, bca, ovo, dana) must stand alone, for example, “bri-login.com”,
+     * so that words like “cambridge” or “canadian” are not also considered part of the brand.
      */
     private static boolean hasBrand(String host, String brand) {
         if (brand.length() >= 5) return host.contains(brand);
@@ -257,7 +257,7 @@ public class EmailInspector {
         return false;
     }
 
-    // ---------------------------------------------------------------- lampiran
+    // ---------------------------------------------------------------- attachment
     private void checkAttachments(String body, ForensicReport r) {
         Matcher m = Pattern.compile("(?i)(?:file)?name\\*?=\"?([^\"\\r\\n;]+)").matcher(body);
         Set<String> names = new LinkedHashSet<>();
@@ -293,7 +293,7 @@ public class EmailInspector {
         return Math.min(a, b);
     }
 
-    /** Header bisa menyambung ke baris berikutnya jika baris itu diawali spasi/tab. */
+    /** Headers can continue onto the next line if that line begins with a space or tab. */
     private static List<String[]> parseHeaders(String part) {
         List<String[]> out = new ArrayList<>();
         String name = null;
@@ -335,7 +335,7 @@ public class EmailInspector {
         return m.find() ? m.group(1).toLowerCase(Locale.ROOT) : null;
     }
 
-    /** Ambil dua bagian terakhir domain (contoh: mail.google.com → google.com, x.co.id → tiga bagian). */
+    /** Take the last two parts of the domain (for example: mail.google.com → google.com, x.co.id → three parts). */
     private static String registeredDomain(String host) {
         String[] p = host.split("\\.");
         if (p.length <= 2) return host;
