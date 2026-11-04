@@ -234,20 +234,21 @@ body .auth-shell .input-wrap.input-wrap--r > .input-icon svg {
   width: 18px;
   height: 18px;
 }
-/* Logo text: "Trace" dark + "Vault" green on the same line */
-body .auth-shell .auth-logo__name .auth-logo__word {
-  display: block;
-  white-space: nowrap;
-}
-body .auth-shell .auth-logo__name .auth-logo__trace {
-  display: inline;
+html body .auth-shell .auth-card .auth-logo .auth-logo__name .auth-logo__trace {
   color: #0f172a !important;
   -webkit-text-fill-color: #0f172a !important;
   background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
 }
-body .auth-shell .auth-logo__name .auth-logo__accent {
-  display: inline;
+html body .auth-shell .auth-card .auth-logo .auth-logo__name .auth-logo__accent {
   color: #10b981 !important;
   -webkit-text-fill-color: #10b981 !important;
   background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
 }

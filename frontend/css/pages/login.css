@@ -301,3 +301,6 @@
   .auth-shell { grid-template-columns: minmax(0, 420px); }
   .auth-side { display: none; }
 }
+.auth-logo__word { display: block; white-space: nowrap; }
+.auth-logo__trace  { display: inline; color: var(--tv-ink); }
+.auth-logo__accent { display: inline; color: var(--tv-green); }
