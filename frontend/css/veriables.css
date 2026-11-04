@@ -121,4 +121,21 @@
   --z-sticky:200;
   --z-modal: 400;
   --z-toast: 500;
+
+  /* ── Landing page colors (from the Figma prototype) ──── */
+  --tv-green:        #0EAA80;   /* buttons, accents, links        */
+  --tv-green-dark:   #0A8068;   /* hover + active nav link        */
+  --tv-green-bright: #22C55E;   /* "Why Choose TraceVault" label  */
+  --tv-green-soft:   #DCFCE7;   /* icon backgrounds, badge        */
+  --tv-green-pale:   #BBF7D0;   /* "Ready to investigate ?" label */
+  --tv-navy:         #1D2B3A;   /* hero + footer background       */
+  --tv-navy-deep:    #0F172A;   /* report card, dark headings     */
+  --tv-track:        #1E293B;   /* empty part of progress bar     */
+  --tv-text-light:   #CBD5E1;   /* text on dark backgrounds       */
+  --tv-text-muted:   #64748B;   /* gray paragraph text            */
+  --tv-text-dim:     #94A3B8;   /* copyright text                 */
+  --tv-border:       #E5E7EB;   /* feature card borders           */
+  --tv-border-soft:  #E2E8F0;   /* step card borders              */
+  --tv-bg-soft:      #F8FAFC;   /* "How it works" panel           */
+  --tv-line:         #334155;   /* footer divider line            */
 }
