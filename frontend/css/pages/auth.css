@@ -86,3 +86,150 @@
 }
 .auth-terms a { color: var(--clr-teal); }
 .auth-terms a:hover { text-decoration: underline; }
+
+/* ===== Specificity fixes: keep at the VERY END of auth.css ===== */
+body .auth-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 480px);
+  gap: clamp(32px, 7vw, 110px);
+  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+body .auth-shell .auth-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  align-self: center;
+}
+
+/* Logo */
+body .auth-shell .auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+body .auth-shell .auth-logo__img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+}
+body .auth-shell .auth-logo__name {
+  content: 'Trace';
+  color: var(--tv-ink);
+  content: 'Vault';
+  color: var(--tv-green);
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;   /* beats old gradient/white text */
+  background: none;
+}
+body .auth-shell .auth-logo__name::after {
+  content: 'Verify Before You Trust';
+  margin-top: 4px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: #64748b;
+  -webkit-text-fill-color: #64748b;
+}
+
+/* Heading */
+body .auth-shell .auth-head { margin-bottom: 28px; text-align: left; }
+body .auth-shell .auth-head__title {
+  margin: 0 0 10px;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
+  text-align: left;
+  text-transform: capitalize;
+}
+body .auth-shell .auth-head__sub {
+  max-width: 340px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+  text-align: left;
+}
+
+/* Remember / forgot */
+body .auth-shell .forgot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 22px 0 26px;
+  font-size: 12px;
+}
+body .auth-shell .forgot-row a {
+  color: #10b981;
+  font-weight: 500;
+  text-decoration: underline;
+}
+body .auth-shell .form-check__lbl { color: #64748b; }
+
+/* Footer */
+body .auth-shell .auth-foot {
+  margin-top: 28px;
+  text-align: left;
+  font-size: 12px;
+  color: #64748b;
+}
+body .auth-shell .auth-foot a { color: #10b981; font-weight: 600; }
+
+/* Error alert */
+body .auth-shell .auth-err--danger {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+@media (max-width: 900px) {
+  body .auth-shell { grid-template-columns: minmax(0, 420px); }
+}
+/* Password field: make room for the key icon on the left and the eye on the right */
+#password.form-ctrl {
+  padding-left: 42px !important;
+  padding-right: 44px !important;
+}
+/* Anchor the icon to the input row */
+body .auth-shell .input-wrap.input-wrap--r {
+  position: relative !important;
+}
+
+/* Pin the icon to the input row: full height, vertically centered */
+body .auth-shell .input-wrap.input-wrap--r > .input-icon {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 14px !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  color: #94a3b8;
+  pointer-events: none;
+}
+body .auth-shell .input-wrap.input-wrap--r > .input-icon svg {
+  display: block !important;
+  width: 18px;
+  height: 18px;
+}
