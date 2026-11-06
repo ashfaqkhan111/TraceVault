@@ -49,10 +49,10 @@
   font-size: 24px;
   font-weight: 800;
   line-height: 1.1;
-  content: 'Trace';
   color: var(--tv-ink);
-  content: 'Vault';
-  color: var(--tv-green)
+}
+.auth-logo__name .auth-logo__accent {
+  color: var(--tv-green);
 }
 .auth-logo__name::after {
   content: 'Verify Before You Trust';
@@ -301,3 +301,6 @@
   .auth-shell { grid-template-columns: minmax(0, 420px); }
   .auth-side { display: none; }
 }
+.auth-logo__word { display: block; white-space: nowrap; }
+.auth-logo__trace  { display: inline; color: var(--tv-ink); }
+.auth-logo__accent { display: inline; color: var(--tv-green); }
