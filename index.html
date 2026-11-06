@@ -1,226 +1,38 @@
 <!DOCTYPE html>
+<!--
+  TraceVault — Root entry point
+  ==============================
+  This file simply redirects visitors to the Dashboard page.
+  No JavaScript: uses an HTML meta-refresh redirect only.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TraceVault — AI-Assisted Digital Forensics</title>
-  <meta name="description" content="TraceVault helps investigators analyze digital evidence, identify suspicious activities, and generate professional forensic reports with AI." />
-  <link rel="stylesheet" href="frontend/css/veriables.css" />
-  <link rel="stylesheet" href="frontend/css/layout.css" />
-  <link rel="stylesheet" href="frontend/css/components.css" />
-  <link rel="stylesheet" href="frontend/css/pages/landing.css" />
+  <title>TraceVault — Forensic Intelligence Suite</title>
+
+  <!-- Redirect to the dashboard after 0 seconds -->
+  <meta http-equiv="refresh" content="0; url=frontend/pages/dashboard.html" />
+
+  <!-- Inline fallback style — shown only if the redirect is blocked -->
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    a { color: #10b981; font-weight: 600; }
+  </style>
 </head>
-<body class="landing">
-
-<!-- ═══════════════ NAV ═══════════════ -->
-<nav class="pub-nav">
-  <a href="index.html" class="pub-nav__brand">
-    <img src="frontend/assets/logo-mark.svg" class="pub-nav__logo" alt="" />
-    <span>Trace<span class="pub-nav__brand-accent">Vault</span></span>
-  </a>
-  <div class="pub-nav__links">
-    <a href="index.html" class="is-active">Home</a>
-    <a href="#features">Features</a>
-    <a href="#how-it-works">How It Works</a>
-    <a href="#about">About Us</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="pub-nav__actions">
-    <a href="frontend/pages/login.html" class="pub-nav__login">Login</a>
-    <a href="frontend/pages/signup.html" class="btn btn-primary pub-nav__signup">Sign Up</a>
-  </div>
-</nav>
-
-<!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero">
-  <div class="hero__inner">
-
-    <!-- Left copy -->
-    <div class="hero__copy">
-      <div class="hero__tag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        AI-Assisted Digital Forensics
-      </div>
-      <h1 class="hero__title">Investigate Digital Evidence with Confidence</h1>
-      <p class="hero__desc">
-        Analyze suspicious emails, investigate files, and identify potential malware with AI-assisted digital forensics. TraceVault helps investigators examine evidence, verify file integrity, organize investigation timelines, and generate professional forensic reports.
-      </p>
-      <div class="hero__cta">
-        <a href="frontend/pages/signup.html" class="btn btn-primary">Start Investigation</a>
-        <a href="#features" class="btn btn-ghost">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h10M3 12h6M3 18h6"/><circle cx="16" cy="14" r="4"/><path d="m21 19-2.2-2.2"/></svg>
-          Explore Features
-        </a>
-      </div>
-    </div>
-
-    <!-- Right — evidence report card -->
-    <div class="hero__visual">
-      <div class="report">
-
-        <div class="report__head">
-          <div class="report__title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            Evidence Analysis Report
-          </div>
-          <span class="report__badge">
-            Analysis Complete
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-          </span>
-        </div>
-
-        <div class="report__file">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-          <div>
-            <div class="report__file-name">Suspicious_email.eml</div>
-            <div class="report__file-sub">Email File • 2.4 MB</div>
-          </div>
-        </div>
-
-        <div class="report__score"><span>Evidence Integrity</span><b>98%</b></div>
-        <div class="report__bar"><div class="report__bar-fill"></div></div>
-
-        <ul class="report__checks">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Email Header Analysis</span><span>No AI Detected</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>File Metadata</span><span>Valid</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Suspicious Indicators</span><span>Not Detected</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Link Analysis</span><span>Passed</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Investigation Status</span><span>Not Found</span></li>
-        </ul>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════ FEATURES ═══════════════ -->
-<section class="section" id="features">
-  <div class="section__inner">
-    <div class="sec-head sec-head--small">
-      <span class="sec-head__eyebrow">Why Choose TraceVault</span>
-      <h2 class="sec-head__title">Powerful Digital Forensic Tools</h2>
-      <p class="sec-head__desc">Investigate suspicious emails, examine digital files, and identify potential malware using evidence based analysis tools designed for cybersecurity professionals.</p>
-    </div>
-    <div class="feat-grid">
-
-      <div class="feat-card">
-        <div class="feat-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7l2.3 1.6 2.8-.1.9 2.7 2.2 1.7-.9 2.6.9 2.6-2.2 1.7-.9 2.7-2.8-.1L12 21.3l-2.3-1.6-2.8.1-.9-2.7-2.2-1.7.9-2.6-.9-2.6 2.2-1.7.9-2.7 2.8.1z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3 class="feat-card__title">Email Forensics</h3>
-        <p class="feat-card__desc">Examine email headers, sender information, routing paths, authentication results, and embedded URLs to identify suspicious indicators and potential phishing attempts.</p>
-        <a href="frontend/pages/dashboard.html" class="feat-card__link">Explore Email Forensics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-
-      <div class="feat-card">
-        <div class="feat-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></svg></div>
-        <h3 class="feat-card__title">File Forensics</h3>
-        <p class="feat-card__desc">Extract file metadata, calculate SHA-256 hashes, inspect file properties, and document evidence integrity to support reliable digital investigations.</p>
-        <a href="frontend/pages/dashboard.html" class="feat-card__link">Explore File Analysis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-
-      <div class="feat-card">
-        <div class="feat-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3M21 5v6M3 12c0 1.7 4 3 9 3"/><circle cx="17" cy="17" r="3"/><path d="m21 21-1.9-1.9"/></svg></div>
-        <h3 class="feat-card__title">Malware Analysis</h3>
-        <p class="feat-card__desc">Perform preliminary malware triage by examining file types, hashes, signatures, and suspicious characteristics to help identify potentially malicious files.</p>
-        <a href="frontend/pages/dashboard.html" class="feat-card__link">Explore Malware Triage <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
-<section class="section section--alt" id="how-it-works">
-  <div class="sec-head">
-    <span class="sec-head__eyebrow">How It Works</span>
-    <h2 class="sec-head__title">Verify Any Digital Evidence in Minutes</h2>
-    <p class="sec-head__desc">Upload your files,<br/>let our AI-powered forensic engine analyze them, and receive a trusted verification report in just a few minutes.</p>
-  </div>
-  <div class="steps">
-
-    <div class="step">
-      <div class="step__num">01</div>
-      <div class="step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6M9 13l3-3 3 3"/></svg></div>
-      <h3 class="step__title">Upload Your Evidence</h3>
-      <p class="step__desc">Upload PDFs, payment screenshots, emails, images, or URLs securely for forensic verification.</p>
-    </div>
-
-    <div class="step">
-      <div class="step__num">02</div>
-      <div class="step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5v13M16 8h3M16 12h4M16 16h3"/><circle cx="20" cy="8" r=".5"/><circle cx="21" cy="12" r=".5"/><circle cx="20" cy="16" r=".5"/></svg></div>
-      <h3 class="step__title">AI &amp; Forensic Analysis</h3>
-      <p class="step__desc">Our AI engine analyzes metadata, detects tampering, identifies AI-generated content, and verifies authenticity.</p>
-    </div>
-
-    <div class="step">
-      <div class="step__num">03</div>
-      <div class="step__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h7"/><path d="M14 2v6h6v7"/><path d="m15 19 2 2 4-4"/></svg></div>
-      <h3 class="step__title">Receive Trusted Report</h3>
-      <p class="step__desc">Download a detailed verification report with authenticity score, forensic and findings.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════ CTA ═══════════════ -->
-<section class="cta-sec">
-  <div class="cta-box">
-    <p class="cta-box__eyebrow">Ready to Investigate ?</p>
-    <h2 class="cta-box__title">Turn Digital Evidence into Actionable Insights</h2>
-    <p class="cta-box__desc">Examine suspicious emails, analyze digital files, and organize forensic findings in one platform. Start your investigation with evidence integrity checks and AI-assisted reporting.</p>
-    <a href="frontend/pages/signup.html" class="cta-box__btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-      Start an Investigation
-    </a>
-  </div>
-</section>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="land-foot" id="about">
-  <div class="land-foot__inner">
-
-    <div class="land-foot__brand">
-      <img src="frontend/assets/logo-mark-light.svg" class="land-foot__logo" alt="TraceVault" />
-      <p class="land-foot__about">AI-assisted digital forensics for investigating suspicious emails, examining digital files, and documenting evidence-based findings.</p>
-    </div>
-
-    <div class="land-foot__col">
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="#features">Features</a>
-      <a href="#how-it-works">How It Works</a>
-      <a href="frontend/pages/history.html">Investigations</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="land-foot__col">
-      <h4>Resources</h4>
-      <a href="#">Documentation</a>
-      <a href="#">Evidence Handling Guidelines</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-
-    <div class="land-foot__col" id="contact">
-      <h4>Contact</h4>
-      <a href="mailto:support@your-domain.com">support@your-domain.com</a>
-      <a href="#">24/7 Online Support</a>
-      <a href="#">Secure Cloud Platform</a>
-    </div>
-
-  </div>
-
-  <div class="land-foot__bottom">
-    <p class="land-foot__copy">© 2026 TraceVault. All rights reserved.</p>
-    <div class="land-foot__social">
-      <a href="#" aria-label="Website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></a>
-      <a href="#" aria-label="Portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/></svg></a>
-      <a href="mailto:support@your-domain.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></a>
-    </div>
-  </div>
-</footer>
-
-<div class="toast-container" id="toastContainer"></div>
+<body>
+  <p>
+    Redirecting to Dashboard…
+    <a href="frontend/pages/dashboard.html">Click here if you are not redirected automatically.</a>
+  </p>
 </body>
 </html>

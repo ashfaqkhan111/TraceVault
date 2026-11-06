@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <!--
-  TraceVault — Dashboard (Static, Light Theme)
-  =============================================
-  Self-contained page: no JavaScript, no external frameworks.
-  Uses Inter from Google Fonts + inline SVG icons (Lucide/Feather style).
-  Linked stylesheet: ../css/pages/dashboard-static.css
+  TraceVault — Dashboard
+  ======================
+  Pure HTML + CSS only. No JavaScript, no frameworks.
+  Font:    Inter via Google Fonts
+  Icons:   Inline SVG (Lucide / Feather style, 1.75px stroke)
+  Styles:  ../css/pages/dashboard.css
 -->
 <html lang="en">
 <head>
@@ -12,57 +13,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — TraceVault</title>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter (weights 400, 500, 600, 700) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Our light-theme dashboard stylesheet -->
-  <link rel="stylesheet" href="../css/pages/dashboard-static.css" />
+  <!-- Dashboard stylesheet -->
+  <link rel="stylesheet" href="../css/pages/dashboard.css" />
 </head>
 <body>
 
-  <!-- ════════════════════════════════════════════════════════
-       APP SHELL — two-column grid: sidebar + main
-       ════════════════════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════════════════
+       APP SHELL
+       Two-column flex row:  [sidebar | main-content]
+       ══════════════════════════════════════════════════════════ -->
   <div class="app-shell">
 
-    <!-- ══════════════════════════════════════════════════════
-         SIDEBAR — fixed left column, 185px wide
-         ══════════════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════════════════════
+         SIDEBAR
+         Fixed-width (~185px), white background, sticky column.
+         ════════════════════════════════════════════════════════ -->
     <aside class="sidebar">
 
-      <!-- Logo block -->
-      <div class="sidebar__logo-block">
-        <!-- Dark-green rounded square with hexagon + keyhole icon -->
-        <div class="sidebar__logo-icon" aria-hidden="true">
-          <!-- Hexagon shape (shield-like) -->
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-               stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <!-- Hexagon outline -->
-            <path d="M12 2 L20.5 7 L20.5 17 L12 22 L3.5 17 L3.5 7 Z" />
-            <!-- Keyhole: circle + slot -->
-            <circle cx="12" cy="10" r="2.2" />
-            <path d="M10.5 12.5 L9.5 16 L14.5 16 L13.5 12.5" />
-          </svg>
-        </div>
-        <!-- Brand name: "Trace" dark + "Vault" green -->
-        <div class="sidebar__brand">
-          <span class="sidebar__brand-name">
-            Trace<span class="sidebar__brand-accent">Vault</span>
-          </span>
-          <span class="sidebar__brand-sub">Forensic Intelligence Suite</span>
-        </div>
-      </div>
+      <div class="sidebar__logo">
+    <img src="../assets/logo-mark.svg"
+         class="sidebar__logo-img"
+         width="44" height="44"
+         alt="TraceVault logo" />
 
-      <!-- Navigation links -->
+    <div class="sidebar__logo-text">
+      <span class="sidebar__brand-name">Trace<span>Vault</span></span>
+      <span class="sidebar__brand-sub">Forensic Intelligence Suite</span>
+    </div>
+  </div>
+
+
+      <!-- Navigation -->
       <nav class="sidebar__nav" aria-label="Main navigation">
         <ul class="nav-list">
 
-          <!-- Dashboard — ACTIVE state -->
+          <!-- Dashboard — ACTIVE page -->
           <li>
             <a href="dashboard.html" class="nav-item nav-item--active" aria-current="page">
-              <!-- Grid / squares icon -->
+              <!-- Grid / four-squares icon -->
               <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.75"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -78,7 +71,7 @@
           <!-- New Verification -->
           <li>
             <a href="#" class="nav-item">
-              <!-- Plus / upload icon -->
+              <!-- Plus-circle icon -->
               <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.75"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -93,7 +86,7 @@
           <!-- My Reports -->
           <li>
             <a href="#" class="nav-item">
-              <!-- Document / file icon -->
+              <!-- File / document icon -->
               <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.75"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -137,12 +130,23 @@
           <!-- Settings -->
           <li>
             <a href="settings.html" class="nav-item">
-              <!-- Gear / cog icon -->
+              <!-- Cog / gear icon -->
               <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.75"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+                         a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+                         A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06
+                         a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15
+                         a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+                         A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06
+                         a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68
+                         a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+                         a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06
+                         a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9
+                         a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+                         a1.65 1.65 0 0 0-1.51 1z" />
               </svg>
               Settings
             </a>
@@ -150,28 +154,33 @@
 
         </ul>
       </nav>
+
     </aside>
     <!-- /SIDEBAR -->
 
 
-    <!-- ══════════════════════════════════════════════════════
-         MAIN — scrollable content area
-         ══════════════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════════════════════
+         MAIN CONTENT
+         Scrollable area. Sections stack top to bottom.
+         ════════════════════════════════════════════════════════ -->
     <main class="main-content">
 
-      <!-- ════════════════════════════════════════════════════
-           TOP HEADER — title left, user controls right
-           ════════════════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════════
+           TOP HEADER
+           Left: H1 + subtitle   Right: bell + user
+           ══════════════════════════════════════════════════════ -->
       <header class="page-header">
-        <!-- Left: page title + subtitle -->
+
+        <!-- Left block -->
         <div class="page-header__left">
           <h1 class="page-header__title">Dashboard</h1>
           <p class="page-header__subtitle">Welcome back! Here's today's verification overview.</p>
         </div>
 
-        <!-- Right: bell + avatar + name -->
+        <!-- Right block: bell button + avatar + name -->
         <div class="page-header__right">
-          <!-- Bell notification button (no JS needed) -->
+
+          <!-- Circular bordered bell button -->
           <button class="header-bell" aria-label="Notifications">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.75"
@@ -181,35 +190,37 @@
             </svg>
           </button>
 
-          <!-- Green circle avatar + user name -->
+          <!-- Green circle avatar + name -->
           <div class="header-user">
             <div class="header-user__avatar" aria-hidden="true">AK</div>
             <span class="header-user__name">Ashfaq Khan</span>
           </div>
+
         </div>
       </header>
       <!-- /TOP HEADER -->
 
 
-      <!-- ════════════════════════════════════════════════════
-           SECTION 1: STAT CARDS (2 equal columns)
-           ════════════════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════════
+           SECTION 1: STAT CARDS — 2-column equal grid
+           ══════════════════════════════════════════════════════ -->
       <section class="stats-grid" aria-label="Summary statistics">
 
-        <!-- Stat card: Total Submissions -->
+        <!-- Card: Total Submissions -->
         <div class="stat-card">
-          <!-- Icon in green tint square -->
+          <!-- Icon in light-green rounded square -->
           <div class="stat-card__icon-wrap" aria-hidden="true">
             <!-- Box / package icon -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.75"
                  stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73L11 21.73a2 2 0 0 0 2 0L20 17.73A2 2 0 0 0 21 16z" />
+              <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8
+                       a2 2 0 0 0 1 1.73L11 21.73a2 2 0 0 0 2 0L20 17.73A2 2 0 0 0 21 16z" />
               <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
               <line x1="12" y1="22.08" x2="12" y2="12" />
             </svg>
           </div>
-          <!-- Text content -->
+          <!-- Text -->
           <div class="stat-card__body">
             <p class="stat-card__label">Total Submissions</p>
             <p class="stat-card__value">30</p>
@@ -217,7 +228,7 @@
           </div>
         </div>
 
-        <!-- Stat card: Suspicious Findings -->
+        <!-- Card: Suspicious Findings -->
         <div class="stat-card">
           <div class="stat-card__icon-wrap" aria-hidden="true">
             <!-- Document with lines icon -->
@@ -241,18 +252,18 @@
       <!-- /STAT CARDS -->
 
 
-      <!-- ════════════════════════════════════════════════════
+      <!-- ══════════════════════════════════════════════════════
            SECTION 2: RECENT VERIFICATIONS TABLE
-           ════════════════════════════════════════════════════ -->
+           ══════════════════════════════════════════════════════ -->
       <section class="card" aria-label="Recent verifications">
 
-        <!-- Card header row -->
+        <!-- Card header: title left, link right -->
         <div class="card__header">
           <h2 class="card__title">Recent Verifications</h2>
           <a href="#" class="link-green">View All →</a>
         </div>
 
-        <!-- Horizontally scrollable table wrapper (for small screens) -->
+        <!-- Scroll wrapper enables horizontal scroll on small screens -->
         <div class="table-scroll-wrap">
           <table class="verif-table">
             <thead>
@@ -269,7 +280,7 @@
               <tr>
                 <td class="verif-table__filename">passport.pdf</td>
                 <td>
-                  <!-- Green "Completed" pill with check icon -->
+                  <!-- Green "Completed" badge with check icon -->
                   <span class="badge badge--green">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2.5"
@@ -299,7 +310,7 @@
               <tr>
                 <td class="verif-table__filename">medical.pdf</td>
                 <td>
-                  <!-- Amber "Processing" pill with clock icon -->
+                  <!-- Amber "Processing" badge with clock icon -->
                   <span class="badge badge--amber">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2.5"
@@ -333,45 +344,47 @@
       <!-- /RECENT VERIFICATIONS -->
 
 
-      <!-- ════════════════════════════════════════════════════
-           SECTION 3: ANALYSIS BREAKDOWN (3 equal cards)
-           ════════════════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════════
+           SECTION 3: ANALYSIS BREAKDOWN
+           Section heading + 3 equal cards
+           ══════════════════════════════════════════════════════ -->
       <section aria-label="Analysis breakdown">
         <h2 class="section-heading">Analysis Breakdown</h2>
 
-        <!-- Three equal-width cards -->
+        <!-- Three equal-width breakdown cards -->
         <div class="breakdown-grid">
 
-          <!-- Card 1: Email Forensics -->
+          <!-- Card 1: Email Forensics (~47%) -->
           <div class="breakdown-card">
             <!-- Top row: icon left, big number right -->
             <div class="breakdown-card__top">
-              <!-- Icon in green tint square -->
+              <!-- Green-tint square with mail icon -->
               <div class="breakdown-card__icon-wrap" aria-hidden="true">
-                <!-- Mail / envelope icon -->
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="1.75"
                      stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+                           c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
               </div>
               <span class="breakdown-card__value">14</span>
             </div>
-            <!-- Label and caption -->
             <h3 class="breakdown-card__title">Email Forensics</h3>
             <p class="breakdown-card__caption">Headers and suspicious links checked</p>
-            <!-- Progress bar: ~47% -->
-            <div class="progress" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100" aria-label="47% complete">
+            <!-- Progress bar: 47% of 30 submissions -->
+            <div class="progress" role="progressbar"
+                 aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Email Forensics 47% complete">
               <div class="progress__fill" style="width: 47%"></div>
             </div>
           </div>
 
-          <!-- Card 2: File Forensics -->
+          <!-- Card 2: File Forensics (~37%) -->
           <div class="breakdown-card">
             <div class="breakdown-card__top">
               <div class="breakdown-card__icon-wrap" aria-hidden="true">
-                <!-- File with corner fold icon -->
+                <!-- File with corner fold -->
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="1.75"
                      stroke-linecap="round" stroke-linejoin="round">
@@ -383,13 +396,14 @@
             </div>
             <h3 class="breakdown-card__title">File Forensics</h3>
             <p class="breakdown-card__caption">Metadata and SHA-256 integrity checks</p>
-            <!-- Progress bar: ~37% -->
-            <div class="progress" role="progressbar" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100" aria-label="37% complete">
+            <div class="progress" role="progressbar"
+                 aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="File Forensics 37% complete">
               <div class="progress__fill" style="width: 37%"></div>
             </div>
           </div>
 
-          <!-- Card 3: Malware Triage -->
+          <!-- Card 3: Malware Triage (~17%) -->
           <div class="breakdown-card">
             <div class="breakdown-card__top">
               <div class="breakdown-card__icon-wrap" aria-hidden="true">
@@ -404,8 +418,9 @@
             </div>
             <h3 class="breakdown-card__title">Malware Triage</h3>
             <p class="breakdown-card__caption">Trojan and suspicious file screening</p>
-            <!-- Progress bar: ~17% -->
-            <div class="progress" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100" aria-label="17% complete">
+            <div class="progress" role="progressbar"
+                 aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Malware Triage 17% complete">
               <div class="progress__fill" style="width: 17%"></div>
             </div>
           </div>
@@ -415,10 +430,11 @@
       <!-- /ANALYSIS BREAKDOWN -->
 
 
-      <!-- ════════════════════════════════════════════════════
-           SECTION 4: BOTTOM ROW — Timeline (left) + AI cards (right)
-           1.6fr / 1fr grid columns
-           ════════════════════════════════════════════════════ -->
+      <!-- ══════════════════════════════════════════════════════
+           SECTION 4: BOTTOM ROW
+           Left (~1.6fr): Investigation Timeline
+           Right (~1fr):  AI Summary + Evidence Integrity stacked
+           ══════════════════════════════════════════════════════ -->
       <div class="bottom-row">
 
         <!-- ── LEFT: Investigation Timeline ── -->
@@ -428,7 +444,7 @@
             <a href="#" class="link-green">Full timeline →</a>
           </div>
 
-          <!-- Timeline list: each item has icon + content + divider line -->
+          <!-- Timeline: 5 items with a border-bottom divider between each -->
           <ul class="timeline">
 
             <!-- Item 1: green check — completed -->
@@ -446,13 +462,14 @@
               </div>
             </li>
 
-            <!-- Item 2: yellow warning — flagged -->
+            <!-- Item 2: amber warning triangle — flagged -->
             <li class="timeline__item">
               <div class="timeline__icon timeline__icon--amber" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2.5"
                      stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3
+                           L13.71 3.86a2 2 0 0 0-3.42 0z" />
                   <line x1="12" y1="9" x2="12" y2="13" />
                   <line x1="12" y1="17" x2="12.01" y2="17" />
                 </svg>
@@ -463,7 +480,7 @@
               </div>
             </li>
 
-            <!-- Item 3: green spinner/refresh — in progress -->
+            <!-- Item 3: green refresh/spinner — in progress -->
             <li class="timeline__item">
               <div class="timeline__icon timeline__icon--green" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -495,7 +512,7 @@
               </div>
             </li>
 
-            <!-- Item 5: green user — case opened (last item, no divider below) -->
+            <!-- Item 5: green user — case opened (last item, no bottom divider) -->
             <li class="timeline__item timeline__item--last">
               <div class="timeline__icon timeline__icon--green" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -527,8 +544,8 @@
               Most findings relate to email header mismatches and altered file metadata.
               Review flagged items before finalizing reports.
             </p>
-            <!-- Green CTA button with document icon -->
-            <button class="btn-primary">
+            <!-- Solid green CTA button -->
+            <button class="btn-primary" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="1.75"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

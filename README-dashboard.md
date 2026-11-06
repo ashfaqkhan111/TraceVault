@@ -1,63 +1,85 @@
-# TraceVault — Static Dashboard
+# TraceVault Dashboard — Static HTML/CSS
 
-A pixel-faithful, static HTML/CSS recreation of the TraceVault dashboard screenshot.
-**No JavaScript. No frameworks.** Just HTML and CSS.
-
----
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `frontend/pages/dashboard.html` | The dashboard page (all HTML, inline SVGs) |
-| `frontend/css/pages/dashboard-static.css` | All styles for this page |
-| `README-dashboard.md` | This file |
+A pixel-faithful, static implementation of the **TraceVault – Forensic Intelligence Suite** dashboard.  
+No JavaScript. No frameworks. Just HTML and CSS.
 
 ---
 
-## How to open
+## How to Open
 
-1. Open **VS Code** (or any editor).
-2. Right-click `frontend/pages/dashboard.html` → **Open with Live Server**
-   (install the *Live Server* VS Code extension if you don't have it).
-3. Alternatively, just double-click the file in File Explorer — it opens in your browser directly.
-
-> The page uses Google Fonts (Inter) via a `<link>` tag, so you need an internet connection
-> for the font to load. It falls back to `'Segoe UI', system-ui, sans-serif` when offline.
+1. Double-click `index.html` (project root) — it auto-redirects to the dashboard.  
+2. Or open `frontend/pages/dashboard.html` directly in any modern browser
+   (Chrome, Firefox, Edge, Safari all work).  
+3. No build step, no server required. Just a browser.
 
 ---
 
-## How to edit
+## File Structure
 
-### Change a colour
-Open `dashboard-static.css` and find the `:root { }` block at the top.
-Every colour is a CSS variable. For example, to change the green:
-
-```css
-:root {
-  --color-primary: #10b981;   /* ← change this hex value */
-}
+```
+TraceVault/
+├── index.html                          ← Root entry; redirects to dashboard
+│
+└── frontend/
+    ├── pages/
+    │   └── dashboard.html              ← The main dashboard page (all markup)
+    │
+    └── css/
+        └── pages/
+            └── dashboard.css           ← All styles for the dashboard
 ```
 
-### Change a number or caption
-Open `dashboard.html` and find the text you want.
-The file is heavily commented so every section is easy to locate.
+---
 
-### Change a card layout
-All cards use a shared `.card` class. The layout is controlled by:
-- **Stats cards** → `.stats-grid` (CSS Grid, 2 equal columns)
-- **Breakdown cards** → `.breakdown-grid` (CSS Grid, 3 equal columns)
-- **Bottom row** → `.bottom-row` (CSS Grid, 1.6fr + 1fr)
+## How to Edit
 
-To make 3 stat cards instead of 2, change `grid-template-columns: 1fr 1fr` to
-`grid-template-columns: repeat(3, 1fr)` inside `.stats-grid`.
+### Change a color
+Open `dashboard.css` and find **Section 1 — Design Tokens** at the top.
+Every color is a CSS variable on `:root`. For example:
+
+```css
+--clr-green: #10b981;   /* change this one line → updates buttons, nav, links */
+```
+
+### Change layout widths
+Also in the design tokens:
+
+```css
+--sidebar-w: 185px;   /* sidebar width */
+--main-pad:  24px;    /* main content padding */
+```
+
+### Add a nav item
+In `dashboard.html`, copy any `<li>` inside `<ul class="nav-list">` and swap the SVG icon path and label text.
+
+### Add a table row
+In the `<tbody>` of `.verif-table`, copy an existing `<tr>` block and change the text content and badge class (`badge--green` or `badge--amber`).
+
+### Adjust progress bars
+Each breakdown card has a `<div class="progress__fill" style="width: 47%">`.  
+Change the inline `width` percentage to update the bar length.
 
 ---
 
-## Layout explained (5 lines)
+## Responsive Behavior
 
-1. **App shell** is a `flexbox` row: the fixed-width `<aside>` sidebar sits left, and `<main>` fills the rest.
-2. **Main content** is a `flexbox` column — each section stacks top-to-bottom with a `gap`.
-3. **Stat cards** and **Analysis Breakdown** use `CSS Grid` with equal columns (`1fr 1fr` and `repeat(3, 1fr)`).
-4. **Bottom row** uses a two-column `CSS Grid` with `1.6fr 1fr` so the timeline gets more space than the right-side cards.
-5. Individual **cards** use `flexbox` internally (icon + text side by side, header row with space-between) — no nesting tricks needed.
+| Viewport   | Layout change |
+|------------|---------------|
+| ≥ 1024px   | Full two-column bottom row; 3-column breakdown grid |
+| < 1024px   | Bottom row stacks; breakdown cards wrap to 2 columns |
+| < 768px    | Sidebar becomes a top bar; stat cards stack; table scrolls horizontally |
+
+---
+
+## Design Tokens Quick Reference
+
+| Token                | Value       | Used for |
+|----------------------|-------------|----------|
+| `--clr-green`        | `#10b981`   | Buttons, active nav, links |
+| `--clr-green-tint`   | `#d1fae5`   | Icon backgrounds, active pill |
+| `--clr-green-dark`   | `#047857`   | Text on green-tint backgrounds |
+| `--clr-amber-bg`     | `#fef3c7`   | Processing / Pending badge background |
+| `--clr-amber-text`   | `#b45309`   | Processing / Pending badge text |
+| `--clr-page`         | `#f8fafc`   | Page background |
+| `--clr-heading`      | `#0f172a`   | H1, values, filenames |
+| `--clr-muted`        | `#64748b`   | Captions, dates, secondary text |
