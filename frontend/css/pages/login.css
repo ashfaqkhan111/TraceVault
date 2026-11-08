@@ -1,4 +1,17 @@
 /* ============ TraceVault login: light split layout ============ */
+:root {
+  --pw: min(450px, 36vw);              /* green panel width */
+  --cw: min(260px);        /* white card width  */
+  --ink: #033031;
+  --green: #0EAA80;
+  --muted: #64748b;
+}
+body {
+  margin: 0;
+  background: #f8fafc !important;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
 .auth-shell {
   --tv-green: #10b981;
   --tv-green-dark: #0a7d5f;
@@ -13,7 +26,7 @@
   justify-content: center;
   align-items: stretch;
   padding: 48px 24px;
-  background: #f8fafc;
+  background: transparent;      /* was #f8fafc */
   color: var(--tv-ink);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
@@ -28,6 +41,7 @@
   border-radius: 0;
   box-shadow: none;
   align-self: center;
+  background-color: var(--tv-border);
 }
 
 /* ---------- Logo ---------- */
@@ -245,62 +259,146 @@
 .auth-foot a { color: var(--tv-green); font-weight: 600; text-decoration: none; }
 .auth-foot a:hover { text-decoration: underline; }
 
-/* ---------- Right green panel ---------- */
-.auth-side {
+/* ---------- RIGHT HALF ---------- */
+/* 1) green gradient panel + shield + copyright */
+.auth-shell::before {
+  content: "© 2026 TraceVault. All rights reserved.";
+  position: fixed;
+  z-index: 0;
+  top: 50vh;
+  left: 75vw;
+  transform: translate(-50%, -50%);
+  width: var(--pw);
+  height: 640px;
+  max-height: calc(100vh - 32px);
+  border-radius: 22px;
+  box-sizing: border-box;
+  padding-bottom: 32px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  gap: 28px;
-  min-height: 580px;
-  padding: 40px 32px 28px;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #033a30 0%, #0a7d5f 55%, #10a97c 100%);
-  color: #fff;
-  box-shadow: 0 20px 40px -20px rgba(3, 58, 48, .45);
+  font-size: 12px;
+  color: rgba(255, 255, 255, .6);
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-2 8-10V5l-8-3-9 3v7c0 6 5 10 8 10z'/%3E%3Cpath d='m8 12 3 2 4-4'/%3E%3C/svg%3E")
+      center 52px / 55px 55px no-repeat,
+    linear-gradient(180deg, #033031 0%, #0a6b52 55%, #0EAA80 100%);
+  box-shadow: 0 20px 50px rgba(5, 58, 46, .18);
 }
-.auth-side__shield { width: 56px; height: 56px; color: #fff; }
 
-.auth-side__card {
-  width: 100%;
-  max-width: 300px;
-  padding: 20px 22px;
-  background: #fff;
+/* 2) white card, centered on the panel */
+html::after {
+  content: "\A PDF Authentic\A Meta Verified\A AI Analysis Passed\A Email Verification\A Tampering\A Professional PDF Editing\A AI Detection";
+  white-space: pre;
+  position: fixed;
+  z-index: 1;
+  top: 50vh;
+  left: 75vw;
+  transform: translate(-50%, -50%);
+  width: var(--cw);
+  height: 400px;
+  box-sizing: border-box;
+  padding: 12px 40px 20px 50px;
+  line-height: 46px;
+  font-size: 13px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
   border-radius: 14px;
-  color: var(--tv-ink);
-  box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .35);
-}
-.auth-side__title { margin: 0 0 16px; font-size: 14px; font-weight: 700; }
-.auth-side__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.auth-side__list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  color: #334155;
-}
-.auth-side__list li::before {
-  content: '';
-  width: 14px;
-  height: 14px;
-  flex: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E") center / contain no-repeat;
-}
-.auth-side__badge {
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .88);
-  color: var(--tv-green-dark);
-  font-size: 11px;
-  font-weight: 500;
-}
-.auth-side__copy { margin: 0; font-size: 10px; color: rgba(255, 255, 255, .55); }
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+  pointer-events: none;
 
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-  .auth-shell { grid-template-columns: minmax(0, 420px); }
-  .auth-side { display: none; }
+  --chk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E");
+  background-image: var(--chk), var(--chk), var(--chk), var(--chk), var(--chk), var(--chk), var(--chk);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position:
+    25px 70px, 25px 116px, 25px 162px, 25px 208px, 25px 255px, 25px 300px, 25px 346px;
 }
-.auth-logo__word { display: block; white-space: nowrap; }
-.auth-logo__trace  { display: inline; color: var(--tv-ink); }
-.auth-logo__accent { display: inline; color: var(--tv-green); }
+
+/* 3) card title */
+html::before {
+  content: "Verification Complete";
+  position: fixed;
+  z-index: 2;
+  top: calc(50vh - 200px + 20px);
+  left: calc(75vw - var(--cw) / 2 + 34px);
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 4) badge */
+body::after {
+  content: "Trusted by Security Professionals";
+  position: fixed;
+  z-index: 1;
+  top: calc(50vh + 200px + 24px);
+  left: 75vw;
+  transform: translateX(-50%);
+  padding: 10px 22px 10px 42px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  white-space: nowrap;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E")
+      16px center / 16px 16px no-repeat,
+    #d1fae5;
+  border-radius: 999px;
+}
+
+/* ---------- Success state ("Check your inbox") ---------- */
+body .reset-ok { text-align: left; }
+body .reset-ok__ico {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #d1fae5;
+  color: var(--green);
+}
+body .reset-ok__ico svg { width: 22px; height: 22px; }
+body .reset-ok__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+body .reset-ok__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* ---------- Short windows: hide only the badge ---------- */
+@media (max-height: 640px) {
+  body::after { display: none; }
+}
+
+/* ---------- Narrow windows: form only, no side panel ---------- */
+@media (max-width: 1000px) {
+  .auth-shell::before,
+  body::after,
+  html::before,
+  html::after { display: none !important; }
+
+  .auth-shell {
+    display: block;
+    padding: 48px 24px;
+  }
+  body .auth-card {
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 0 auto;
+  }
+}
