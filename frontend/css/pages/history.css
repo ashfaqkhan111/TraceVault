@@ -1,0 +1,975 @@
+/* ============================================================
+   TraceVault — My History  (history.css)
+   ============================================================
+   Sections in the same order as the HTML:
+   1.  Design tokens  (:root)
+   2.  Reset & base
+   3.  App shell  (two-column flex row)
+   4.  Sidebar
+   5.  Main content wrapper
+   6.  Top header  (page-header)
+   7.  Back link
+   8.  Search bar + Filter button
+   9.  Shared card shell
+   10. Card header (title, subtitle, actions)
+   11. History rows  (base + .row--success / .row--processing / .row--failed)
+   12. Row columns: file icon, file info, format badge, date, integrity pill, status pill, action button
+   13. Card footer + pagination
+   14. Shared helpers  (pills, badges, buttons)
+   15. Responsive breakpoints
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. DESIGN TOKENS
+   One change here updates the whole page.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* ── Green (primary / success) ── */
+  --clr-green:          #10a57a;   /* buttons, active nav, success text   */
+  --clr-green-hover:    #0d8f6a;   /* darker green on hover               */
+  --clr-green-tint:     #ecfdf3;   /* success row background              */
+  --clr-green-border:   #bbf7d0;   /* success row border                  */
+  --clr-green-text:     #065f46;   /* dark text on green tint             */
+  --clr-green-pill-bg:  #dcfce7;   /* Verified / Completed pill bg        */
+  --clr-green-pill-txt: #16a34a;   /* Verified / Completed pill text      */
+
+  /* ── Amber / yellow (processing / pending) ── */
+  --clr-amber-bg:     #fffbeb;   /* processing row background             */
+  --clr-amber-border: #fde68a;   /* processing row border                 */
+  --clr-amber-text:   #b45309;   /* processing text / pill text           */
+  --clr-amber-pill:   #fef3c7;   /* processing pill background            */
+
+  /* ── Red (failed) ── */
+  --clr-red-bg:     #fff1f2;   /* failed row background                   */
+  --clr-red-border: #fecdd3;   /* failed row border                       */
+  --clr-red-text:   #be123c;   /* failed text / pill text                 */
+  --clr-red-pill:   #ffe4e6;   /* failed pill background                  */
+
+  /* ── Neutral surfaces ── */
+  --clr-page:    #f5f6f8;   /* overall page background                    */
+  --clr-white:   #ffffff;   /* sidebar, cards                             */
+  --clr-border:  #e5e7eb;   /* card / row borders                         */
+
+  /* ── Text ── */
+  --clr-heading: #111827;   /* bold headings, filenames                   */
+  --clr-body:    #374151;   /* regular text                               */
+  --clr-muted:   #6b7280;   /* secondary text, labels, hashes             */
+  --clr-label:   #9ca3af;   /* 10px uppercase column labels               */
+
+  /* ── Typography ── */
+  --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* ── Border-radius ── */
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+  --r-pill: 9999px;
+
+  /* ── Shadow ── */
+  --shadow-card: 0 1px 4px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+
+  /* ── Spacing scale ── */
+  --s1:  4px;
+  --s2:  8px;
+  --s3:  12px;
+  --s4:  16px;
+  --s5:  20px;
+  --s6:  24px;
+  --s7:  28px;
+  --s8:  32px;
+
+  /* ── Layout ── */
+  --sidebar-w: 220px;
+  --main-pad:  32px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   2. RESET & BASE
+   ───────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--clr-body);
+  background: var(--clr-page);
+  overflow-x: hidden;
+}
+
+ul  { list-style: none; }
+a   { color: inherit; text-decoration: none; }
+svg { flex-shrink: 0; display: block; }
+
+h1, h2, h3 {
+  color: var(--clr-heading);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+button { font-family: var(--font); cursor: pointer; }
+input  { font-family: var(--font); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   3. APP SHELL
+   Full-viewport flex row: sidebar left | main right.
+   ───────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. SIDEBAR
+   Fixed-width white column, sticky so it stays on scroll.
+   ───────────────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--clr-white);
+  border-right: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Logo block ── */
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s5) var(--s4);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* Dark-green rounded square holding the icon */
+.sidebar__logo-img {
+  width: 44px;            /* ← change this number to resize the logo */
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  object-fit: contain;
+  display: block;
+}
+
+.sidebar__logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sidebar__brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--clr-heading);
+  letter-spacing: -.2px;
+}
+
+/* "Vault" rendered in green */
+.sidebar__brand-name span { color: var(--clr-green); }
+
+.sidebar__brand-sub {
+  font-size: 10px;
+  color: var(--clr-muted);
+  line-height: 1.3;
+}
+
+/* ── Navigation ── */
+.sidebar__nav {
+  padding: var(--s5) var(--s3);
+  flex: 1;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Base nav link */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: 10px 13px;
+  border-radius: var(--r-pill);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--clr-muted);
+  transition: background .14s, color .14s;
+}
+
+.nav-item__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  background: #f1f5f9;
+  color: var(--clr-heading);
+}
+
+.nav-item:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+/* ACTIVE nav item */
+.nav-item--active {
+  background: var(--clr-green-tint);
+  color: var(--clr-green);
+  font-weight: 600;
+}
+
+.nav-item--active:hover {
+  background: #d1fae5;
+  color: var(--clr-green);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. MAIN CONTENT WRAPPER
+   Takes all remaining space, light gray background.
+   ───────────────────────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  background: var(--clr-page);
+  padding: var(--main-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. TOP HEADER
+   Left: title + subtitle. Right: bell + avatar + name.
+   ───────────────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-bottom: var(--s5);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.page-header__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--clr-heading);
+}
+
+.page-header__subtitle {
+  font-size: 13px;
+  color: var(--clr-muted);
+  margin-top: 3px;
+}
+
+/* Right-side: bell + user chip */
+.page-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* Circular bordered bell button */
+.header-bell {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--clr-border);
+  background: var(--clr-white);
+  color: var(--clr-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .14s, color .14s;
+}
+
+.header-bell:hover {
+  background: var(--clr-green-tint);
+  color: var(--clr-green);
+}
+
+.header-bell:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+/* Avatar + name */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.header-user__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-pill);
+  background: var(--clr-green);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-user__name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--clr-heading);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   7. BACK LINK
+   Small gray "← Back" text link.
+   ───────────────────────────────────────────────────────────── */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--clr-muted);
+  transition: color .14s;
+}
+
+.back-link:hover { color: var(--clr-heading); }
+
+.back-link:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   8. SEARCH BAR + FILTER BUTTON
+   Centered wrapper; input takes available space.
+   ───────────────────────────────────────────────────────────── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  /* Push to center horizontally — matches screenshot centering */
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Input wrapper: icon + text field */
+.search-bar__input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.search-bar__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--clr-muted);
+  pointer-events: none;
+}
+
+.search-bar__input {
+  width: 100%;
+  padding: 9px 14px 9px 38px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-pill);
+  font-size: 13.5px;
+  color: var(--clr-heading);
+  background: var(--clr-white);
+  outline: none;
+  transition: border-color .14s;
+}
+
+.search-bar__input::placeholder { color: var(--clr-muted); }
+
+.search-bar__input:focus {
+  border-color: var(--clr-green);
+}
+
+.search-bar__input:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+/* Filter button */
+.btn-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-md);
+  background: var(--clr-white);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--clr-body);
+  white-space: nowrap;
+  transition: background .14s, border-color .14s;
+}
+
+.btn-filter:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.btn-filter:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   9. MAIN WHITE CARD SHELL
+   The outer card that wraps the table, header, and footer.
+   ───────────────────────────────────────────────────────────── */
+.history-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;   /* so header/footer share the same rounded corners */
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   10. CARD HEADER
+   Title + subtitle on the left, action buttons on the right.
+   ───────────────────────────────────────────────────────────── */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s5) var(--s6);
+  border-bottom: 1px solid var(--clr-border);
+  flex-wrap: wrap;
+}
+
+.card-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-header__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--clr-heading);
+}
+
+.card-header__subtitle {
+  font-size: 12.5px;
+  color: var(--clr-muted);
+}
+
+/* Right side: icon button + Export CSV + New Analysis */
+.card-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-shrink: 0;
+}
+
+/* Square icon-only button (refresh) */
+.btn-icon {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-sm);
+  background: var(--clr-white);
+  color: var(--clr-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .14s, color .14s;
+}
+
+.btn-icon:hover {
+  background: #f9fafb;
+  color: var(--clr-heading);
+}
+
+.btn-icon:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+/* "Export CSV" outlined button */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-md);
+  background: var(--clr-white);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--clr-body);
+  white-space: nowrap;
+  transition: background .14s, border-color .14s;
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.btn-outline:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+/* "+ New Analysis" solid green button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--clr-green);
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  transition: background .14s;
+}
+
+.btn-primary:hover { background: var(--clr-green-hover); }
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   11. HISTORY ROWS
+   Each row is a flex container with a colored background.
+   Three state modifier classes control the color scheme.
+   ───────────────────────────────────────────────────────────── */
+.history-rows {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s4) var(--s6);
+  gap: var(--s3);
+}
+
+/* Base row */
+.history-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s5);
+  padding: var(--s4) var(--s5);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--clr-border);
+  background: var(--clr-white);
+  transition: box-shadow .14s;
+  min-width: 0;
+}
+
+.history-row:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* ── State: success (green) ── */
+.row--success {
+  background: var(--clr-green-tint);
+  border-color: var(--clr-green-border);
+}
+
+/* ── State: processing (yellow / amber) ── */
+.row--processing {
+  background: var(--clr-amber-bg);
+  border-color: var(--clr-amber-border);
+}
+
+/* ── State: failed (red / pink) ── */
+.row--failed {
+  background: var(--clr-red-bg);
+  border-color: var(--clr-red-border);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   12. ROW COLUMNS
+   ───────────────────────────────────────────────────────────── */
+
+/* ── File icon box ── */
+/* A small colored square holding a file SVG */
+.row-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Color the icon box by row state */
+.row--success   .row-icon { background: #d1fae5; color: var(--clr-green); }
+.row--processing .row-icon { background: #fde68a; color: #92400e; }
+.row--failed    .row-icon { background: #fecdd3; color: var(--clr-red-text); }
+/* Default (white rows) */
+.history-row:not(.row--success):not(.row--processing):not(.row--failed) .row-icon {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* ── File info: name + hash line ── */
+.row-file {
+  flex: 2;
+  min-width: 0;   /* allow text to truncate in tight layouts */
+}
+
+.row-file__name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--clr-heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-file__meta {
+  font-size: 11.5px;
+  color: var(--clr-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Shared column: label (tiny uppercase) + value ── */
+.row-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+/* Column label: "FORMAT", "DATE ANALYZED", "INTEGRITY", "STATUS" */
+.row-col__label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--clr-label);
+}
+
+/* ── Format badge ── */
+/* Small white tag with border */
+.fmt-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 9px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--r-sm);
+  background: var(--clr-white);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--clr-body);
+  letter-spacing: .04em;
+}
+
+/* ── Date text ── */
+.row-date {
+  font-size: 12.5px;
+  color: var(--clr-body);
+}
+
+/* ── Integrity pill ── */
+/* Larger pill; text color inherits from variant */
+.integrity-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Colors per state */
+.integrity-pill--success  { background: var(--clr-green-pill-bg);  color: var(--clr-green-pill-txt); }
+.integrity-pill--processing { background: var(--clr-amber-pill); color: var(--clr-amber-text); }
+.integrity-pill--failed   { background: var(--clr-red-pill);   color: var(--clr-red-text); }
+
+/* ── Status pill ── (same shape, same three variants) ── */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-pill--success   { background: var(--clr-green-pill-bg);  color: var(--clr-green-pill-txt); }
+.status-pill--processing { background: var(--clr-amber-pill); color: var(--clr-amber-text); }
+.status-pill--failed    { background: var(--clr-red-pill);   color: var(--clr-red-text); }
+
+/* ── Row action button ── */
+/* Outlined, small, color changes by state */
+.row-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border-radius: var(--r-md);
+  border: 1.5px solid;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .14s, color .14s;
+  margin-left: auto;   /* push to right edge of the row */
+}
+
+/* Push the action column all the way right */
+.row-action-col {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.row-action--success {
+  border-color: var(--clr-green);
+  color: var(--clr-green);
+}
+
+.row-action--success:hover {
+  background: var(--clr-green-tint);
+}
+
+.row-action--processing {
+  border-color: var(--clr-amber-text);
+  color: var(--clr-amber-text);
+}
+
+.row-action--processing:hover {
+  background: var(--clr-amber-pill);
+}
+
+.row-action--failed {
+  border-color: var(--clr-red-text);
+  color: var(--clr-red-text);
+}
+
+.row-action--failed:hover {
+  background: var(--clr-red-pill);
+}
+
+.row-action:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   13. CARD FOOTER + PAGINATION
+   "Showing 1–7 of 128" left, page numbers right.
+   ───────────────────────────────────────────────────────────── */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s4) var(--s6);
+  border-top: 1px solid var(--clr-border);
+}
+
+.card-footer__count {
+  font-size: 13px;
+  color: var(--clr-muted);
+}
+
+/* Pagination control row */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+}
+
+/* Each page button */
+.page-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  border: 1.5px solid transparent;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--clr-body);
+  cursor: pointer;
+  transition: background .14s, border-color .14s, color .14s;
+}
+
+/* Arrow buttons (prev/next) */
+.page-btn--arrow {
+  border-color: var(--clr-border);
+  color: var(--clr-muted);
+}
+
+.page-btn--arrow:hover {
+  border-color: #d1d5db;
+  background: #f9fafb;
+  color: var(--clr-heading);
+}
+
+/* Regular numbered page button */
+.page-btn:not(.page-btn--arrow):not(.page-btn--active):hover {
+  background: #f1f5f9;
+  color: var(--clr-heading);
+}
+
+/* Active page: solid green */
+.page-btn--active {
+  background: var(--clr-green);
+  color: #fff;
+  border-color: var(--clr-green);
+  font-weight: 600;
+}
+
+/* Ellipsis "..." — not clickable */
+.page-ellipsis {
+  font-size: 13px;
+  color: var(--clr-muted);
+  padding: 0 4px;
+  line-height: 32px;
+}
+
+/* Focus ring for all pagination buttons */
+.page-btn:focus-visible {
+  outline: 2px solid var(--clr-green);
+  outline-offset: 2px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   14. SHARED HELPERS
+   ───────────────────────────────────────────────────────────── */
+
+/* Vertically center an inline SVG with text */
+.icon-inline {
+  vertical-align: middle;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   15. RESPONSIVE BREAKPOINTS
+   Desktop-first (1440px base).
+   ───────────────────────────────────────────────────────────── */
+
+/* ── Below 1200px: tighten column widths ── */
+@media (max-width: 1200px) {
+  .row-col { min-width: 70px; }
+}
+
+/* ── Below 900px: sidebar collapses to top bar ── */
+@media (max-width: 900px) {
+  .app-shell { flex-direction: column; }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .sidebar__logo { padding: var(--s3) var(--s4); }
+
+  .sidebar__nav { padding: var(--s2) var(--s3); }
+
+  .nav-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--s1);
+  }
+
+  .nav-item { padding: 6px 10px; font-size: 12.5px; }
+
+  .main-content { padding: var(--s5); gap: var(--s3); }
+}
+
+/* ── Below 768px: rows become stacked boxes ── */
+@media (max-width: 768px) {
+  /* Make the main card full-width (already is, but remove side padding) */
+  .history-card { border-radius: var(--r-md); }
+
+  /* Stack the row columns vertically */
+  .history-row {
+    flex-wrap: wrap;
+    gap: var(--s3);
+  }
+
+  /* File info takes full width on mobile */
+  .row-file { flex: 1 1 100%; order: 1; }
+
+  /* Other columns share a row */
+  .row-col { flex: 1 1 calc(50% - var(--s3)); }
+
+  /* Action button goes last, full width */
+  .row-action-col {
+    width: 100%;
+    order: 10;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Card footer stacks */
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s3);
+  }
+
+  /* Page title size down */
+  .page-header__title { font-size: 20px; }
+
+  /* Hide user name on tiny screens */
+  .header-user__name { display: none; }
+}

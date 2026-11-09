@@ -1,166 +1,807 @@
 <!DOCTYPE html>
+<!--
+  TraceVault — My History
+  ========================
+  Pure HTML + CSS. No JavaScript, no frameworks.
+  Font:   Inter via Google Fonts.
+  Icons:  Inline SVG (Lucide / Feather style, stroke-width 1.75).
+  Style:  ../css/pages/history.css
+-->
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>History — TraceVault</title>
-  <link rel="stylesheet" href="../css/veriables.css" />
-  <link rel="stylesheet" href="../css/layout.css" />
-  <link rel="stylesheet" href="../css/components.css" />
-  <link rel="stylesheet" href="../css/pages/dashboard.css" />
+  <title>My History — TraceVault</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- History stylesheet -->
+  <link rel="stylesheet" href="../css/pages/history.css" />
 </head>
+
 <body>
-<div class="app-shell">
 
-<!-- Sidebar (same for every app page) -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar__head">
-    <img src="../assets/logo.svg" class="sidebar__logo" alt="" />
-    <span class="sidebar__brand">TraceVault</span>
-  </div>
-  <nav class="sidebar__nav">
-    <span class="sidebar__label">Main</span>
-    <a href="dashboard.html" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>Dashboard</a>
-    <a href="dashboard.html#upload" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/></svg></span>New Analysis</a>
-    <a href="history.html" class="nav-item active"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>History</a>
-    <span class="sidebar__label" style="margin-top:var(--sp-2);">Analysis</span>
-    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Email Forensics</a>
-    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>File Analysis</a>
-    <a href="#" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Malware Triage</a>
-    <span class="sidebar__label" style="margin-top:var(--sp-2);">Account</span>
-    <a href="settings.html" class="nav-item"><span class="nav-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>Settings</a>
-  </nav>
-  <div class="sidebar__foot">
-    <div class="sidebar__user" onclick="window.location.href='settings.html'">
-      <div class="user-avatar" id="sidebarAvatar">JD</div>
-      <div class="sidebar__user-info">
-        <div class="sidebar__user-name" id="sidebarName">Jane Doe</div>
-        <div class="sidebar__user-role" id="sidebarRole">Forensic Investigator</div>
+  <!-- ══════════════════════════════════════════════════════════
+       APP SHELL  —  flex row: [sidebar | main]
+       ══════════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ════════════════════════════════════════════════════════
+         SIDEBAR
+         ════════════════════════════════════════════════════════ -->
+    <aside class="sidebar">
+
+      <!-- Logo -->
+      <div class="sidebar__logo">
+        <img src="../assets/logo-mark.svg" class="sidebar__logo-img" width="44" height="44" alt="TraceVault logo" />
+
+        <div class="sidebar__logo-text">
+          <span class="sidebar__brand-name">Trace<span>Vault</span></span>
+          <span class="sidebar__brand-sub">Forensic Intelligence Suite</span>
+        </div>
       </div>
-    </div>
-  </div>
-</aside>
 
-<div class="main">
-  <!-- Topbar -->
-  <div class="topbar">
-    <button class="topbar__btn" id="sidebarToggle"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-    <span class="topbar__title">Investigation History</span>
-    <div class="topbar__gap"></div>
-    <div class="topbar__search">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" placeholder="Search analyses…" id="topbarSearch" />
-    </div>
-    <a href="dashboard.html#upload" class="btn btn-primary btn-sm">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      New Analysis
-    </a>
-  </div>
+      <!-- Navigation -->
+      <nav class="sidebar__nav" aria-label="Main navigation">
+        <ul class="nav-list">
 
-  <div class="page">
-    <div class="page-header">
-      <div class="page-header__title">Investigation History</div>
-      <div class="page-header__sub">All analyses performed in your workspace</div>
-    </div>
+          <!-- Dashboard -->
+          <li>
+            <a href="dashboard.html" class="nav-item">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+              </svg>
+              Dashboard
+            </a>
+          </li>
 
-    <!-- Summary stats -->
-    <div class="stats-row" style="margin-bottom:var(--sp-5);">
-      <div class="stat-card"><div class="stat-card__icon stat-card__icon--teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="stat-card__val" id="hTotal">0</div><div class="stat-card__lbl">Total</div></div></div>
-      <div class="stat-card"><div class="stat-card__icon stat-card__icon--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div><div><div class="stat-card__val" id="hCritical">0</div><div class="stat-card__lbl">Critical</div></div></div>
-      <div class="stat-card"><div class="stat-card__icon stat-card__icon--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div class="stat-card__val" id="hWarning">0</div><div class="stat-card__lbl">Warnings</div></div></div>
-      <div class="stat-card"><div class="stat-card__icon stat-card__icon--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="stat-card__val" id="hClean">0</div><div class="stat-card__lbl">Clean</div></div></div>
-    </div>
+          <!-- New Verification -->
+          <li>
+            <a href="#" class="nav-item">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="16" />
+                <line x1="8" y1="12" x2="16" y2="12" />
+              </svg>
+              New Verification
+            </a>
+          </li>
 
-    <!-- Toolbar -->
-    <div class="hist-toolbar">
-      <div class="hist-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="histSearch" placeholder="Search by filename, type, or hash…" />
+          <!-- My Reports -->
+          <li>
+            <a href="#" class="nav-item">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="8" y1="13" x2="16" y2="13" />
+                <line x1="8" y1="17" x2="12" y2="17" />
+              </svg>
+              My Reports
+            </a>
+          </li>
+
+          <!-- History — ACTIVE -->
+          <li>
+            <a href="history.html" class="nav-item nav-item--active" aria-current="page">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              History
+            </a>
+          </li>
+
+          <!-- Profile -->
+          <li>
+            <a href="#" class="nav-item">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              Profile
+            </a>
+          </li>
+
+          <!-- Settings -->
+          <li>
+            <a href="#" class="nav-item">
+              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
+                         a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
+                         A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06
+                         a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15
+                         a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
+                         A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06
+                         a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68
+                         a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
+                         a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06
+                         a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9
+                         a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
+                         a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+              Settings
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </aside>
+    <!-- /SIDEBAR -->
+
+
+    <!-- ════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ════════════════════════════════════════════════════════ -->
+    <main class="main-content">
+
+      <!-- ══════════════════════════════════════════════════════
+           TOP HEADER — title left | bell + user right
+           ══════════════════════════════════════════════════════ -->
+      <header class="page-header">
+        <div class="page-header__left">
+          <h1 class="page-header__title">My History</h1>
+          <p class="page-header__subtitle">Review previous results, integrity status and saved forensic reports.</p>
+        </div>
+        <div class="page-header__right">
+          <!-- Bell notification button -->
+          <button class="header-bell" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </button>
+          <!-- Avatar + name -->
+          <div class="header-user">
+            <div class="header-user__avatar" aria-hidden="true">AK</div>
+            <span class="header-user__name">Ashfaq Khan</span>
+          </div>
+        </div>
+      </header>
+      <!-- /TOP HEADER -->
+
+
+      <!-- ══════════════════════════════════════════════════════
+           BACK LINK
+           ══════════════════════════════════════════════════════ -->
+      <a href="#" class="back-link" aria-label="Go back">
+        <!-- Left arrow icon -->
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        Back
+      </a>
+
+
+      <!-- ══════════════════════════════════════════════════════
+           SEARCH BAR + FILTER BUTTON
+           ══════════════════════════════════════════════════════ -->
+      <div class="search-bar" role="search">
+        <!-- Input with magnifier icon -->
+        <div class="search-bar__input-wrap">
+          <svg class="search-bar__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input class="search-bar__input" type="search" placeholder="Search by file name or hash"
+            aria-label="Search by file name or hash" />
+        </div>
+
+        <!-- Filter button -->
+        <button class="btn-filter" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Funnel / filter icon -->
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          Filter
+        </button>
       </div>
-      <select class="form-ctrl" id="histSort" style="width:160px;">
-        <option value="date_desc">Newest first</option>
-        <option value="date_asc">Oldest first</option>
-        <option value="risk_desc">Highest risk</option>
-        <option value="risk_asc">Lowest risk</option>
-        <option value="name_asc">Name A→Z</option>
-      </select>
-      <button class="btn btn-ghost btn-sm" id="btnCSV">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Export CSV
-      </button>
-      <button class="btn btn-danger-ghost btn-sm" id="btnClearAll">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-        Clear All
-      </button>
-    </div>
 
-    <!-- Filter chips -->
-    <div class="hist-chips" id="histChips">
-      <button class="chip active" data-filter="all">All</button>
-      <button class="chip" data-filter="file">📄 File</button>
-      <button class="chip" data-filter="email">📧 Email</button>
-      <button class="chip" data-filter="malware">🛡 Malware</button>
-      <button class="chip" data-filter="critical">🔴 Critical</button>
-      <button class="chip" data-filter="warning">🟡 Warning</button>
-      <button class="chip" data-filter="clean">🟢 Clean</button>
-    </div>
 
-    <!-- Loading skeletons -->
-    <div id="histLoading" style="display:none;display:flex;flex-direction:column;gap:var(--sp-3);">
-      <div class="skel skel-card" style="height:72px;"></div>
-      <div class="skel skel-card" style="height:72px;"></div>
-      <div class="skel skel-card" style="height:72px;"></div>
-    </div>
+      <!-- ══════════════════════════════════════════════════════
+           MAIN WHITE CARD
+           ══════════════════════════════════════════════════════ -->
+      <section class="history-card" aria-label="Verifications history">
 
-    <!-- List -->
-    <div class="hist-list" id="histList"></div>
+        <!-- ── Card header ── -->
+        <div class="card-header">
+          <div class="card-header__info">
+            <h2 class="card-header__title">Verifications History</h2>
+            <p class="card-header__subtitle">Showing 7 of 128 registered evidence items</p>
+          </div>
 
-    <!-- Empty state -->
-    <div class="empty" id="histEmpty" style="display:none;">
-      <div class="empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-      <div class="empty__title">No analyses found</div>
-      <div class="empty__desc">Start your first investigation by uploading an evidence file from the dashboard.</div>
-      <a href="dashboard.html#upload" class="btn btn-primary" style="margin-top:var(--sp-4);">New Analysis</a>
-    </div>
+          <!-- Action buttons: refresh | Export CSV | + New Analysis -->
+          <div class="card-header__actions">
+            <!-- Refresh icon button -->
+            <button class="btn-icon" type="button" aria-label="Refresh list">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="23 4 23 10 17 10" />
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+              </svg>
+            </button>
 
-    <!-- Pagination -->
-    <div id="pagination" style="display:none;align-items:center;justify-content:center;gap:var(--sp-2);margin-top:var(--sp-6);">
-      <button class="btn btn-ghost btn-sm" id="btnPrev" disabled>← Prev</button>
-      <span style="font-size:var(--fz-13);color:var(--clr-text-sec);" id="pageInfo">Page 1</span>
-      <button class="btn btn-ghost btn-sm" id="btnNext" disabled>Next →</button>
-    </div>
+            <!-- Export CSV outlined button -->
+            <button class="btn-outline" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Export CSV
+            </button>
+
+            <!-- New Analysis solid green button -->
+            <button class="btn-primary" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              New Analysis
+            </button>
+          </div>
+        </div>
+        <!-- /card header -->
+
+
+        <!-- ── History rows ── -->
+        <!--
+          Each row uses:
+            .history-row                 — base flex container
+            .row--success / .row--processing / .row--failed  — color state
+        -->
+        <ul class="history-rows" aria-label="Evidence items">
+
+
+          <!-- ─── ROW 1: evidence_sample.pdf — SUCCESS ─── -->
+          <li class="history-row row--success">
+
+            <!-- File icon box -->
+            <div class="row-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+
+            <!-- File name + hash meta -->
+            <div class="row-file">
+              <p class="row-file__name">evidence_sample.pdf</p>
+              <p class="row-file__meta">SHA-256 · 9f2c4a...e71b · 2.4 MB</p>
+            </div>
+
+            <!-- FORMAT column -->
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">PDF</span>
+            </div>
+
+            <!-- DATE ANALYZED column -->
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Today, 10:42 AM</span>
+            </div>
+
+            <!-- INTEGRITY column -->
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--success">
+                <!-- Check circle icon -->
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Verified Intact
+              </span>
+            </div>
+
+            <!-- STATUS column -->
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Completed
+              </span>
+            </div>
+
+            <!-- ACTION button -->
+            <div class="row-action-col">
+              <button class="row-action row-action--success" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                View Report
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 1 -->
+
+
+          <!-- ─── ROW 2: suspect_email_thread.eml — PROCESSING ─── -->
+          <li class="history-row row--processing">
+
+            <div class="row-icon" aria-hidden="true">
+              <!-- Mail icon for .eml -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
+                         c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">suspect_email_thread.eml</p>
+              <p class="row-file__meta">SHA-256 · calculating... · 184 KB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">EML</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Today, 09:15 AM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--processing">
+                <!-- Clock / spinner icon -->
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                Verifying...
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--processing">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                Processing
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--processing" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                View Progress
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 2 -->
+
+
+          <!-- ─── ROW 3: disk_image_summary.docx — SUCCESS ─── -->
+          <li class="history-row row--success">
+
+            <div class="row-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="8" y1="13" x2="16" y2="13" />
+                <line x1="8" y1="17" x2="12" y2="17" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">disk_image_summary.docx</p>
+              <p class="row-file__meta">SHA-256 · 3b81d0...a4c9 · 1.1 MB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">DOCX</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Today, 08:58 AM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Verified Intact
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Completed
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--success" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                View Report
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 3 -->
+
+
+          <!-- ─── ROW 4: suspicious_attachment.zip — SUCCESS ─── -->
+          <li class="history-row row--success">
+
+            <div class="row-icon" aria-hidden="true">
+              <!-- Archive / zip icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9
+                         a2 2 0 0 1 2 2z" />
+                <line x1="12" y1="11" x2="12" y2="17" />
+                <line x1="9" y1="14" x2="15" y2="14" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">suspicious_attachment.zip</p>
+              <p class="row-file__meta">SHA-256 · c7e5f2...08d3 · 5.7 MB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">ZIP</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Yesterday, 04:16 PM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Verified Intact
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Completed
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--success" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                View Report
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 4 -->
+
+
+          <!-- ─── ROW 5: corrupted_archive.zip — FAILED ─── -->
+          <li class="history-row row--failed">
+
+            <div class="row-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9
+                         a2 2 0 0 1 2 2z" />
+                <line x1="12" y1="11" x2="12" y2="17" />
+                <line x1="9" y1="14" x2="15" y2="14" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">corrupted_archive.zip</p>
+              <p class="row-file__meta">SHA-256 · d4417e...92ab · 12.3 MB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">ZIP</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Yesterday, 02:05 PM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--failed">
+                <!-- Warning triangle icon -->
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3
+                           L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                Mismatch Detected
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--failed">
+                <!-- X-circle icon -->
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="15" y1="9" x2="9" y2="15" />
+                  <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+                Failed
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--failed" type="button">
+                <!-- Refresh / re-analyze icon -->
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="1 4 1 10 7 10" />
+                  <path d="M3.51 15a9 9 0 1 0 .49-4.95" />
+                </svg>
+                Re-analyze
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 5 -->
+
+
+          <!-- ─── ROW 6: corporate_wire_receipt.pdf — SUCCESS ─── -->
+          <li class="history-row row--success">
+
+            <div class="row-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">corporate_wire_receipt.pdf</p>
+              <p class="row-file__meta">SHA-256 · 5a09bc...f1e2 · 860 KB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">PDF</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Oct 21, 11:20 AM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Verified Intact
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Completed
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--success" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                View Report
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 6 -->
+
+
+          <!-- ─── ROW 7: forensic_memory_dump.dmp — SUCCESS ─── -->
+          <li class="history-row row--success">
+
+            <div class="row-icon" aria-hidden="true">
+              <!-- Database / disk icon for .dmp -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg>
+            </div>
+
+            <div class="row-file">
+              <p class="row-file__name">forensic_memory_dump.dmp</p>
+              <p class="row-file__meta">SHA-256 · 81fa63...c05d · 248 MB</p>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Format</span>
+              <span class="fmt-badge">DMP</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Date Analyzed</span>
+              <span class="row-date">Oct 19, 03:47 PM</span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Integrity</span>
+              <span class="integrity-pill integrity-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Verified Intact
+              </span>
+            </div>
+
+            <div class="row-col">
+              <span class="row-col__label">Status</span>
+              <span class="status-pill status-pill--success">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                Completed
+              </span>
+            </div>
+
+            <div class="row-action-col">
+              <button class="row-action row-action--success" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                View Report
+              </button>
+            </div>
+          </li>
+          <!-- /ROW 7 -->
+
+
+        </ul>
+        <!-- /history rows -->
+
+
+        <!-- ── Card footer: count + pagination ── -->
+        <div class="card-footer">
+          <span class="card-footer__count">Showing 1–7 of 128 items</span>
+
+          <!-- Pagination -->
+          <nav class="pagination" aria-label="Pagination">
+
+            <!-- Previous page arrow -->
+            <button class="page-btn page-btn--arrow" type="button" aria-label="Previous page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            <!-- Page 1 — active -->
+            <button class="page-btn page-btn--active" type="button" aria-label="Page 1" aria-current="page">1</button>
+
+            <!-- Page 2 -->
+            <button class="page-btn" type="button" aria-label="Page 2">2</button>
+
+            <!-- Page 3 -->
+            <button class="page-btn" type="button" aria-label="Page 3">3</button>
+
+            <!-- Ellipsis -->
+            <span class="page-ellipsis" aria-hidden="true">…</span>
+
+            <!-- Page 19 (last) -->
+            <button class="page-btn" type="button" aria-label="Page 19">19</button>
+
+            <!-- Next page arrow -->
+            <button class="page-btn page-btn--arrow" type="button" aria-label="Next page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+          </nav>
+        </div>
+        <!-- /card footer -->
+
+      </section>
+      <!-- /MAIN WHITE CARD -->
+
+    </main>
+    <!-- /MAIN CONTENT -->
+
   </div>
-</div>
-</div>
+  <!-- /APP SHELL -->
 
-<!-- Clear modal -->
-<div class="modal-overlay" id="clearModal">
-  <div class="modal">
-    <div class="modal__head">
-      <span class="modal__title">Clear All History?</span>
-      <button class="modal__close" onclick="document.getElementById('clearModal').classList.remove('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <p style="color:var(--clr-text-sec);font-size:var(--fz-14);margin-bottom:var(--sp-5);">
-      This will permanently delete all <strong id="clearCount">0</strong> analyses. This cannot be undone.
-    </p>
-    <div style="display:flex;gap:var(--sp-3);justify-content:flex-end;">
-      <button class="btn btn-ghost" onclick="document.getElementById('clearModal').classList.remove('open')">Cancel</button>
-      <button class="btn btn-danger" id="confirmClear">Clear All</button>
-    </div>
-  </div>
-</div>
-
-<div class="toast-container" id="toastContainer"></div>
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/history.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    TraceVaultAuth.requireAuth();
-    TraceVaultHistory.init();
-  });
-</script>
 </body>
+
 </html>
