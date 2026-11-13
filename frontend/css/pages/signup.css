@@ -1,0 +1,388 @@
+/* ==========================================================
+   Auth pages (login / signup)
+   Two-column: form on the left, green showcase panel on the right
+   ========================================================== */
+:root {
+  --pw: min(450px, 36vw);              /* green panel width */
+  --cw: min(260px);        /* white card width  */
+  --ink: #033031;
+  --green: #0EAA80;
+  --muted: #64748b;
+}
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--sp-8);
+  padding: 44px 24px 24px 40px;
+  background: var(--c-bg);
+}
+
+/* ---------- Left: card ---------- */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  align-self: start;
+  padding: 0;
+  background: transparent;
+}
+
+/* Logo */
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--sp-8);
+}
+.auth-logo__img {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  object-fit: contain;
+}
+.auth-logo__name { display: flex; flex-direction: column; }
+.auth-logo__word {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+.auth-logo__trace { color: var(--c-ink); }
+.auth-logo__accent { color: var(--c-accent); }
+
+/* Heading */
+.auth-head { margin-bottom: var(--sp-6); }
+.auth-head__title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+  color: var(--c-ink);
+}
+.auth-head__sub {
+  max-width: 340px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--c-muted);
+}
+
+/* Terms row spacing */
+#grpTerms { margin-top: var(--sp-2); }
+
+/* Footer links */
+.auth-foot {
+  margin-top: var(--sp-5);
+  font-size: 12px;
+  color: var(--c-muted);
+}
+.auth-foot a { margin-left: 4px; }
+
+.auth-terms {
+  margin-top: var(--sp-4);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--c-placeholder);
+}
+.auth-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 68px);
+  padding: var(--sp-8);
+  color: #fff;
+  background: linear-gradient(180deg, #043a31 0%, #07705a 55%, #0fa97f 100%);
+  border-radius: var(--r-xl);
+}
+.auth-visual__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+}
+.auth-visual__shield {
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--sp-6);
+  color: #fff;
+}
+
+.verify-card {
+  width: 100%;
+  padding: 18px 18px 14px;
+  color: var(--c-ink);
+  background: var(--c-surface);
+  border-radius: var(--r-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+.verify-card__title {
+  margin-bottom: var(--sp-3);
+  font-size: 13px;
+  font-weight: 700;
+}
+.verify-list { margin: 0; padding: 0; list-style: none; }
+.verify-list__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 11px;
+  color: var(--c-text);
+}
+.verify-list__item svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--c-primary);
+}
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-5);
+  padding: 9px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-primary);
+  background: #e6f2ee;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--r-pill);
+}
+.trust-badge svg { width: 13px; height: 13px; }
+
+.auth-visual__copy {
+  margin-top: var(--sp-8);
+  font-size: 10.5px;
+  letter-spacing: .3px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Force the light look ----------
+   Guards against a dark colour scheme or other stylesheets/variables
+   turning the inputs dark. Hard-coded fallbacks on purpose. */
+:root { color-scheme: light; }
+
+body { background: #f8fafc; color: #1e293b; }
+
+.auth-shell .form-label { color: #0f172a; }
+
+.auth-shell .form-ctrl,
+.auth-shell select.form-ctrl,
+.auth-shell input.form-ctrl {
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #dbe3ee;
+  color-scheme: light;
+}
+.auth-shell .form-ctrl::placeholder { color: #94a3b8; opacity: 1; }
+.auth-shell .form-ctrl:focus {
+  border-color: #0fa97f;
+  box-shadow: 0 0 0 3px rgba(15, 169, 127, 0.15);
+}
+.auth-shell select.form-ctrl option { background: #ffffff; color: #202b45; }
+
+/* Autofill should not turn fields dark/yellow */
+.auth-shell .form-ctrl:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: #0f172a;
+}
+
+/* Links: brand green, terms links dark like the design */
+.auth-shell a { color: #0fa97f; }
+.auth-shell .form-check__lbl { color: #64748b; }
+.auth-shell .form-check__lbl a { color: #1e293b; }
+.auth-shell .form-check__lbl a:hover { color: #0fa97f; }
+
+/* Password field: no leading icon, so keep normal left padding */
+.auth-shell .input-wrap--r .form-ctrl { padding-left: 14px; padding-right: 44px; }
+
+/* Tagline under the logo (if your markup has one) */
+.auth-logo__tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .6px;
+  color: #64748b;
+}
+
+/* ---------- RIGHT HALF ---------- */
+/* 1) green gradient panel + shield + copyright */
+.auth-shell::before {
+  content: "© 2026 TraceVault. All rights reserved.";
+  position: fixed;
+  z-index: 0;
+  top: 50vh;
+  left: 75vw;
+  transform: translate(-50%, -50%);
+  width: var(--pw);
+  height: 640px;
+  max-height: calc(100vh - 32px);
+  border-radius: 22px;
+  box-sizing: border-box;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .6);
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-2 8-10V5l-8-3-9 3v7c0 6 5 10 8 10z'/%3E%3Cpath d='m8 12 3 2 4-4'/%3E%3C/svg%3E")
+      center 52px / 55px 55px no-repeat,
+    linear-gradient(180deg, #033031 0%, #0a6b52 55%, #0EAA80 100%);
+  box-shadow: 0 20px 50px rgba(5, 58, 46, .18);
+}
+
+/* 2) white card, centered on the panel */
+html::after {
+  content: "\A PDF Authentic\A Meta Verified\A AI Analysis Passed\A Email Verification\A Tampering\A Professional PDF Editing\A AI Detection";
+  white-space: pre;
+  position: fixed;
+  z-index: 1;
+  top: 50vh;
+  left: 75vw;
+  transform: translate(-50%, -50%);
+  width: var(--cw);
+  height: 400px;
+  box-sizing: border-box;
+  padding: 12px 40px 20px 50px;
+  line-height: 46px;
+  font-size: 13px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #1e293b;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+  pointer-events: none;
+
+  --chk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E");
+  background-image: var(--chk), var(--chk), var(--chk), var(--chk), var(--chk), var(--chk), var(--chk);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position:
+    25px 70px, 25px 116px, 25px 162px, 25px 208px, 25px 255px, 25px 300px, 25px 346px;
+}
+
+/* 3) card title */
+html::before {
+  content: "Verification Complete";
+  position: fixed;
+  z-index: 2;
+  top: calc(50vh - 200px + 20px);
+  left: calc(75vw - var(--cw, 280px) / 2 + 34px);
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--c-ink, #0f172a);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 4) badge */
+body::after {
+  content: "Trusted by Security Professionals";
+  position: fixed;
+  z-index: 1;
+  top: calc(50vh + 200px + 24px);
+  left: 75vw;
+  transform: translateX(-50%);
+  padding: 10px 22px 10px 42px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #065f46;
+  white-space: nowrap;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E")
+      16px center / 16px 16px no-repeat,
+    #d1fae5;
+  border-radius: 999px;
+}
+
+/* ---------- Success state ("Check your inbox") ---------- */
+body .reset-ok { text-align: left; }
+body .reset-ok__ico {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: #d1fae5;
+  color: var(--green);
+}
+body .reset-ok__ico svg { width: 22px; height: 22px; }
+body .reset-ok__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+body .reset-ok__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* ---------- Short windows: hide only the badge ---------- */
+@media (max-height: 640px) {
+  body::after { display: none; }
+}
+
+/* ---------- Narrow windows: form only, no side panel ---------- */
+@media (max-width: 1000px) {
+  .auth-shell::before,
+  body::after,
+  html::before,
+  html::after { display: none !important; }
+
+  .auth-shell {
+    display: block;
+    padding: 48px 24px;
+  }
+  body .auth-card {
+    width: 100% !important;
+    max-width: 420px !important;
+    margin: 0 auto;
+  }
+}
+/* Create Account button (signup page only) */
+body .auth-shell .btn-primary,
+body .auth-shell button[type="submit"] {
+  background: #10b981;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 12px 24px -8px rgba(16, 185, 129, .55);
+  transition: transform .1s, box-shadow .15s, filter .15s;
+}
+
+body .auth-shell .btn-primary:hover,
+body .auth-shell button[type="submit"]:hover {
+  background: #0fa97f;
+}
+body .auth-shell .social-btn {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #dbe3ee;
+}
+body .auth-shell .social-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+#confirmPassword.form-ctrl {
+  padding-left: 42px !important;
+  padding-right: 14px !important;
+}
+body .auth-shell .input-wrap:not(.input-wrap--r) > .input-icon {
+  left: 14px;        /* move icon left/right */
+  color: #94a3b8;    /* icon color */
+}
+body .auth-shell .input-wrap:not(.input-wrap--r) > .input-icon svg {
+  width: 18px;       /* icon size */
+  height: 18px;
+}
