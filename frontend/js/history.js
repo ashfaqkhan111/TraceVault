@@ -1,317 +1,106 @@
 /* ============================================================
-   TraceVault — History Module
-   Lists all analyses with search, filter chips, sort, and
-   pagination. Also handles delete/clear and CSV export.
+   TraceVault — Verification history
    ============================================================ */
+(async () => {
+  const listEl = document.getElementById('histList');
+  const search = document.getElementById('histSearch');
+  const filterBtn = document.getElementById('filterBtn');
+  const menu = document.getElementById('filterMenu');
+  const countEl = document.getElementById('histCount');
+  const pagerInfo = document.getElementById('pagerInfo');
+  const pager = document.getElementById('pager');
+  let items = []; let total = 0; let status = 'all'; let page = 1;
 
-const TraceVaultHistory = (() => {
+  const svg = (p) => `<svg class="ic" viewBox="0 0 24 24">${p}</svg>`;
+  const I = {
+    file: svg('<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/>'),
+    shield: svg('<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>'),
+    check: svg('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>'),
+    loader: svg('<path d="M21 12a9 9 0 1 1-6.219-8.56"/>'),
+    alert: svg('<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>'),
+    x: svg('<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>'),
+    eye: svg('<path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/>'),
+    clock: svg('<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'),
+    rotate: svg('<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>'),
+    left: svg('<path d="m15 18-6-6 6-6"/>'), right: svg('<path d="m9 18 6-6-6-6"/>'),
+  };
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  /* ---------- State ---------- */
-  let allAnalyses   = [];
-  let filteredList  = [];
-  let currentPage   = 1;
-  const PAGE_SIZE   = 10;
-  let activeFilter  = 'all';
-  let activeSortKey = 'date_desc';
-  let searchQuery   = '';
+  const INTEGRITY = {
+    verified: `<span class="badge badge--green">${I.shield}Verified Intact</span>`,
+    verifying: `<span class="badge badge--yellow">${I.loader}Verifying…</span>`,
+    mismatch: `<span class="badge badge--red">${I.alert}Mismatch Detected</span>`,
+  };
+  const STATUS = {
+    completed: `<span class="badge badge--green">${I.check}Completed</span>`,
+    processing: `<span class="badge badge--yellow">${I.loader}Processing</span>`,
+    failed: `<span class="badge badge--red">${I.x}Failed</span>`,
+  };
+  const ACTION = {
+    completed: (it) => `<a class="btn" href="report.html?id=${encodeURIComponent(it.id)}">${I.eye}View Report</a>`,
+    processing: () => `<a class="btn btn--prog" href="notifications.html">${I.clock}View Progress</a>`,
+    failed: (it) => `<button class="btn btn--re" type="button" data-reanalyze="${esc(it.name)}">${I.rotate}Re-analyze</button>`,
+  };
+  const TONE = { completed: '', processing: ' hist-row--yellow', failed: ' hist-row--red' };
 
-  /* ---------- Toast ---------- */
-  function toast(msg, type = 'info') {
-    const icons = { success:'✅', error:'⚠', warning:'⚠', info:'ℹ' };
-    const c = document.getElementById('toastContainer');
-    if (!c) return;
-    const t = document.createElement('div');
-    t.className = `toast toast--${type}`;
-    t.innerHTML = `<span class="toast__icon">${icons[type]||'ℹ'}</span><span class="toast__msg">${msg}</span>`;
-    c.appendChild(t);
-    setTimeout(() => t.remove(), 3500);
+  function visible() {
+    const q = search.value.trim().toLowerCase();
+    return items.filter((it) => (status === 'all' || it.status === status) && (!q || it.name.toLowerCase().includes(q) || it.hash.toLowerCase().includes(q)));
   }
 
-  /* ---------- Helpers ---------- */
-  function escapeHtml(str) {
-    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-  function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ''; }
-  function formatDate(iso) {
-    if (!iso) return '—';
-    return new Date(iso).toLocaleString(undefined, {
-      year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit',
-    });
-  }
-  function formatSize(bytes) {
-    if (!bytes) return '—';
-    if (bytes < 1024)    return bytes + ' B';
-    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / 1048576).toFixed(1) + ' MB';
-  }
-  function fileIcon(filename) {
-    const ext = (filename.split('.').pop() || '').toLowerCase();
-    const map = {
-      pdf:'📄', doc:'📝', docx:'📝', eml:'📧', msg:'📧',
-      jpg:'🖼️', jpeg:'🖼️', png:'🖼️', gif:'🖼️',
-      exe:'⚙️', dll:'⚙️', zip:'🗜️',
-    };
-    return map[ext] || '📁';
+  function render() {
+    const rows = visible();
+    listEl.innerHTML = rows.length ? rows.map((it) => `
+      <div class="hist-row${TONE[it.status]}">
+        ${I.file}
+        <div><strong>${esc(it.name)}</strong><small>SHA-256 ${esc(it.hash)} &middot; ${esc(it.size)}</small></div>
+        <div class="hist-col"><small>Format</small><span class="fmt">${esc(it.format)}</span></div>
+        <div class="hist-col"><small>Date Analyzed</small><span>${esc(it.date)}</span></div>
+        <div class="hist-col"><small>Integrity</small>${INTEGRITY[it.integrity]}</div>
+        <div class="hist-col"><small>Status</small>${STATUS[it.status]}</div>
+        ${ACTION[it.status](it)}
+      </div>`).join('') : '<p class="empty-state">No verifications match your search.</p>';
+    const filtered = rows.length !== items.length;
+    countEl.textContent = filtered ? `Showing ${rows.length} matching items on this page` : `Showing ${items.length} of ${total} registered evidence items`;
+    const from = (page - 1) * 7 + 1;
+    pagerInfo.textContent = `Showing ${from}-${from + items.length - 1} of ${total} items`;
   }
 
-  /* ---------- Filter ---------- */
-  function applyFilters() {
-    let list = [...allAnalyses];
-
-    // Search
-    if (searchQuery) {
-      const q = searchQuery.toLowerCase();
-      list = list.filter(a =>
-        a.name.toLowerCase().includes(q) ||
-        (a.type || '').toLowerCase().includes(q) ||
-        (a.hash?.sha256 || '').toLowerCase().includes(q)
-      );
-    }
-
-    // Type/risk filter
-    switch (activeFilter) {
-      case 'file':     list = list.filter(a => a.type === 'file');            break;
-      case 'email':    list = list.filter(a => a.type === 'email');           break;
-      case 'malware':  list = list.filter(a => a.type === 'malware');         break;
-      case 'critical': list = list.filter(a => a.riskLevel === 'high');       break;
-      case 'warning':  list = list.filter(a => a.riskLevel === 'medium');     break;
-      case 'clean':    list = list.filter(a => a.riskLevel === 'low');        break;
-      default: break;
-    }
-
-    // Sort
-    switch (activeSortKey) {
-      case 'date_asc':  list.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)); break;
-      case 'date_desc': list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); break;
-      case 'risk_desc': list.sort((a, b) => (b.riskScore || 0) - (a.riskScore || 0));       break;
-      case 'risk_asc':  list.sort((a, b) => (a.riskScore || 0) - (b.riskScore || 0));       break;
-      case 'name_asc':  list.sort((a, b) => a.name.localeCompare(b.name));                  break;
-    }
-
-    filteredList = list;
-    currentPage  = 1;
-    renderList();
-    renderPagination();
-    renderSummaryStats();
+  function renderPager() {
+    const pages = Math.ceil(total / 7);
+    const nums = [1, 2, 3, '…', pages];
+    pager.innerHTML = `<button type="button" data-page="${Math.max(1, page - 1)}" aria-label="Previous page">${I.left}</button>` +
+      nums.map((n) => (n === '…' ? '<span>…</span>' : `<button type="button" data-page="${n}" class="${n === page ? 'is-active' : ''}">${n}</button>`)).join('') +
+      `<button type="button" data-page="${Math.min(pages, page + 1)}" aria-label="Next page">${I.right}</button>`;
   }
 
-  /* ---------- Render list ---------- */
-  function renderList() {
-    const listEl  = document.getElementById('historyList');
-    const emptyEl = document.getElementById('historyEmpty');
-    if (!listEl) return;
-
-    const start = (currentPage - 1) * PAGE_SIZE;
-    const page  = filteredList.slice(start, start + PAGE_SIZE);
-
-    if (filteredList.length === 0) {
-      listEl.innerHTML    = '';
-      if (emptyEl) emptyEl.style.display = 'flex';
-      return;
-    }
-    if (emptyEl) emptyEl.style.display = 'none';
-
-    listEl.innerHTML = page.map(a => renderAnalysisCard(a)).join('');
+  async function load() {
+    listEl.innerHTML = '<p class="empty-state">Loading…</p>';
+    const res = await TraceVaultAPI.getAnalyses({ page });
+    items = res.items; total = res.total;
+    render(); renderPager();
   }
 
-  function renderAnalysisCard(a) {
-    const icon  = fileIcon(a.name);
-    const riskMap = {
-      high:   { cls:'badge--danger',  label:'High Risk' },
-      medium: { cls:'badge--warning', label:'Medium Risk' },
-      low:    { cls:'badge--success', label:'Low Risk' },
-    };
-    const rb = riskMap[a.riskLevel] || riskMap.low;
-
-    return `
-      <div class="analysis-card" onclick="window.location.href='results.html?id=${a.id}'" data-id="${a.id}">
-        <div class="analysis-card__file-icon">${icon}</div>
-        <div class="analysis-card__info">
-          <div class="analysis-card__name">${escapeHtml(a.name)}</div>
-          <div class="analysis-card__meta">
-            <span class="analysis-card__meta-item">🏷️ ${capitalize(a.type || 'file')}</span>
-            <span class="analysis-card__meta-item">💾 ${formatSize(a.size)}</span>
-            <span class="analysis-card__meta-item">📅 ${formatDate(a.createdAt)}</span>
-            ${a.counts ? `<span class="analysis-card__meta-item">⚠ ${a.counts.critical + a.counts.warning} findings</span>` : ''}
-          </div>
-        </div>
-        <div class="analysis-card__actions" onclick="event.stopPropagation()">
-          <span class="badge ${rb.cls}">${rb.label}</span>
-          <button class="btn btn-secondary btn-sm" onclick="window.location.href='results.html?id=${a.id}'" title="View results">👁</button>
-          <button class="btn btn-danger-ghost btn-sm" onclick="TraceVaultHistory.deleteOne('${a.id}')" title="Delete">🗑</button>
-        </div>
-      </div>`;
-  }
-
-  /* ---------- Summary stats ---------- */
-  function renderSummaryStats() {
-    const total    = filteredList.length;
-    const critical = filteredList.filter(a => a.riskLevel === 'high').length;
-    const warning  = filteredList.filter(a => a.riskLevel === 'medium').length;
-    const clean    = filteredList.filter(a => a.riskLevel === 'low').length;
-
-    setText('histTotal',    total);
-    setText('histCritical', critical);
-    setText('histWarning',  warning);
-    setText('histClean',    clean);
-  }
-
-  /* ---------- Pagination ---------- */
-  function renderPagination() {
-    const totalPages = Math.ceil(filteredList.length / PAGE_SIZE);
-    const prevBtn    = document.getElementById('btnPrevPage');
-    const nextBtn    = document.getElementById('btnNextPage');
-    const infoEl     = document.getElementById('pageInfo');
-    const paginEl    = document.getElementById('pagination');
-
-    if (paginEl) paginEl.style.display = filteredList.length > PAGE_SIZE ? 'flex' : 'none';
-    if (infoEl) infoEl.textContent = `Page ${currentPage} of ${totalPages || 1}`;
-    if (prevBtn) prevBtn.disabled = currentPage <= 1;
-    if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
-  }
-
-  /* ---------- Delete one ---------- */
-  async function deleteOne(id) {
-    if (!confirm('Delete this analysis? This cannot be undone.')) return;
-    try {
-      await TraceVaultAPI.deleteAnalysis(id);
-      allAnalyses = allAnalyses.filter(a => a.id !== id);
-      applyFilters();
-      toast('Analysis deleted.', 'success');
-    } catch (err) {
-      toast('Delete failed: ' + err.message, 'error');
-    }
-  }
-
-  /* ---------- Clear all ---------- */
-  async function clearAll() {
-    try {
-      for (const a of allAnalyses) {
-        await TraceVaultAPI.deleteAnalysis(a.id);
-      }
-      allAnalyses = [];
-      applyFilters();
-      document.getElementById('clearModal')?.classList.remove('open');
-      toast('All history cleared.', 'success');
-    } catch (err) {
-      toast('Clear failed: ' + err.message, 'error');
-    }
-  }
-
-  /* ---------- Export CSV ---------- */
-  function exportCSV() {
-    if (!filteredList.length) { toast('No analyses to export.', 'warning'); return; }
-    const headers = ['ID','Filename','Type','Risk Level','Risk Score','Critical','Warning','Info','Clean','Date','SHA-256'];
-    const rows = filteredList.map(a => [
-      a.id, a.name, a.type, a.riskLevel, a.riskScore,
-      a.counts?.critical || 0, a.counts?.warning || 0,
-      a.counts?.info || 0, a.counts?.ok || 0,
-      new Date(a.createdAt).toISOString(),
-      a.hash?.sha256 || '',
-    ]);
-    const csv  = [headers, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href = url; a.download = 'tracevault-history.csv'; a.click();
-    URL.revokeObjectURL(url);
-    toast('CSV exported.', 'success');
-  }
-
-  /* ---------- Sidebar toggle ---------- */
-  function initSidebarToggle() {
-    document.getElementById('sidebarToggle')?.addEventListener('click', () => {
-      document.getElementById('sidebar')?.classList.toggle('open');
-    });
-  }
-
-  /* ---------- Debounce ---------- */
-  function debounce(fn, delay) {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => fn(...args), delay);
-    };
-  }
-
-  /* ---------- Main init ---------- */
-  async function init() {
-    initSidebarToggle();
-
-    // Search inputs (topbar + toolbar)
-    const onSearch = debounce(val => {
-      searchQuery = val.trim();
-      applyFilters();
-    }, 280);
-
-    document.getElementById('historySearch')?.addEventListener('input', e => onSearch(e.target.value));
-    document.getElementById('topbarSearch')?.addEventListener('input', e => {
-      document.getElementById('historySearch').value = e.target.value;
-      onSearch(e.target.value);
-    });
-
-    // Filter chips
-    document.querySelectorAll('.filter-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        activeFilter = chip.dataset.filter;
-        applyFilters();
-      });
-    });
-
-    // Sort
-    document.getElementById('historySortSelect')?.addEventListener('change', e => {
-      activeSortKey = e.target.value;
-      applyFilters();
-    });
-
-    // Pagination
-    document.getElementById('btnPrevPage')?.addEventListener('click', () => {
-      if (currentPage > 1) { currentPage--; renderList(); renderPagination(); }
-    });
-    document.getElementById('btnNextPage')?.addEventListener('click', () => {
-      const totalPages = Math.ceil(filteredList.length / PAGE_SIZE);
-      if (currentPage < totalPages) { currentPage++; renderList(); renderPagination(); }
-    });
-
-    // Export CSV
-    document.getElementById('btnExportCSV')?.addEventListener('click', exportCSV);
-
-    // Clear all
-    document.getElementById('btnClearHistory')?.addEventListener('click', () => {
-      if (!allAnalyses.length) { toast('No history to clear.', 'info'); return; }
-      setText('clearCount', allAnalyses.length);
-      document.getElementById('clearModal')?.classList.add('open');
-    });
-    document.getElementById('confirmClearBtn')?.addEventListener('click', clearAll);
-
-    // Modal close
-    document.querySelectorAll('.modal__close').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
-      });
-    });
-
-    // Load data
-    try {
-      document.getElementById('historyLoading').style.display = 'block';
-      allAnalyses = await TraceVaultAPI.getAnalyses();
-      document.getElementById('historyLoading').style.display = 'none';
-      applyFilters();
-    } catch (err) {
-      document.getElementById('historyLoading').style.display = 'none';
-      toast('Failed to load history: ' + err.message, 'error');
-      document.getElementById('historyEmpty').style.display = 'flex';
-    }
-  }
-
-  /* ---------- Tiny helpers ---------- */
-  function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  }
-
-  return { init, deleteOne };
-
+  search.addEventListener('input', render);
+  filterBtn.addEventListener('click', (e) => { e.stopPropagation(); const open = menu.classList.toggle('is-open'); filterBtn.setAttribute('aria-expanded', open); });
+  document.addEventListener('click', () => { menu.classList.remove('is-open'); filterBtn.setAttribute('aria-expanded', 'false'); });
+  menu.addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    status = b.dataset.status;
+    menu.querySelectorAll('button').forEach((x) => x.classList.toggle('is-active', x === b));
+    filterBtn.querySelector('span').textContent = status === 'all' ? 'Filter' : b.textContent;
+    render();
+  });
+  pager.addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; page = +b.dataset.page; load(); });
+  listEl.addEventListener('click', (e) => { const b = e.target.closest('[data-reanalyze]'); if (b) UI.toast(`Re-analysis of ${b.dataset.reanalyze} queued.`); });
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('exportCsv').addEventListener('click', () => {
+    const head = ['File name', 'SHA-256', 'Size', 'Format', 'Date analyzed', 'Integrity', 'Status'];
+    const csv = [head, ...visible().map((i) => [i.name, i.hash, i.size, i.format, i.date, i.integrity, i.status])]
+      .map((r) => r.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = 'tracevault-history.csv'; a.click(); URL.revokeObjectURL(a.href);
+  });
+  load();
 })();
