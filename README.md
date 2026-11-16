@@ -189,9 +189,24 @@ The default Spring Boot port is usually `8080`, unless configured differently. C
 
 ### 3. Run the frontend
 
-The frontend is planned as plain HTML, CSS, and JavaScript. During development, serve the `frontend/` directory using a local static HTTP server or your editor's development server. Avoid opening pages directly with `file://` if the application relies on API requests or browser modules.
+The frontend is plain HTML, CSS and JavaScript built from the Figma prototype. Serve the project root with any static server and open the landing page:
 
-Configure the frontend API base URL to match the backend address and port used in your local environment.
+```bash
+python3 -m http.server 8000
+# then open http://localhost:8000/index.html
+```
+
+Pages (in `frontend/pages/`):
+
+| Area | Pages |
+|---|---|
+| Public | `index.html` (landing, project root), `features.html`, `about.html`, `contact.html` |
+| Auth | `login.html`, `signup.html`, `forget-password.html`, `reset-password.html` |
+| App | `dashboard.html`, `new-verification.html`, `report.html`, `history.html`, `notifications.html`, `profile.html`, `settings.html` |
+
+Styles live in `frontend/css/` (`variables.css` holds every design color as a token, then `base`, `public`, `auth` and `app`). Scripts live in `frontend/js/`; `api.js` is the only file that talks to the backend.
+
+**Mock mode.** `frontend/js/api.js` starts with `MOCK_MODE = true`, so every page works without the backend using sample data saved in `localStorage`. Set it to `false` and set `BASE_URL` in the same file once the Spring Boot endpoints are ready. In mock mode, "Download PDF" on the report page uses the browser's print dialog (Save as PDF).
 
 ### 4. Database setup
 
