@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — TraceVault</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app">
+<aside class="sidebar" id="sidebar">
+  <a href="dashboard.html" class="brand">
+    <img class="brand__logo" src="../assets/logo.svg" alt="" width="58" height="52" />
+    <span class="brand__text"><span class="brand__name">Trace<span>Vault</span></span><span class="brand__tag">Forensic Intelligence Suite</span></span>
+  </a>
+  <nav class="side-nav" aria-label="App">
+    <a href="dashboard.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a>
+    <a href="new-verification.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>New Verification</a>
+    <a href="report.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>My Reports</a>
+    <a href="history.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>History</a>
+    <a href="profile.html" class="is-active" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+    <a href="settings.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+</aside>
+<div class="sidebar__scrim" data-sidebar-close></div>
+<main class="main">
+  <div class="main__inner">
+    <header class="topbar">
+  <div class="topbar__left">
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" data-sidebar-open><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
+    <div>
+      <h1>My Profile</h1>
+      <p>View your account details and manage your profile photo.</p>
+    </div>
+  </div>
+  <div class="topbar__right">
+    <a href="notifications.html" class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></a>
+    <a href="profile.html" class="user-chip"><span class="avatar" data-user-initials>AK</span><span data-user-name>Ashfaq Khan</span></a>
+  </div>
+</header>
+    <a href="dashboard.html" class="back-link"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Back</a>
+
+    <div class="profile-grid">
+      <section class="card profile-card">
+        <div class="profile-avatar">
+          <span class="avatar" data-user-initials data-user-photo>AK</span>
+          <button class="profile-avatar__cam" type="button" data-open="photoModal" aria-label="Change photo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></button>
+        </div>
+        <h2 data-user-name>Ashfaq Khan</h2>
+        <p data-user-email>ashfaq.khan@email.com</p>
+        <hr />
+        <button class="btn btn--primary btn--block" type="button" data-open="photoModal"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>Change Photo</button>
+        <button class="btn btn--outline btn--block" type="button" data-open="deletePhotoModal"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>Remove Photo</button>
+        <small>JPG or PNG, max 2 MB</small>
+      </section>
+
+      <section class="card account">
+        <h2>Account Details</h2>
+        <p>Your account information</p>
+        <dl>
+          <div><dt>Full Name</dt><dd data-user-name>Ashfaq Khan</dd></div>
+          <div><dt>Member Since</dt><dd>Jan 12, 2026</dd></div>
+          <div><dt>Email</dt><dd data-user-email>ashfaq.khan@email.com</dd></div>
+          <div><dt>Last Sign-In</dt><dd>Oct 23, 2026, 09:41</dd></div>
+          <div><dt>Account ID</dt><dd>TV-2026-0142</dd></div>
+          <div><dt>Account Status</dt><dd><span class="badge badge--green" style="height:20px;font-size:11px">Active</span></dd></div>
+        </dl>
+        <div class="account__actions">
+          <button class="btn btn--plain" type="button" data-open="logoutModal"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Log Out</button>
+          <button class="btn btn--primary" type="button" data-open="editModal"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/><path d="m15 5 4 4"/></svg>Edit Profile</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Upload profile photo -->
+<div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-labelledby="photoTitle">
+  <div class="modal__box">
+    <div class="modal__head"><div><h2 id="photoTitle">Upload Profile Photo</h2><p>Choose a photo to use as your profile picture.</p></div><button class="modal__close" type="button" data-close aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="modal__body">
+      <div class="photo-drop" id="photoDrop">
+        <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></span>
+        <strong>Drag &amp; drop your photo here</strong>
+        <small>or click the button below to browse your device</small>
+        <label class="btn btn--primary" for="photoInput">Browse</label>
+        <input type="file" id="photoInput" class="sr-only" accept="image/png,image/jpeg" />
+        <small>JPG or PNG, max 2 MB</small>
+      </div>
+      <div class="preview"><span class="avatar" id="photoPreview">AK</span><span>Preview</span></div>
+    </div>
+    <div class="modal__foot"><button class="btn btn--outline" type="button" data-close>Cancel</button><button class="btn btn--primary" type="button" id="savePhoto"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Save Photo</button></div>
+  </div>
+</div>
+
+<!-- Delete profile photo -->
+<div class="modal" id="deletePhotoModal" role="dialog" aria-modal="true" aria-labelledby="delPhotoTitle">
+  <div class="modal__box confirm">
+    <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></span>
+    <h2 id="delPhotoTitle">Delete Profile Photo?</h2>
+    <p>This will remove your current photo and show your initials instead. This action cannot be undone.</p>
+    <div class="confirm__actions"><button class="btn btn--outline" type="button" data-close>Cancel</button><button class="btn btn--primary" type="button" id="confirmDeletePhoto"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>Delete Photo</button></div>
+  </div>
+</div>
+
+<!-- Edit profile -->
+<div class="modal" id="editModal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+  <form class="modal__box" id="editForm" novalidate>
+    <div class="modal__head"><div><h2 id="editTitle">Edit Profile</h2><p>Update your personal information.</p></div><button class="modal__close" type="button" data-close aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div>
+    <div class="modal__body">
+      <div class="field" id="fEditName"><label class="field__label" for="editName">Full Name</label><div class="field__control"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input id="editName" name="name" autocomplete="name" required /></div><span class="field__error"></span></div>
+      <div class="field" id="fEditEmail"><label class="field__label" for="editEmail">Email</label><div class="field__control"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><input id="editEmail" name="email" type="email" autocomplete="email" required /></div><span class="field__error"></span></div>
+      <div class="field"><label class="field__label" for="editId">Account ID</label><div class="field__control is-locked"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg><input id="editId" value="TV-2026-0142" readonly /><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><span class="field-note">Your account ID can only be changed by an administrator.</span></div>
+    </div>
+    <div class="modal__foot"><button class="btn btn--outline" type="button" data-close>Cancel</button><button class="btn btn--primary" type="submit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Save Changes</button></div>
+  </form>
+</div>
+
+<!-- Log out -->
+<div class="modal" id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+  <div class="modal__box confirm">
+    <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg></span>
+    <h2 id="logoutTitle">Log Out?</h2>
+    <p>Are you sure you want to log out of TraceVault? You will need to sign in again to continue.</p>
+    <div class="confirm__actions"><button class="btn btn--outline" type="button" data-close>Cancel</button><button class="btn btn--primary" type="button" data-logout><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Log Out</button></div>
+  </div>
+</div>
+<script src="../js/api.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/profile.js"></script>
+</body>
+</html>
