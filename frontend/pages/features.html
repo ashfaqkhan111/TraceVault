@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn — TraceVault</title>
+  <meta name="description" content="Guides, walkthroughs and product updates on email forensics, file integrity, malware triage and AI-assisted reports." />
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/public.css" />
+</head>
+<body>
+<header class="pub-nav" id="pubNav">
+  <div class="pub-nav__inner">
+    <a href="../../index.html" class="pub-nav__brand" aria-label="TraceVault home">
+      <img src="../assets/logo.svg" alt="" width="74" height="66" />
+      <span class="wordmark">Trace<span>Vault</span></span>
+    </a>
+    <button class="pub-nav__toggle" type="button" aria-label="Open menu" data-nav-toggle><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
+    <nav class="pub-nav__links" aria-label="Main">
+      <a href="../../index.html">Home</a>
+      <a href="features.html" class="is-active" aria-current="page">Features</a>
+      <a href="../../index.html#how-it-works">How It Works</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="pub-nav__login">Login</a>
+      <a href="signup.html" class="btn btn--primary">Sign Up</a>
+    </nav>
+  </div>
+</header>
+<div class="pub-bar" id="pubBar" aria-hidden="true">
+  <div class="pub-bar__inner">
+    <a href="../../index.html" class="pub-bar__brand" tabindex="-1">
+      <img src="../assets/logo-light.svg" alt="" width="35" height="31" />
+      <span class="wordmark">Trace<span>Vault</span></span>
+    </a>
+    <nav class="pub-bar__links">
+      <a href="features.html" tabindex="-1">Services</a>
+      <a href="contact.html" tabindex="-1">Pricing</a>
+      <a href="../../index.html#how-it-works" tabindex="-1">How it Works ?</a>
+    </nav>
+    <div class="pub-bar__actions">
+      <a href="login.html" tabindex="-1">Login</a>
+      <a href="signup.html" class="btn btn--primary" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Get Started</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="b-hero">
+    <div class="b-hero__rings" aria-hidden="true">
+      <span style="left:200px;top:200px;width:400px;height:400px"></span>
+      <span style="left:100px;top:100px;width:600px;height:600px"></span>
+      <span style="left:0;top:0;width:800px;height:800px"></span>
+    </div>
+    <div class="container b-hero__grid">
+      <div>
+        <span class="b-pill">TRACEVAULT BLOG</span>
+        <h1>Learn How TraceVault<br />Investigates <span>Evidence</span></h1>
+        <p class="b-hero__lead">Guides, walkthroughs and product updates on email forensics,<br />file integrity, malware triage and AI-assisted reports.</p>
+        <form class="b-search" role="search" data-article-search>
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" name="q" placeholder="Search feature guides" aria-label="Search feature guides" />
+          <button class="btn btn--accent" type="submit">Search</button>
+        </form>
+      </div>
+      <article class="b-featured">
+        <div class="b-featured__top"><span class="b-pill">FEATURED GUIDE</span><small>10 min read</small></div>
+        <h2>How SHA-256 Hashing Proves<br />Your Evidence Hasn't Been Altered</h2>
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>What a hash value is and why it matters</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>How TraceVault verifies integrity on every upload</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reading a hash mismatch in your report</li>
+        </ul>
+        <div class="b-featured__foot">
+          <a href="#latest" class="btn btn--accent">Read Guide <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <small>Oct 22, 2026 &middot; TraceVault Team</small>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="b-browse container">
+    <div class="b-section-head">
+      <p class="eyebrow">Browse by Feature</p>
+      <h2>Explore Articles for Every TraceVault Tool</h2>
+      <p>Pick a feature to read how-to guides, best practices and real investigation workflows.</p>
+    </div>
+    <div class="b-grid">
+      <article class="b-topic" id="email">
+        <div class="b-topic__top"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><small>14 articles</small></div>
+        <h3>Email Forensics</h3>
+        <p>Analyze email headers, sender routing and<br />suspicious links to spot phishing attempts.</p>
+        <a href="#latest" class="b-link" data-filter-link="email">Explore Articles<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="b-topic" id="file">
+        <div class="b-topic__top"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><small>11 articles</small></div>
+        <h3>File Forensics</h3>
+        <p>Extract metadata and verify SHA-256 hashes<br />to prove your evidence has not been altered.</p>
+        <a href="#latest" class="b-link" data-filter-link="file">Explore Articles<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+      <article class="b-topic" id="malware">
+        <div class="b-topic__top"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span><small>9 articles</small></div>
+        <h3>Malware Analysis</h3>
+        <p>Triage suspicious files and Trojans safely<br />before deeper forensic investigation.</p>
+        <a href="#latest" class="b-link" data-filter-link="malware">Explore Articles<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="b-latest" id="latest">
+    <div class="container">
+      <div class="b-section-head">
+        <p class="eyebrow">Latest Articles</p>
+        <h2>Guides, Walkthroughs &amp; Product Updates</h2>
+      </div>
+      <div class="b-chips" role="tablist" aria-label="Filter articles">
+        <button class="b-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="b-chip" data-filter="email" role="tab">Email Forensics</button>
+        <button class="b-chip" data-filter="file" role="tab">File Forensics</button>
+        <button class="b-chip" data-filter="malware" role="tab">Malware Analysis</button>
+        <button class="b-chip" data-filter="ai" role="tab">AI Reports</button>
+        <button class="b-chip" data-filter="custody" role="tab">Custody &amp; Timelines</button>
+      </div>
+      <div class="b-grid" data-articles>
+        <article class="b-article" data-cat="email">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div><strong>EMAIL FORENSICS</strong><small>6 min read</small></div></div>
+            <h3>How TraceVault Reads Email Headers<br />to Detect Spoofing</h3>
+            <p>Walk through the header fields our analyzer<br />checks and what each one reveals.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar">SL</span><div><strong>Sara Lim</strong><small>Oct 20, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+        <article class="b-article" data-cat="file">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><div><strong>FILE FORENSICS</strong><small>7 min read</small></div></div>
+            <h3>Verifying Evidence Integrity<br />with SHA-256 Hashes</h3>
+            <p>See how every upload gets a hash, and what a<br />mismatch means for your case.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar">AR</span><div><strong>Aisha Rahman</strong><small>Oct 14, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+        <article class="b-article" data-cat="malware">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44 tile--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span><div><strong style="color:var(--tv-yellow-700)">MALWARE ANALYSIS</strong><small>8 min read</small></div></div>
+            <h3>Malware and Trojan Triage:<br />What TraceVault Flags</h3>
+            <p>Understand the suspicious file traits we detect<br />and how to read each risk indicator.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar">DR</span><div><strong>Daniel Reyes</strong><small>Oct 9, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+        <article class="b-article" data-cat="ai">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg></span><div><strong>AI REPORTS</strong><small>6 min read</small></div></div>
+            <h3>From Findings to PDF:<br />Generating AI-Assisted Reports</h3>
+            <p>How AI summarizes technical results and builds<br />a professional report with limitations included.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar">SL</span><div><strong>Sara Lim</strong><small>Oct 2, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+        <article class="b-article" data-cat="custody">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44 tile--slate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span><div><strong style="color:var(--tv-slate-700)">CUSTODY &amp; TIMELINES</strong><small>7 min read</small></div></div>
+            <h3>Managing Evidence and<br />Chain of Custody in TraceVault</h3>
+            <p>Track who handled each item, when and why,<br />with a tamper-evident activity record.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar b-avatar--dark">TV</span><div><strong>TraceVault Team</strong><small>Sep 26, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+        <article class="b-article" data-cat="custody">
+          <div class="b-article__body">
+            <div class="b-article__meta"><span class="tile tile--44 tile--slate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><strong style="color:var(--tv-slate-700)">CUSTODY &amp; TIMELINES</strong><small>5 min read</small></div></div>
+            <h3>Building Investigation Timelines<br />That Hold Up</h3>
+            <p>Organize events from every evidence source into<br />one clear, chronological story.</p>
+          </div>
+          <div class="b-article__foot"><span class="b-avatar">DR</span><div><strong>Daniel Reyes</strong><small>Sep 18, 2026</small></div><a href="#">Read Article <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        </article>
+      </div>
+      <p class="b-empty" data-articles-empty hidden>No articles match your search yet.</p>
+      <button class="b-more" type="button" data-load-more>Load more articles</button>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="b-cta">
+      <p class="eyebrow">Ready to investigate?</p>
+      <h2>Turn Digital Evidence into Actionable Insights</h2>
+      <p>Start analyzing emails, digital files and malware with AI-assisted reports.</p>
+      <a href="new-verification.html" class="btn">Start an Investigation <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<div class="container pub-footer-wrap">
+  <footer class="pub-footer">
+    <div class="pub-footer__grid">
+      <div class="pub-footer__about">
+        <img src="../assets/logo-light.svg" alt="TraceVault" width="96" height="86" />
+        <p>AI-assisted digital forensics for investigating suspicious emails, examining digital files, and documenting evidence-based findings.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="../../index.html#how-it-works">How It Works</a></li>
+          <li><a href="new-verification.html">Investigations</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="features.html">Documentation</a></li>
+          <li><a href="contact.html#resources">Evidence Handling Guidelines</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:support@your-domain.com">support@your-domain.com</a></li>
+          <li>24/7 Online Support</li>
+          <li>Secure Cloud Platform</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pub-footer__bottom">
+      <p>&copy; 2026 TraceVault. All rights reserved.</p>
+      <div class="pub-footer__social">
+        <a href="#" aria-label="Website"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
+        <a href="#" aria-label="Careers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg></a>
+        <a href="mailto:support@your-domain.com" aria-label="Email"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="../js/public.js"></script>
+</body>
+</html>
