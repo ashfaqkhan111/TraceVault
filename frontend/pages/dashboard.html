@@ -1,574 +1,106 @@
 <!DOCTYPE html>
-<!--
-  TraceVault — Dashboard
-  ======================
-  Pure HTML + CSS only. No JavaScript, no frameworks.
-  Font:    Inter via Google Fonts
-  Icons:   Inline SVG (Lucide / Feather style, 1.75px stroke)
-  Styles:  ../css/pages/dashboard.css
--->
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — TraceVault</title>
-
-  <!-- Google Fonts: Inter (weights 400, 500, 600, 700) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Dashboard stylesheet -->
-  <link rel="stylesheet" href="../css/pages/dashboard.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/app.css" />
 </head>
+<body class="app">
+<aside class="sidebar" id="sidebar">
+  <a href="dashboard.html" class="brand">
+    <img class="brand__logo" src="../assets/logo.svg" alt="" width="58" height="52" />
+    <span class="brand__text"><span class="brand__name">Trace<span>Vault</span></span><span class="brand__tag">Forensic Intelligence Suite</span></span>
+  </a>
+  <nav class="side-nav" aria-label="App">
+    <a href="dashboard.html" class="is-active" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a>
+    <a href="new-verification.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>New Verification</a>
+    <a href="report.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>My Reports</a>
+    <a href="history.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>History</a>
+    <a href="profile.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+    <a href="settings.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+</aside>
+<div class="sidebar__scrim" data-sidebar-close></div>
+<main class="main">
+  <div class="main__inner">
+    <header class="topbar">
+  <div class="topbar__left">
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" data-sidebar-open><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
+    <div>
+      <h1>Dashboard</h1>
+      <p>Welcome back! Here's today's verification overview.</p>
+    </div>
+  </div>
+  <div class="topbar__right">
+    <a href="notifications.html" class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></a>
+    <a href="profile.html" class="user-chip"><span class="avatar" data-user-initials>AK</span><span data-user-name>Ashfaq Khan</span></a>
+  </div>
+</header>
 
-<body>
+    <div class="grid-2">
+      <div class="card stat"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><div><small>Total Submissions</small><strong data-stat="total">30</strong><span>Files submitted this month</span></div></div>
+      <div class="card stat"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><div><small>Suspicious Findings</small><strong data-stat="suspicious">12</strong><span>Reports created this month</span></div></div>
+    </div>
 
-  <!-- ══════════════════════════════════════════════════════════
-       APP SHELL
-       Two-column flex row:  [sidebar | main-content]
-       ══════════════════════════════════════════════════════════ -->
-  <div class="app-shell">
-
-    <!-- ════════════════════════════════════════════════════════
-         SIDEBAR
-         Fixed-width (~185px), white background, sticky column.
-         ════════════════════════════════════════════════════════ -->
-    <aside class="sidebar">
-
-      <div class="sidebar__logo">
-        <img src="../assets/logo-mark.svg" class="sidebar__logo-img" width="44" height="44" alt="TraceVault logo" />
-
-        <div class="sidebar__logo-text">
-          <span class="sidebar__brand-name">Trace<span>Vault</span></span>
-          <span class="sidebar__brand-sub">Forensic Intelligence Suite</span>
-        </div>
+    <section class="card mt-25">
+      <div class="card__head"><h2>Recent Verifications</h2><a href="history.html" class="link-more">View All <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <div style="overflow-x:auto">
+        <table class="table">
+          <thead><tr><th>File Name</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>passport.pdf</td><td><span class="badge badge--green"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Completed</span></td><td class="muted">Jul 31, 2026</td><td><a href="report.html" class="row-action"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Download</a></td></tr>
+            <tr><td>medical.pdf</td><td><span class="badge badge--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>Processing</span></td><td class="muted">Jul 31, 2026</td><td><a href="history.html" class="row-action row-action--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>View Status</a></td></tr>
+          </tbody>
+        </table>
       </div>
+    </section>
 
+    <h2 class="section-title">Analysis Breakdown</h2>
+    <div class="grid-3">
+      <div class="card breakdown"><div class="breakdown__top"><span class="tile tile--40"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><strong>14</strong></div><h3>Email Forensics</h3><p>Headers and suspicious links checked</p><div class="progress"><span style="width:47%"></span></div></div>
+      <div class="card breakdown"><div class="breakdown__top"><span class="tile tile--40"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></span><strong>11</strong></div><h3>File Forensics</h3><p>Metadata and SHA-256 integrity checks</p><div class="progress"><span style="width:37%"></span></div></div>
+      <div class="card breakdown"><div class="breakdown__top"><span class="tile tile--40"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></span><strong>5</strong></div><h3>Malware Triage</h3><p>Trojan and suspicious file screening</p><div class="progress"><span style="width:17%"></span></div></div>
+    </div>
 
-      <!-- Navigation -->
-      <nav class="sidebar__nav" aria-label="Main navigation">
-        <ul class="nav-list">
-
-          <!-- Dashboard — ACTIVE page -->
-          <li>
-            <a href="dashboard.html" class="nav-item nav-item--active" aria-current="page">
-              <!-- Grid / four-squares icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7" rx="1" />
-                <rect x="14" y="3" width="7" height="7" rx="1" />
-                <rect x="14" y="14" width="7" height="7" rx="1" />
-                <rect x="3" y="14" width="7" height="7" rx="1" />
-              </svg>
-              Dashboard
-            </a>
-          </li>
-
-          <!-- New Verification -->
-          <li>
-            <a href="#" class="nav-item">
-              <!-- Plus-circle icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="16" />
-                <line x1="8" y1="12" x2="16" y2="12" />
-              </svg>
-              New Verification
-            </a>
-          </li>
-
-          <!-- My Reports -->
-          <li>
-            <a href="#" class="nav-item">
-              <!-- File / document icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="8" y1="13" x2="16" y2="13" />
-                <line x1="8" y1="17" x2="12" y2="17" />
-              </svg>
-              My Reports
-            </a>
-          </li>
-
-          <!-- History -->
-          <li>
-            <a href="history.html" class="nav-item">
-              <!-- Clock icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              History
-            </a>
-          </li>
-
-          <!-- Profile -->
-          <li>
-            <a href="#" class="nav-item">
-              <!-- User / person icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-              Profile
-            </a>
-          </li>
-
-          <!-- Settings -->
-          <li>
-            <a href="settings.html" class="nav-item">
-              <!-- Cog / gear icon -->
-              <svg class="nav-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06
-                         a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09
-                         A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06
-                         a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15
-                         a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09
-                         A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06
-                         a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68
-                         a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09
-                         a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06
-                         a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9
-                         a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09
-                         a1.65 1.65 0 0 0-1.51 1z" />
-              </svg>
-              Settings
-            </a>
-          </li>
-
+    <div class="dash-bottom">
+      <section class="card">
+        <div class="card__head"><h2>Investigation Timeline</h2><a href="report.html#timeline" class="link-more">Full timeline <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+        <ul class="timeline">
+          <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>passport.pdf verification completed</strong><span>Hash verified, no tampering detected &middot; Jul 31, 2026</span></div></li>
+          <li><span class="tile tile--32 tile--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span><div><strong>Suspicious link found in email header</strong><span>Flagged for investigator review &middot; Jul 31, 2026</span></div></li>
+          <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></span><div><strong>medical.pdf analysis started</strong><span>Metadata extraction in progress &middot; Jul 31, 2026</span></div></li>
+          <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span><div><strong>New evidence added to case</strong><span>Chain of custody record created &middot; Jul 30, 2026</span></div></li>
+          <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><div><strong>Case TV-2026-014 opened</strong><span>Investigator assigned &middot; Jul 30, 2026</span></div></li>
         </ul>
-      </nav>
-
-    </aside>
-    <!-- /SIDEBAR -->
-
-
-    <!-- ════════════════════════════════════════════════════════
-         MAIN CONTENT
-         Scrollable area. Sections stack top to bottom.
-         ════════════════════════════════════════════════════════ -->
-    <main class="main-content">
-
-      <!-- ══════════════════════════════════════════════════════
-           TOP HEADER
-           Left: H1 + subtitle   Right: bell + user
-           ══════════════════════════════════════════════════════ -->
-      <header class="page-header">
-
-        <!-- Left block -->
-        <div class="page-header__left">
-          <h1 class="page-header__title">Dashboard</h1>
-          <p class="page-header__subtitle">Welcome back! Here's today's verification overview.</p>
-        </div>
-
-        <!-- Right block: bell button + avatar + name -->
-        <div class="page-header__right">
-
-          <!-- Circular bordered bell button -->
-          <button class="header-bell" aria-label="Notifications">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-            </svg>
-          </button>
-
-          <!-- Green circle avatar + name -->
-          <div class="header-user">
-            <div class="header-user__avatar" aria-hidden="true">AK</div>
-            <span class="header-user__name">Ashfaq Khan</span>
-          </div>
-
-        </div>
-      </header>
-      <!-- /TOP HEADER -->
-
-
-      <!-- ══════════════════════════════════════════════════════
-           SECTION 1: STAT CARDS — 2-column equal grid
-           ══════════════════════════════════════════════════════ -->
-      <section class="stats-grid" aria-label="Summary statistics">
-
-        <!-- Card: Total Submissions -->
-        <div class="stat-card">
-          <!-- Icon in light-green rounded square -->
-          <div class="stat-card__icon-wrap" aria-hidden="true">
-            <!-- Box / package icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8
-                       a2 2 0 0 0 1 1.73L11 21.73a2 2 0 0 0 2 0L20 17.73A2 2 0 0 0 21 16z" />
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-              <line x1="12" y1="22.08" x2="12" y2="12" />
-            </svg>
-          </div>
-          <!-- Text -->
-          <div class="stat-card__body">
-            <p class="stat-card__label">Total Submissions</p>
-            <p class="stat-card__value">30</p>
-            <p class="stat-card__caption">Files submitted this month</p>
-          </div>
-        </div>
-
-        <!-- Card: Suspicious Findings -->
-        <div class="stat-card">
-          <div class="stat-card__icon-wrap" aria-hidden="true">
-            <!-- Document with lines icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="8" y1="13" x2="16" y2="13" />
-              <line x1="8" y1="17" x2="12" y2="17" />
-            </svg>
-          </div>
-          <div class="stat-card__body">
-            <p class="stat-card__label">Suspicious Findings</p>
-            <p class="stat-card__value">12</p>
-            <p class="stat-card__caption">Reports created this month</p>
-          </div>
-        </div>
-
       </section>
-      <!-- /STAT CARDS -->
-
-
-      <!-- ══════════════════════════════════════════════════════
-           SECTION 2: RECENT VERIFICATIONS TABLE
-           ══════════════════════════════════════════════════════ -->
-      <section class="card" aria-label="Recent verifications">
-
-        <!-- Card header: title left, link right -->
-        <div class="card__header">
-          <h2 class="card__title">Recent Verifications</h2>
-          <a href="#" class="link-green">View All →</a>
-        </div>
-
-        <!-- Scroll wrapper enables horizontal scroll on small screens -->
-        <div class="table-scroll-wrap">
-          <table class="verif-table">
-            <thead>
-              <tr>
-                <th scope="col">FILE NAME</th>
-                <th scope="col">STATUS</th>
-                <th scope="col">DATE</th>
-                <th scope="col" class="col-action">ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <!-- Row 1: passport.pdf — Completed -->
-              <tr>
-                <td class="verif-table__filename">passport.pdf</td>
-                <td>
-                  <!-- Green "Completed" badge with check icon -->
-                  <span class="badge badge--green">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    Completed
-                  </span>
-                </td>
-                <td class="verif-table__date">Jul 31, 2026</td>
-                <td class="col-action">
-                  <!-- Green "Download" action link -->
-                  <a href="#" class="action-link action-link--green">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    Download
-                  </a>
-                </td>
-              </tr>
-
-              <!-- Row 2: medical.pdf — Processing -->
-              <tr>
-                <td class="verif-table__filename">medical.pdf</td>
-                <td>
-                  <!-- Amber "Processing" badge with clock icon -->
-                  <span class="badge badge--amber">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    Processing
-                  </span>
-                </td>
-                <td class="verif-table__date">Jul 31, 2026</td>
-                <td class="col-action">
-                  <!-- Amber "View Status" action link -->
-                  <a href="#" class="action-link action-link--amber">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    View Status
-                  </a>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-
-      </section>
-      <!-- /RECENT VERIFICATIONS -->
-
-
-      <!-- ══════════════════════════════════════════════════════
-           SECTION 3: ANALYSIS BREAKDOWN
-           Section heading + 3 equal cards
-           ══════════════════════════════════════════════════════ -->
-      <section aria-label="Analysis breakdown">
-        <h2 class="section-heading">Analysis Breakdown</h2>
-
-        <!-- Three equal-width breakdown cards -->
-        <div class="breakdown-grid">
-
-          <!-- Card 1: Email Forensics (~47%) -->
-          <div class="breakdown-card">
-            <!-- Top row: icon left, big number right -->
-            <div class="breakdown-card__top">
-              <!-- Green-tint square with mail icon -->
-              <div class="breakdown-card__icon-wrap" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6
-                           c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </div>
-              <span class="breakdown-card__value">14</span>
-            </div>
-            <h3 class="breakdown-card__title">Email Forensics</h3>
-            <p class="breakdown-card__caption">Headers and suspicious links checked</p>
-            <!-- Progress bar: 47% of 30 submissions -->
-            <div class="progress" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"
-              aria-label="Email Forensics 47% complete">
-              <div class="progress__fill" style="width: 47%"></div>
-            </div>
+      <div class="stack">
+        <section class="card">
+          <div class="card__head"><h2>AI Analysis Summary</h2></div>
+          <div class="card__body ai-summary">
+            <p>12 of 30 submissions this month contain suspicious characteristics. Most findings relate to email header mismatches and altered file metadata. Review flagged items before finalizing reports.</p>
+            <a href="report.html" class="btn btn--primary"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Generate PDF Report</a>
           </div>
-
-          <!-- Card 2: File Forensics (~37%) -->
-          <div class="breakdown-card">
-            <div class="breakdown-card__top">
-              <div class="breakdown-card__icon-wrap" aria-hidden="true">
-                <!-- File with corner fold -->
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                </svg>
-              </div>
-              <span class="breakdown-card__value">11</span>
-            </div>
-            <h3 class="breakdown-card__title">File Forensics</h3>
-            <p class="breakdown-card__caption">Metadata and SHA-256 integrity checks</p>
-            <div class="progress" role="progressbar" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"
-              aria-label="File Forensics 37% complete">
-              <div class="progress__fill" style="width: 37%"></div>
-            </div>
-          </div>
-
-          <!-- Card 3: Malware Triage (~17%) -->
-          <div class="breakdown-card">
-            <div class="breakdown-card__top">
-              <div class="breakdown-card__icon-wrap" aria-hidden="true">
-                <!-- Shield icon -->
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <span class="breakdown-card__value">5</span>
-            </div>
-            <h3 class="breakdown-card__title">Malware Triage</h3>
-            <p class="breakdown-card__caption">Trojan and suspicious file screening</p>
-            <div class="progress" role="progressbar" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"
-              aria-label="Malware Triage 17% complete">
-              <div class="progress__fill" style="width: 17%"></div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-      <!-- /ANALYSIS BREAKDOWN -->
-
-
-      <!-- ══════════════════════════════════════════════════════
-           SECTION 4: BOTTOM ROW
-           Left (~1.6fr): Investigation Timeline
-           Right (~1fr):  AI Summary + Evidence Integrity stacked
-           ══════════════════════════════════════════════════════ -->
-      <div class="bottom-row">
-
-        <!-- ── LEFT: Investigation Timeline ── -->
-        <section class="card" aria-label="Investigation timeline">
-          <div class="card__header">
-            <h2 class="card__title">Investigation Timeline</h2>
-            <a href="#" class="link-green">Full timeline →</a>
-          </div>
-
-          <!-- Timeline: 5 items with a border-bottom divider between each -->
-          <ul class="timeline">
-
-            <!-- Item 1: green check — completed -->
-            <li class="timeline__item">
-              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <div class="timeline__body">
-                <p class="timeline__event">passport.pdf verification completed</p>
-                <p class="timeline__meta">Hash verified, no tampering detected · Jul 31, 2026</p>
-              </div>
-            </li>
-
-            <!-- Item 2: amber warning triangle — flagged -->
-            <li class="timeline__item">
-              <div class="timeline__icon timeline__icon--amber" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3
-                           L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                  <line x1="12" y1="9" x2="12" y2="13" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg>
-              </div>
-              <div class="timeline__body">
-                <p class="timeline__event">Suspicious link found in email header</p>
-                <p class="timeline__meta">Flagged for investigator review · Jul 31, 2026</p>
-              </div>
-            </li>
-
-            <!-- Item 3: green refresh/spinner — in progress -->
-            <li class="timeline__item">
-              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10" />
-                  <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
-                </svg>
-              </div>
-              <div class="timeline__body">
-                <p class="timeline__event">medical.pdf analysis started</p>
-                <p class="timeline__meta">Metadata extraction in progress · Jul 31, 2026</p>
-              </div>
-            </li>
-
-            <!-- Item 4: green plus — new evidence -->
-            <li class="timeline__item">
-              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </div>
-              <div class="timeline__body">
-                <p class="timeline__event">New evidence added to case</p>
-                <p class="timeline__meta">Chain of custody record created · Jul 30, 2026</p>
-              </div>
-            </li>
-
-            <!-- Item 5: green user — case opened (last item, no bottom divider) -->
-            <li class="timeline__item timeline__item--last">
-              <div class="timeline__icon timeline__icon--green" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </div>
-              <div class="timeline__body">
-                <p class="timeline__event">Case TV-2026-014 opened</p>
-                <p class="timeline__meta">Investigator assigned · Jul 30, 2026</p>
-              </div>
-            </li>
-
+        </section>
+        <section class="card">
+          <div class="card__head"><h2>Evidence Integrity</h2></div>
+          <ul class="card__body integrity">
+            <li><div><strong>passport.pdf</strong><small>SHA-256 &middot; 9f2c4a…e71b</small></div><span class="badge badge--green">Verified</span></li>
+            <li><div><strong>medical.pdf</strong><small>SHA-256 &middot; calculating…</small></div><span class="badge badge--yellow">Pending</span></li>
           </ul>
         </section>
-        <!-- /TIMELINE -->
-
-
-        <!-- ── RIGHT: two stacked cards ── -->
-        <div class="right-stack">
-
-          <!-- Card A: AI Analysis Summary -->
-          <section class="card" aria-label="AI analysis summary">
-            <h2 class="card__title card__title--standalone">AI Analysis Summary</h2>
-            <p class="ai-summary__text">
-              12 of 30 submissions this month contain suspicious characteristics.
-              Most findings relate to email header mismatches and altered file metadata.
-              Review flagged items before finalizing reports.
-            </p>
-            <!-- Solid green CTA button -->
-            <button class="btn-primary" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-              </svg>
-              Generate PDF Report
-            </button>
-          </section>
-
-          <!-- Card B: Evidence Integrity -->
-          <section class="card" aria-label="Evidence integrity">
-            <h2 class="card__title card__title--standalone">Evidence Integrity</h2>
-
-            <ul class="integrity-list">
-
-              <!-- Row 1: passport.pdf — Verified -->
-              <li class="integrity-item">
-                <div class="integrity-item__info">
-                  <span class="integrity-item__filename">passport.pdf</span>
-                  <span class="integrity-item__hash">SHA-256 · 9f2c4a...e71b</span>
-                </div>
-                <span class="badge badge--green">Verified</span>
-              </li>
-
-              <!-- Row 2: medical.pdf — Pending -->
-              <li class="integrity-item">
-                <div class="integrity-item__info">
-                  <span class="integrity-item__filename">medical.pdf</span>
-                  <span class="integrity-item__hash">SHA-256 · calculating...</span>
-                </div>
-                <span class="badge badge--amber">Pending</span>
-              </li>
-
-            </ul>
-          </section>
-
-        </div>
-        <!-- /RIGHT STACK -->
-
       </div>
-      <!-- /BOTTOM ROW -->
-
-    </main>
-    <!-- /MAIN CONTENT -->
-
+    </div>
   </div>
-  <!-- /APP SHELL -->
-
+</main>
+<script src="../js/api.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/app.js"></script>
 </body>
-
 </html>
