@@ -1,0 +1,68 @@
+/* ============================================================
+   TraceVault — Design tokens
+   Every value here is taken from the Figma prototype
+   (file "tracevault"). Do not change colors without updating
+   the design first.
+   ============================================================ */
+:root {
+  /* Brand greens */
+  --tv-green:        #0EAA80;   /* primary buttons, logo, "Vault" */
+  --tv-green-500:    #10B981;   /* accents, progress bars, blog buttons */
+  --tv-green-600:    #059669;   /* active nav text, app links */
+  --tv-green-700:    #0A8068;   /* eyebrows, "Home" link */
+  --tv-green-300:    #34D399;   /* tags on dark backgrounds */
+  --tv-green-200:    #BBF7D0;
+  --tv-green-100:    #D1FAE5;   /* icon tiles, badges, active nav bg */
+  --tv-green-50:     #DCFCE7;
+
+  /* Navy / dark surfaces */
+  --tv-navy:         #1D2B3A;   /* hero, footer, logo tile */
+  --tv-navy-900:     #0F172A;   /* headings, dark cards */
+  --tv-navy-blog:    #1F2D33;
+  --tv-navy-line:    #334155;
+
+  /* Neutrals */
+  --tv-text:         #0F172A;
+  --tv-muted:        #64748B;
+  --tv-slate-700:    #334155;
+  --tv-slate-600:    #475569;
+  --tv-slate-400:    #94A3B8;
+  --tv-slate-300:    #CBD5E1;
+  --tv-slate-200:    #E2E8F0;
+  --tv-slate-100:    #F1F5F9;
+  --tv-border:       #E5E7EB;
+  --tv-bg:           #F8FAFC;
+  --tv-white:        #FFFFFF;
+
+  /* Status */
+  --tv-yellow-100:   #FEF9C3;
+  --tv-yellow-600:   #CA8A04;
+  --tv-yellow-700:   #A16207;
+  --tv-red-100:      #FEE2E2;
+  --tv-red-600:      #DC2626;
+  --tv-red-800:      #A51431;   /* "Delete Account" button */
+
+  /* Gradients (auth side panels) */
+  --tv-grad-auth:    linear-gradient(180deg, #033031 0%, #0EAA80 100%);
+  --tv-grad-success: linear-gradient(180deg, #073132 0%, #0EAA80 100%);
+
+  /* Typography */
+  --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ff-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+
+  /* Radius */
+  --r-6: 6px;  --r-8: 8px;  --r-10: 10px; --r-12: 12px;
+  --r-14: 14px; --r-16: 16px; --r-20: 20px; --r-24: 24px; --r-full: 999px;
+
+  /* Shadows (from the prototype effects) */
+  --sh-card:  0 8px 24px rgba(0,0,0,.08);
+  --sh-soft:  0 4px 16px rgba(15,27,45,.05);
+  --sh-btn:   0 8px 24px rgba(22,163,74,.20);
+  --sh-dark:  0 24px 60px rgba(0,0,0,.19);
+  --sh-modal: 0 24px 60px rgba(15,23,42,.25);
+
+  /* Layout */
+  --container:  1200px;
+  --sidebar-w:  240px;
+  --app-pad:    32px;
+}
