@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis Report — TraceVault</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app">
+<aside class="sidebar" id="sidebar">
+  <a href="dashboard.html" class="brand">
+    <img class="brand__logo" src="../assets/logo.svg" alt="" width="58" height="52" />
+    <span class="brand__text"><span class="brand__name">Trace<span>Vault</span></span><span class="brand__tag">Forensic Intelligence Suite</span></span>
+  </a>
+  <nav class="side-nav" aria-label="App">
+    <a href="dashboard.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Dashboard</a>
+    <a href="new-verification.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>New Verification</a>
+    <a href="report.html" class="is-active" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>My Reports</a>
+    <a href="history.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>History</a>
+    <a href="profile.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+    <a href="settings.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+</aside>
+<div class="sidebar__scrim" data-sidebar-close></div>
+<main class="main">
+  <div class="main__inner">
+    <header class="topbar">
+  <div class="topbar__left">
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" data-sidebar-open><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
+    <div>
+      <h1>Analysis Report</h1>
+      <p>Detailed findings, evidence integrity and AI summary for this investigation.</p>
+    </div>
+  </div>
+  <div class="topbar__right">
+    <a href="notifications.html" class="icon-btn" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></a>
+    <a href="profile.html" class="user-chip"><span class="avatar" data-user-initials>AK</span><span data-user-name>Ashfaq Khan</span></a>
+  </div>
+</header>
+    <a href="history.html" class="back-link"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Back to History</a>
+
+    <section class="card report-head">
+      <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
+      <div class="report-head__main">
+        <div class="report-head__title"><h2 data-r="name">corporate_wire_receipt.pdf</h2><span class="badge badge--yellow">SUSPICIOUS</span></div>
+        <p class="report-head__meta" data-r="meta">Report RPT-2026-0142 &middot; Case TV-2026-014 &middot; Analyzed Oct 24, 2026, 09:42 AM &middot; Analyst: Ashfaq Khan</p>
+        <div class="chips">
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>File Forensics</span>
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>Malware Triage</span>
+          <span class="chip"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>AI Summary</span>
+        </div>
+      </div>
+      <div class="report-head__side">
+        <div>
+          <button class="btn btn--outline" type="button" data-reanalyze><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>Re-analyze</button>
+          <button class="btn btn--primary" type="button" data-download><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Download PDF</button>
+        </div>
+        <small>Generated by TraceVault AI</small>
+      </div>
+    </section>
+
+    <div class="grid-4 mt-25">
+      <div class="card metric"><div><small>Risk Score</small><strong>72 <em>/ 100</em></strong><span class="is-yellow">Medium-high risk</span></div><span class="tile tile--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="card metric"><div><small>Evidence Integrity</small><strong>Verified</strong><span class="is-green">SHA-256 matches the stored original</span></div><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span></div>
+      <div class="card metric"><div><small>Suspicious Findings</small><strong>4</strong><span>1 high &middot; 2 medium &middot; 1 low</span></div><span class="tile tile--red"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
+      <div class="card metric"><div><small>AI Confidence</small><strong>91%</strong><span>Based on 14 evidence checks</span></div><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg></span></div>
+    </div>
+
+    <div class="report-grid">
+      <div class="stack">
+        <section class="card">
+          <div class="card__head"><h2 style="display:flex;align-items:center;gap:12px"><span class="tile tile--32" style="border-radius:8px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg></span>AI Analysis Summary</h2><span class="tag-ai">AI-GENERATED &middot; REVIEW BEFORE USE</span></div>
+          <div class="card__body">
+            <p class="ai-text">The file shows signs of editing after it was created. Its metadata lists a different authoring tool from the original and a modified date later than the creation date. The SHA-256 hash matches the stored original, so the evidence itself was not changed after upload. A manual review of the flagged fields is recommended before relying on it.</p>
+            <span class="label-sm">Key signals</span>
+            <div class="chips">
+              <span class="badge badge--red"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Metadata mismatch</span>
+              <span class="badge badge--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Tool changed after edit</span>
+              <span class="badge badge--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Embedded JavaScript</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card__head"><h2>Findings<span class="count-pill">4</span></h2>
+            <div class="seg" data-seg>
+              <button class="is-active" data-sev="all" type="button">All</button>
+              <button data-sev="high" type="button">High</button>
+              <button data-sev="medium" type="button">Medium</button>
+            </div>
+          </div>
+          <ul class="findings">
+            <li data-sev="high"><span class="badge badge--red">HIGH</span><div><strong>Metadata mismatch detected</strong><small>Modified date is 14 days later than the creation date.</small></div><span class="chip">File Forensics</span></li>
+            <li data-sev="medium"><span class="badge badge--yellow">MEDIUM</span><div><strong>Authoring tool differs from original</strong><small>Created with Word, last saved by a PDF editor.</small></div><span class="chip">File Forensics</span></li>
+            <li data-sev="medium"><span class="badge badge--yellow">MEDIUM</span><div><strong>Embedded JavaScript found</strong><small>An embedded script runs automatically when the file opens.</small></div><span class="chip">Malware Triage</span></li>
+            <li data-sev="low"><span class="badge badge--green">LOW</span><div><strong>Unusual file size for document type</strong><small>File is 30% smaller than similar receipts.</small></div><span class="chip">Malware Triage</span></li>
+          </ul>
+        </section>
+
+        <section class="card" id="timeline">
+          <div class="card__head"><h2>Investigation Timeline</h2><a href="#timeline" class="link-more">View full timeline <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+          <ul class="events">
+            <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></span><div><strong>Evidence uploaded</strong><small>corporate_wire_receipt.pdf uploaded by Ashfaq Khan</small></div><time>Oct 24, 09:38 AM</time></li>
+            <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="m16 3-2 18"/></svg></span><div><strong>SHA-256 hash calculated</strong><small>Hash stored and sealed in the chain of custody</small></div><time>Oct 24, 09:38 AM</time></li>
+            <li><span class="tile tile--32 tile--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><div><strong>Metadata extracted</strong><small>11 fields read, 2 anomalies flagged</small></div><time>Oct 24, 09:40 AM</time></li>
+            <li><span class="tile tile--32 tile--yellow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><div><strong>Malware triage completed</strong><small>2 low-confidence indicators found</small></div><time>Oct 24, 09:41 AM</time></li>
+            <li><span class="tile tile--32"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg></span><div><strong>AI summary and report generated</strong><small>Report RPT-2026-0142 is ready to download</small></div><time>Oct 24, 09:42 AM</time></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="card">
+          <div class="card__head"><h2>Risk Overview</h2></div>
+          <div class="risk">
+            <div class="donut">
+              <svg viewBox="0 0 104 104" aria-hidden="true"><circle cx="52" cy="52" r="44" fill="none" stroke="#FEF9C3" stroke-width="10"/><circle cx="52" cy="52" r="44" fill="none" stroke="#CA8A04" stroke-width="10" stroke-linecap="round" stroke-dasharray="199 277"/></svg>
+              <div><strong>72</strong><small>of 100</small></div>
+            </div>
+            <ul class="bars">
+              <li><div><span>File Forensics</span><b>78</b></div><div class="progress"><span class="is-yellow" style="width:78%"></span></div></li>
+              <li><div><span>Malware Triage</span><b>62</b></div><div class="progress"><span class="is-yellow" style="width:62%"></span></div></li>
+              <li><div><span>Metadata Integrity</span><b>81</b></div><div class="progress"><span class="is-red" style="width:81%"></span></div></li>
+            </ul>
+          </div>
+          <p class="risk-note">Scores are indicators only. Manual review recommended.</p>
+        </section>
+
+        <section class="card">
+          <div class="card__head"><h2>Evidence Details</h2></div>
+          <div class="details">
+            <dl style="margin-top:12px">
+              <dt>File name</dt><dd>corporate_wire_receipt.pdf</dd>
+              <dt>Format</dt><dd>PDF 1.7</dd>
+              <dt>File size</dt><dd>860 KB</dd>
+              <dt>Uploaded</dt><dd>Oct 24, 2026, 09:38</dd>
+              <dt>Created (metadata)</dt><dd>Oct 2, 2026</dd>
+              <dt>Modified (metadata)</dt><dd>Oct 16, 2026</dd>
+              <dt>Producer</dt><dd>Adobe Acrobat Pro</dd>
+            </dl>
+            <div class="hash-head"><span>SHA-256 Hash</span><span class="badge badge--green" style="height:20px;font-size:10px">MATCHES ORIGINAL</span></div>
+            <div class="hash"><code data-hash>9f2c4a7e1d8b3c56a0e94f2b7d61c8a35e0f9b2d4c7a1e86f3b5d0c9a2e4f71b</code><button type="button" data-copy-hash aria-label="Copy hash"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card__head"><h2>Chain of Custody</h2></div>
+          <ul class="custody" style="padding:6px 0">
+            <li><span class="avatar">AK</span><div><strong>Ashfaq Khan</strong><small>Collected and uploaded evidence</small></div><time>09:38 AM</time></li>
+            <li><span class="avatar avatar--dark">TV</span><div><strong>TraceVault System</strong><small>Hash calculated and sealed</small></div><time>09:38 AM</time></li>
+            <li><span class="avatar avatar--dark">AI</span><div><strong>TraceVault AI</strong><small>Automated analysis completed</small></div><time>09:41 AM</time></li>
+            <li><span class="avatar">AK</span><div><strong>Ashfaq Khan</strong><small>Viewed the analysis report</small></div><time>09:44 AM</time></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <section class="card limits">
+      <div class="card__head"><h2>Limitations</h2></div>
+      <div class="card__body">
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Findings are indicators, not proof. A qualified examiner should review them before they are used as evidence.</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>A matching SHA-256 hash shows the file was not changed after upload. It does not prove the original file is authentic.</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>The AI summary is generated from the recorded findings and may be incomplete. Check it against the details above.</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Metadata can be edited by common tools. Treat creation and modification dates as supporting information only.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="../js/api.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/report.js"></script>
+</body>
+</html>
