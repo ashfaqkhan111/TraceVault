@@ -59,7 +59,7 @@
 .hero__cta { display: flex; gap: var(--sp-3); flex-wrap: wrap; align-items: center; }
 
 .hero__dots {
-  display: flex; align-items: center; gap: var(--sp-2);
+  display: flex; align-items: center; gap: var(--sp-3);
   margin-top: var(--sp-6); font-size: var(--fz-13); color: var(--clr-text-hint);
 }
 .hero__dots-sep { width: 4px; height: 4px; background: var(--clr-teal-border); border-radius: 50%; }
