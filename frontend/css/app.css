@@ -171,10 +171,19 @@
 .metric span { display: block; margin-top: 6px; font-size: 11.5px; color: var(--tv-muted); }
 .metric span.is-yellow { color: var(--tv-yellow-600); }
 .metric span.is-green { color: var(--tv-green-600); }
-.metric { align-items: flex-start; }        /* flex-start | center | flex-end: vertical position of the tile */
+.metric { display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 19px 19px 17px;
+  min-height: 109px; }        /* flex-start | center | flex-end: vertical position of the tile */
 .metric .tile {
-  margin-top: 0;                             /* push down with positive values */
-  margin-right: 0;                           /* push left with positive values */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: center;
+  margin: 0;                           /* push left with positive values */
   /* or: transform: translate(-4px, 4px); */
 }
 .metric .tile .ic { transform: translate(0, 0); }  /* nudge the icon inside the tile */
