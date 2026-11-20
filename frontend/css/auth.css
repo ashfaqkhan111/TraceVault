@@ -35,11 +35,8 @@
 }
 .auth-panel__shield { width: 96px; height: 96px; display: grid; place-items: center; color: #fff; }
 .auth-panel__shield .ic { width: 64px; height: 80px; stroke-width: 1.5; }
-.auth-panel__deco { position: absolute; inset: 0; opacity: .1; pointer-events: none; }
-.auth-panel__deco::before { content: ''; position: absolute; left: 50%; top: 233px; width: 171px; height: 171px; margin-left: -86px; border: 1.6px solid #fff; border-radius: 50%; }
-.auth-panel__deco::after { content: ''; position: absolute; left: 67px; right: 67px; top: 318px; height: 1.1px; background: #fff; }
 .auth-card { position: relative; width: 320px; margin-top: 24px; padding: 24px; background: #fff; border-radius: var(--r-16); }
-.auth-card h3 { font-size: 18px; font-weight: 700; color: var(--tv-text); margin-bottom: 4px; }
+.auth-card h3 { font-size: 20px; font-weight: 700; color: var(--tv-text); margin-bottom: 4px; }
 .auth-card li { display: flex; align-items: center; gap: 12px; height: 38px; margin-top: 16px; padding-left: 10px; font-size: 14px; font-weight: 500; color: var(--tv-slate-600); }
 .auth-card li:first-of-type { margin-top: 12px; }
 .auth-card li .ic { width: 18px; height: 18px; color: var(--tv-green); }
@@ -106,4 +103,19 @@
   .auth__lead { font-size: 16px; }
   .reset__card { padding: 28px 20px; }
   .reset__copy { margin-top: 48px; }
+}
+/* Sign up: center shield + card + badge vertically in the taller panel */
+.auth-panel--signup {
+  justify-content: center;   /* vertical centering (the panel is a column flexbox) */
+  padding-top: 0px;
+  padding-bottom: 140px;
+}
+.auth-panel--signup .auth-panel__copy {
+  position: absolute;        /* keep the © line pinned to the bottom */
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
