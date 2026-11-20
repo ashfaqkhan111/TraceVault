@@ -91,6 +91,28 @@
 .integrity strong { display: block; font-size: 14px; font-weight: 400; }
 .integrity small { font-size: 11.5px; color: var(--tv-muted); }
 .integrity .badge { width: 70px; justify-content: center; }
+.stat .tile {
+
+  display: flex;               /* overrides .stat span's display:block */
+  align-items: center;         /* vertical position of icon inside tile */
+  justify-content: center;     /* horizontal position of icon inside tile */
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: #d1fae5;         /* or your green token */
+}
+
+.stat .ic {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--tv-muted);
+}
 
 /* ── New verification ──────────────────────────────────── */
 .upload-card { padding: 28px; }
@@ -129,7 +151,8 @@
 
 /* ── Analysis report ───────────────────────────────────── */
 .report-head { display: flex; gap: 20px; padding: 23px; }
-.report-head .tile { background: var(--tv-yellow-100); color: var(--tv-yellow-600); }
+.report-head .tile { width: 60px; height: 60px; align-self: flex-start; /* or center */ }
+.report-head .tile .ic { width: 24px; height: 24px; }
 .report-head__main { flex: 1; min-width: 0; }
 .report-head__title { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .report-head__title h2 { font-size: 20px; font-weight: 700; word-break: break-all; }
@@ -148,8 +171,13 @@
 .metric span { display: block; margin-top: 6px; font-size: 11.5px; color: var(--tv-muted); }
 .metric span.is-yellow { color: var(--tv-yellow-600); }
 .metric span.is-green { color: var(--tv-green-600); }
-.metric .tile { width: 36px; height: 36px; border-radius: var(--r-8); }
-.metric .tile .ic { width: 17px; height: 17px; }
+.metric { align-items: flex-start; }        /* flex-start | center | flex-end: vertical position of the tile */
+.metric .tile {
+  margin-top: 0;                             /* push down with positive values */
+  margin-right: 0;                           /* push left with positive values */
+  /* or: transform: translate(-4px, 4px); */
+}
+.metric .tile .ic { transform: translate(0, 0); }  /* nudge the icon inside the tile */
 .report-grid { display: grid; grid-template-columns: 743px 1fr; gap: 17px; margin-top: 25px; align-items: start; }
 .report-grid > .stack { min-width: 0; }
 .tag-ai { height: 24px; padding: 0 10px; display: inline-flex; align-items: center; border-radius: var(--r-full); background: var(--tv-slate-100); font-size: 10.5px; font-weight: 700; color: var(--tv-muted); }
