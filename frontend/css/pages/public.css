@@ -310,7 +310,7 @@
 .c-faq__item p { margin-top: 8px; font-size: 15px; line-height: 1.6; color: var(--c-body); }
 .c-cta { margin-top: 80px; padding: 75px 0 64px; background: var(--tv-green); border-radius: 22.6px; text-align: center; color: #fff; }
 .c-cta .c-eyebrow { color: #fff; font-size: 13.4px; }
-.c-cta h2 { margin-top: 16px; font-size: 37px; font-weight: 800; }
+.c-cta h2 { margin-top: 16px; font-size: 37px; font-weight: 800;}
 .c-cta p { max-width: 617px; margin: 16px auto 0; font-size: 17.5px; line-height: 1.6; }
 .c-cta .btn { margin-top: 30px; height: 50px; padding: 0 31px; border-radius: 10.3px; background: #fff; color: var(--c-green); font-size: 15.4px; font-weight: 700; }
 

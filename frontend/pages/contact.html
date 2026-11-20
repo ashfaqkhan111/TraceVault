@@ -1,218 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us — TraceVault</title>
-  <meta name="description" content="Get in touch with the TraceVault team about digital forensics, evidence verification, or your account." />
+  <meta name="description"
+    content="Get in touch with the TraceVault team about digital forensics, evidence verification, or your account." />
   <link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/public.css" />
 </head>
+
 <body class="c-page">
-<header class="pub-nav" id="pubNav">
-  <div class="pub-nav__inner">
-    <a href="../../index.html" class="pub-nav__brand" aria-label="TraceVault home">
-      <img src="../assets/logo.svg" alt="" width="74" height="66" />
-      <span class="wordmark">Trace<span>Vault</span></span>
-    </a>
-    <button class="pub-nav__toggle" type="button" aria-label="Open menu" data-nav-toggle><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
-    <nav class="pub-nav__links" aria-label="Main">
-      <a href="../../index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="../../index.html#how-it-works">How It Works</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html" class="is-active" aria-current="page">Contact</a>
-      <a href="login.html" class="pub-nav__login">Login</a>
-      <a href="signup.html" class="btn btn--primary">Sign Up</a>
-    </nav>
+  <header class="pub-nav" id="pubNav">
+    <div class="pub-nav__inner">
+      <a href="../../index.html" class="pub-nav__brand" aria-label="TraceVault home">
+        <img src="../assets/logo.svg" alt="" width="74" height="66" />
+        <span class="wordmark">Trace<span>Vault</span></span>
+      </a>
+      <button class="pub-nav__toggle" type="button" aria-label="Open menu" data-nav-toggle><svg class="ic"
+          viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16" />
+          <path d="M4 12h16" />
+          <path d="M4 18h16" />
+        </svg></button>
+      <nav class="pub-nav__links" aria-label="Main">
+        <a href="../../index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="../../index.html#how-it-works">How It Works</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="is-active" aria-current="page">Contact</a>
+        <a href="login.html" class="pub-nav__login">Login</a>
+        <a href="signup.html" class="btn btn--primary">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+  <div class="pub-bar" id="pubBar" aria-hidden="true">
+    <div class="pub-bar__inner">
+      <a href="../../index.html" class="pub-bar__brand" tabindex="-1">
+        <img src="../assets/logo-light.svg" alt="" width="35" height="31" />
+        <span class="wordmark">Trace<span>Vault</span></span>
+      </a>
+      <nav class="pub-bar__links">
+        <a href="../../index.html" tabindex="-1">Home</a>
+        <a href="features.html" tabindex="-1">Features</a>
+        <a href="../../index.html#how-it-works" tabindex="-1">How it Works</a>
+        <a href="about.html" tabindex="-1">About Us</a>
+        <a href="contact.html" tabindex="-1">Contact</a>
+      </nav>
+      <div class="pub-bar__actions">
+        <a href="login.html" tabindex="-1">Login</a>
+        <a href="signup.html" class="btn btn--primary" tabindex="-1"><svg class="ic" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg> Get Started</a>
+      </div>
+    </div>
   </div>
-</header>
-<div class="pub-bar" id="pubBar" aria-hidden="true">
-  <div class="pub-bar__inner">
-    <a href="../../index.html" class="pub-bar__brand" tabindex="-1">
-      <img src="../assets/logo-light.svg" alt="" width="35" height="31" />
-      <span class="wordmark">Trace<span>Vault</span></span>
-    </a>
-    <nav class="pub-bar__links">
-      <a href="../../index.html" tabindex="-1">Home</a>
-      <a href="features.html" tabindex="-1">Features</a>
-      <a href="../../index.html#how-it-works" tabindex="-1">How it Works</a>
-      <a href="about.html" tabindex="-1">About Us</a>
-      <a href="contact.html" tabindex="-1">Contact</a>
-    </nav>
-    <div class="pub-bar__actions">
-      <a href="login.html" tabindex="-1">Login</a>
-      <a href="signup.html" class="btn btn--primary" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Get Started</a>
-    </div>
-  </div>
-</div>
 
-<main>
-  <section class="c-hero">
-    <div class="c-wrap c-hero__grid">
-      <div>
-        <span class="c-pill">Contact Us</span>
-        <h1>Get in Touch with the TraceVault Team</h1>
-        <p class="c-hero__lead">Questions about digital forensics, evidence verification, or your account? Send us a message and our team will get back to you.</p>
-        <div class="c-hero__actions">
-          <a href="#message" class="btn btn--primary">Send a Message</a>
-          <a href="#resources" class="btn btn--ghost-dark">Read Documentation</a>
-        </div>
-      </div>
-      <div class="c-overview">
-        <div class="c-overview__head"><h3>Support Overview</h3><span>Open for messages</span></div>
-        <div class="c-overview__msg">
-          <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-          <div><strong>Message to the TraceVault team</strong><small>Reply sent by email</small></div>
-        </div>
-        <dl>
-          <dt>Email support</dt><dd class="is-ok">Available</dd>
-          <dt>Typical response time</dt><dd>10 hours</dd>
-          <dt>Support hours</dt><dd>[Mon to Fri, 00:00 to 00:00]</dd>
-          <dt>Evidence files</dt><dd>Do not attach here</dd>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <section class="c-help" id="message">
-    <div class="c-wrap">
-      <div class="c-head">
-        <p class="c-eyebrow">We're here to help</p>
-        <h2>How Can We Help You?</h2>
-        <p>Fill in the form and we will respond as soon as we can, or use one of the contact options on the right.</p>
-      </div>
-      <div class="c-help__grid">
-        <form class="c-form" id="contactForm" novalidate>
-          <h3>Send us a message</h3>
-          <div class="c-form__row">
-            <div class="field" id="fName">
-              <label class="field__label" for="cName">Full name</label>
-              <div class="field__control"><input id="cName" name="name" placeholder="Your name" autocomplete="name" required /></div>
-              <span class="field__error"></span>
-            </div>
-            <div class="field" id="fEmail">
-              <label class="field__label" for="cEmail">Email address</label>
-              <div class="field__control"><input id="cEmail" name="email" type="email" placeholder="name@email.com" autocomplete="email" required /></div>
-              <span class="field__error"></span>
-            </div>
-          </div>
-          <div class="field">
-            <label class="field__label" for="cTopic">Topic</label>
-            <div class="field__control">
-              <select id="cTopic" name="topic">
-                <option>General inquiry</option>
-                <option>Technical support</option>
-                <option>Account and billing</option>
-                <option>Evidence handling</option>
-              </select>
-              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
-          </div>
-          <div class="field" id="fMsg" style="margin-bottom:0">
-            <label class="field__label" for="cMsg">Message</label>
-            <div class="field__control field__control--area"><textarea id="cMsg" name="message" placeholder="Tell us how we can help" required></textarea></div>
-            <span class="field__error"></span>
-            <span class="field__hint">Please do not paste or attach sensitive evidence in this form.</span>
-          </div>
-          <label class="check" style="margin-top:22px" id="fAgree"><input type="checkbox" name="agree" required /><span>I agree that TraceVault may use my details to reply to this message, as described in the <a href="#">Privacy Policy</a>.</span></label>
-          <button class="btn btn--primary" type="submit">Send Message</button>
-        </form>
-        <div class="c-info">
-          <div class="c-info__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div><small>Email support</small><strong>support@yourdomain.com</strong></div></div>
-          <div class="c-info__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><small>Support hours</small><strong>[Mon to Fri, 00:00 to 00:00]</strong></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="c-quick" id="resources">
-    <div class="c-head">
-      <p class="c-eyebrow">Self-service</p>
-      <h2>Looking for Quick Answers?</h2>
-    </div>
-    <div class="c-quick__grid">
-      <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></span><h3>Documentation</h3><p>Guides for using the email, file, and malware analysis tools.</p><a href="features.html">Read documentation →</a></article>
-      <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Evidence Handling Guidelines</h3><p>Best practices for preserving the integrity of digital evidence.</p><a href="features.html#latest">View guidelines →</a></article>
-      <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span><h3>Help Center</h3><p>Step-by-step answers for account, upload, and report questions.</p><a href="#faq">Visit help center →</a></article>
-    </div>
-  </section>
-
-  <section class="c-faq" id="faq">
-    <div class="c-wrap">
-      <div class="c-faq__grid">
+  <main>
+    <section class="c-hero">
+      <div class="c-wrap c-hero__grid">
         <div>
-          <p class="c-eyebrow">FAQ</p>
-          <h2>Frequently Asked<br />Questions</h2>
-          <p>Your answer may already be here.</p>
+          <span class="c-pill">Contact Us</span>
+          <h1>Get in Touch with the TraceVault Team</h1>
+          <p class="c-hero__lead">Questions about digital forensics, evidence verification, or your account? Send us a
+            message and our team will get back to you.</p>
+          <div class="c-hero__actions">
+            <a href="#message" class="btn btn--primary">Send a Message</a>
+            <a href="#resources" class="btn btn--ghost-dark">Read Documentation</a>
+          </div>
         </div>
-        <div class="c-faq__list">
-          <details class="c-faq__item" open><summary>How quickly will I get a reply?</summary><p>We aim to reply to every message within [X] business hours. Messages sent outside support hours are answered on the next business day.</p></details>
-          <details class="c-faq__item" open><summary>Can I send evidence files through this form?</summary><p>Please do not attach sensitive evidence here. Upload files from your TraceVault account instead, so they stay protected and verifiable.</p></details>
-          <details class="c-faq__item" open><summary>Who do I contact about a technical issue?</summary><p>Choose "Technical support" as the topic and describe the problem, including the page and the steps that led to it.</p></details>
+        <div class="c-overview">
+          <div class="c-overview__head">
+            <h3>Support Overview</h3><span>Open for messages</span>
+          </div>
+          <div class="c-overview__msg">
+            <span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg></span>
+            <div><strong>Message to the TraceVault team</strong><small>Reply sent by email</small></div>
+          </div>
+          <dl>
+            <dt>Email support</dt>
+            <dd class="is-ok">Available</dd>
+            <dt>Typical response time</dt>
+            <dd>10 hours</dd>
+            <dt>Support hours</dt>
+            <dd>[Mon to Fri, 00:00 to 00:00]</dd>
+            <dt>Evidence files</dt>
+            <dd>Do not attach here</dd>
+          </dl>
         </div>
       </div>
-      <div class="c-cta">
-        <p class="c-eyebrow">Ready to investigate?</p>
-        <h2>Turn Digital Evidence into Actionable Insights</h2>
-        <p>Prefer to explore on your own? Start an investigation and see how TraceVault verifies your files.</p>
-        <a href="new-verification.html" class="btn">Start an Investigation</a>
-      </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<div class="container pub-footer-wrap">
-  <footer class="pub-footer">
-    <div class="pub-footer__grid">
-      <div class="pub-footer__about">
-        <img src="../assets/logo-light.svg" alt="TraceVault" width="96" height="86" />
-        <p>AI-assisted digital forensics for investigating suspicious emails, examining digital files, and documenting evidence-based findings.</p>
+    <section class="c-help" id="message">
+      <div class="c-wrap">
+        <div class="c-head">
+          <p class="c-eyebrow">We're here to help</p>
+          <h2>How Can We Help You?</h2>
+          <p>Fill in the form and we will respond as soon as we can, or use one of the contact options on the right.</p>
+        </div>
+        <div class="c-help__grid">
+          <form class="c-form" id="contactForm" novalidate>
+            <h3>Send us a message</h3>
+            <div class="c-form__row">
+              <div class="field" id="fName">
+                <label class="field__label" for="cName">Full name</label>
+                <div class="field__control"><input id="cName" name="name" placeholder="Your name" autocomplete="name"
+                    required /></div>
+                <span class="field__error"></span>
+              </div>
+              <div class="field" id="fEmail">
+                <label class="field__label" for="cEmail">Email address</label>
+                <div class="field__control"><input id="cEmail" name="email" type="email" placeholder="name@email.com"
+                    autocomplete="email" required /></div>
+                <span class="field__error"></span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cTopic">Topic</label>
+              <div class="field__control">
+                <select id="cTopic" name="topic">
+                  <option>General inquiry</option>
+                  <option>Technical support</option>
+                  <option>Account and billing</option>
+                  <option>Evidence handling</option>
+                </select>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+            </div>
+            <div class="field" id="fMsg" style="margin-bottom:0">
+              <label class="field__label" for="cMsg">Message</label>
+              <div class="field__control field__control--area"><textarea id="cMsg" name="message"
+                  placeholder="Tell us how we can help" required></textarea></div>
+              <span class="field__error"></span>
+              <span class="field__hint">Please do not paste or attach sensitive evidence in this form.</span>
+            </div>
+            <label class="check" style="margin-top:22px" id="fAgree"><input type="checkbox" name="agree"
+                required /><span>I agree that TraceVault may use my details to reply to this message, as described in
+                the <a href="#">Privacy Policy</a>.</span></label>
+            <button class="btn btn--primary" type="submit">Send Message</button>
+          </form>
+          <div class="c-info">
+            <div class="c-info__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg></span>
+              <div><small>Email support</small><strong>support@yourdomain.com</strong></div>
+            </div>
+            <div class="c-info__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg></span>
+              <div><small>Support hours</small><strong>[Mon to Fri, 00:00 to 00:00]</strong></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="../../index.html">Home</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="../../index.html#how-it-works">How It Works</a></li>
-          <li><a href="new-verification.html">Investigations</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+    </section>
+
+    <section class="c-quick" id="resources">
+      <div class="c-head">
+        <p class="c-eyebrow">Self-service</p>
+        <h2>Looking for Quick Answers?</h2>
       </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="features.html">Documentation</a></li>
-          <li><a href="contact.html#resources">Evidence Handling Guidelines</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
+      <div class="c-quick__grid">
+        <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 7v14" />
+              <path
+                d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+            </svg></span>
+          <h3>Documentation</h3>
+          <p>Guides for using the email, file, and malware analysis tools.</p><a href="features.html">Read documentation
+            →</a>
+        </article>
+        <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg></span>
+          <h3>Evidence Handling Guidelines</h3>
+          <p>Best practices for preserving the integrity of digital evidence.</p><a href="features.html#latest">View
+            guidelines →</a>
+        </article>
+        <article class="c-quick__card"><span class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg></span>
+          <h3>Help Center</h3>
+          <p>Step-by-step answers for account, upload, and report questions.</p><a href="#faq">Visit help center →</a>
+        </article>
       </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:support@your-domain.com">support@your-domain.com</a></li>
-          <li>24/7 Online Support</li>
-          <li>Secure Cloud Platform</li>
-        </ul>
+    </section>
+
+    <section class="c-faq" id="faq">
+      <div class="c-wrap">
+        <div class="c-faq__grid">
+          <div>
+            <p class="c-eyebrow">FAQ</p>
+            <h2>Frequently Asked<br />Questions</h2>
+            <p>Your answer may already be here.</p>
+          </div>
+          <div class="c-faq__list">
+            <details class="c-faq__item" open>
+              <summary>How quickly will I get a reply?</summary>
+              <p>We aim to reply to every message within [X] business hours. Messages sent outside support hours are
+                answered on the next business day.</p>
+            </details>
+            <details class="c-faq__item" open>
+              <summary>Can I send evidence files through this form?</summary>
+              <p>Please do not attach sensitive evidence here. Upload files from your TraceVault account instead, so
+                they stay protected and verifiable.</p>
+            </details>
+            <details class="c-faq__item" open>
+              <summary>Who do I contact about a technical issue?</summary>
+              <p>Choose "Technical support" as the topic and describe the problem, including the page and the steps that
+                led to it.</p>
+            </details>
+          </div>
+        </div>
+        <div class="c-cta">
+          <p class="c-eyebrow">Ready to investigate?</p>
+          <h2 style="color: #fff;">Turn Digital Evidence into Actionable Insights</h2>
+          <p style="color: #fff;">Prefer to explore on your own? Start an investigation and see how TraceVault verifies
+            your files.</p>
+          <a href="new-verification.html" class="btn">Start an Investigation</a>
+        </div>
       </div>
-    </div>
-    <div class="pub-footer__bottom">
-      <p>&copy; 2026 TraceVault. All rights reserved.</p>
-      <div class="pub-footer__social">
-        <a href="#" aria-label="Website"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
-        <a href="#" aria-label="Careers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg></a>
-        <a href="mailto:support@your-domain.com" aria-label="Email"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+    </section>
+  </main>
+
+  <div class="container pub-footer-wrap">
+    <footer class="pub-footer">
+      <div class="pub-footer__grid">
+        <div class="pub-footer__about">
+          <img src="../assets/logo-light.svg" alt="TraceVault" width="96" height="86" />
+          <p>AI-assisted digital forensics for investigating suspicious emails, examining digital files, and documenting
+            evidence-based findings.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="new-verification.html">Investigations</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="features.html">Documentation</a></li>
+            <li><a href="contact.html#resources">Evidence Handling Guidelines</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@your-domain.com">support@your-domain.com</a></li>
+            <li>24/7 Online Support</li>
+            <li>Secure Cloud Platform</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </footer>
-</div>
-<script src="../js/public.js"></script>
+      <div class="pub-footer__bottom">
+        <p>&copy; 2026 TraceVault. All rights reserved.</p>
+        <div class="pub-footer__social">
+          <a href="#" aria-label="Website"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg></a>
+          <a href="#" aria-label="Careers"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              <rect x="2" y="6" width="20" height="14" rx="2" />
+            </svg></a>
+          <a href="mailto:support@your-domain.com" aria-label="Email"><svg class="ic" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="../js/public.js"></script>
 </body>
+
 </html>
