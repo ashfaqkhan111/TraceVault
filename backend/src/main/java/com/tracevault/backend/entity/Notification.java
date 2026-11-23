@@ -26,7 +26,7 @@ public class Notification {
     private UUID notificationId;
 
     @ManyToOne (fetch = FetchType.LAZY)
-    @Column (name = "user_id", nullable = false)
+    @JoinColumn (name = "user_id", nullable = false)
     private User user;
 
     @Column (name = "title", nullable =  false, length = 255)
@@ -43,7 +43,7 @@ public class Notification {
     private String actionLabel;
 
     @Enumerated (EnumType.STRING)
-    @Column (name = "target_type", nullable = false)
+    @Column (name = "target_type", nullable = true)
     private NotificationTargetType targetType;
 
     @Column (name = "target_id")
