@@ -3,6 +3,7 @@ package com.tracevault.backend.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,10 @@ public class CustodyEventController {
     }
 
     @PostMapping
-    public CustodyEvent append(@PathVariable UUID evidenceId, @RequestBody CustodyEventInput input) {
-        return custodyEventService.append(evidenceId, input);
+    public CustodyEvent append(@PathVariable UUID evidenceId, @RequestBody CustodyEventInput input,
+                               Authentication authentication) {
+        String authenticatedEmail = authentication == null ? null : authentication.getName();
+        return custodyEventService.appendUserEvent(evidenceId, authenticatedEmail, input);
     }
 
     @GetMapping
