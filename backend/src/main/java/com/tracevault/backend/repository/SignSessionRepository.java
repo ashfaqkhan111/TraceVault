@@ -11,7 +11,7 @@ public interface SignSessionRepository extends JpaRepository<SignInSession, UUID
 
     List<SignInSession> findByUser_UserId(UUID userId);
 
-    List<SignInSession> findByUser_UserIdAndSignOutAtIsNUll(UUID userId);
+    List<SignInSession> findByUser_UserIdAndSignedOutAtIsNull(UUID userId);
 
     
 } 
