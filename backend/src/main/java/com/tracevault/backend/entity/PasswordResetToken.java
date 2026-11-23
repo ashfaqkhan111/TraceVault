@@ -19,7 +19,7 @@ public class PasswordResetToken {
     @Column (name = "token_id", nullable = false, updatable = false)
     private UUID tokenId;
 
-    @OneToMany (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -29,7 +29,7 @@ public class PasswordResetToken {
     @Column(name = "expires_at", nullable = false)
     private OffsetDateTime expiresAt;
 
-    @Column (name = "used_at", nullable = false)
+    @Column (name = "used_at")
     private OffsetDateTime usedAt;
 
 
