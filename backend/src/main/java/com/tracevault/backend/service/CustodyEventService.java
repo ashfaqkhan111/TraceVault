@@ -1,5 +1,12 @@
 package com.tracevault.backend.service;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.util.HexFormat;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,18 +41,28 @@ public class CustodyEventService {
                 || "anonymousUser".equals(authenticatedEmail)) {
             throw new IllegalArgumentException("An authenticated user is required to add a custody event.");
         }
-        if (input.hashAtEvent() != null && !input.hashAtEvent().matches("(?i)[0-9a-f]{64}")) {
-            throw new IllegalArgumentException("Event hash must contain exactly 64 hexadecimal characters.");
-        }
-
         CustodyEvent event = new CustodyEvent();
         event.setEvidence(evidence);
         event.setActorType(CustodyActorType.USER);
         event.setActorUser(userRepository.findByEmail(authenticatedEmail)
                 .orElseThrow(() -> new RuntimeException("Authenticated user was not found.")));
         event.setAction(input.action());
-        event.setHashAtEvent(input.hashAtEvent() == null ? null : input.hashAtEvent().toLowerCase());
+        event.setHashAtEvent(calculateCurrentHash(evidence.getStoragePath()));
         return custodyEventRepository.save(event);
+    }
+
+    private String calculateCurrentHash(String storagePath) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            try (InputStream input = new DigestInputStream(Files.newInputStream(Path.of(storagePath)), digest)) {
+                input.transferTo(java.io.OutputStream.nullOutputStream());
+            }
+            return HexFormat.of().formatHex(digest.digest());
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to read evidence bytes for custody hash.", e);
+        } catch (java.security.NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-256 is not available.", e);
+        }
     }
 
     @Transactional(readOnly = true)
@@ -53,5 +70,5 @@ public class CustodyEventService {
         return custodyEventRepository.findByEvidence_EvidenceIdOrderByOccurredAtAsc(evidenceId);
     }
 
-    public record CustodyEventInput(String action, String hashAtEvent) {}
+    public record CustodyEventInput(String action) {}
 }
