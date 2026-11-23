@@ -20,7 +20,7 @@ public class SignInSession {
     private UUID sessionId;
 
     @ManyToOne (fetch = FetchType.LAZY)
-    @Column (name = "user_id", nullable = false)
+    @JoinColumn (name = "user_id", nullable = false)
     private User user;
 
     @Column (name = "device",length = 255)
