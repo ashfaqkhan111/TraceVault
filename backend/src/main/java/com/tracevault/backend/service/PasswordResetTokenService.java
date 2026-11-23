@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.tracevault.backend.entity.User;
 import com.tracevault.backend.entity.PasswordResetToken;
@@ -20,12 +21,15 @@ public class PasswordResetTokenService {
 
     private final PasswordResetTokenRepository tokenRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public PasswordResetTokenService(PasswordResetTokenRepository tokenRepository, UserRepository userRepository){
+    public PasswordResetTokenService(PasswordResetTokenRepository tokenRepository, UserRepository userRepository,
+                                     PasswordEncoder passwordEncoder){
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
    @Transactional 
@@ -76,10 +80,15 @@ public  String hashToken(String rawToken){
     }
 }
 
-@Transactional 
-public void markTokenAsUsed(String rawToken){
+@Transactional
+public void resetPassword(String rawToken, String newPassword){
+    if (newPassword == null || newPassword.length() < 8) {
+        throw new IllegalArgumentException("New password must be at least 8 characters long.");
+    }
     PasswordResetToken resetToken = validateResetToken(rawToken);
-
+    User user = resetToken.getUser();
+    user.setPasswordHash(passwordEncoder.encode(newPassword));
+    userRepository.save(user);
     resetToken.setUsedAt(OffsetDateTime.now());
     tokenRepository.save(resetToken);
 }
