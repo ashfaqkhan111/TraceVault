@@ -2,11 +2,9 @@ package com.tracevault.backend.controller;
 
 import java.util.UUID;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.tracevault.backend.entity.PasswordResetToken;
 import com.tracevault.backend.service.PasswordResetTokenService;
 
 @RestController 
@@ -34,9 +32,10 @@ public class PasswordResetTokenController {
     }
 
     @PostMapping ("/use")
-    public  ResponseEntity<String> markTokenAsUsed(@RequestParam String token){
-        tokenService.markTokenAsUsed(token);
-        return  ResponseEntity.ok("Password reset token marked as used.");
+    public  ResponseEntity<String> resetPassword(@RequestParam String token,
+                                                 @RequestParam String newPassword){
+        tokenService.resetPassword(token, newPassword);
+        return  ResponseEntity.ok("Password has been reset successfully.");
     }
     
 }
