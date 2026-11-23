@@ -20,6 +20,6 @@ public interface InvestigationCaseRepository extends JpaRepository<Investigation
 
     List<InvestigationCase> findByCreatedBy_UserIdAndStatus(UUID userId, CaseStatus status);
 
-    boolean existByCaseNumber(String caseNumber);
+    boolean existsByCaseNumber(String caseNumber);
 
 }
