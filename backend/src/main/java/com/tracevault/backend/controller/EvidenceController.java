@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tracevault.backend.entity.Evidence;
 import com.tracevault.backend.enms.EvidenceFormat;
@@ -27,16 +28,12 @@ public class EvidenceController {
     }
 
     @PostMapping
-    public Evidence registerEvidence(@RequestParam UUID caseId,
-                                     @RequestParam UUID uploadedById,
-                                     @RequestParam String fileName,
-                                     @RequestParam EvidenceFormat format,
-                                     @RequestParam(required = false) String formatVersion,
-                                     @RequestParam long fileSizeBytes,
-                                     @RequestParam String storagePath,
-                                     @RequestParam String sha256Hash) {
-        return evidenceService.registerEvidence(caseId, uploadedById, fileName, format,
-                formatVersion, fileSizeBytes, storagePath, sha256Hash);
+    public Evidence uploadEvidence(@RequestParam UUID caseId,
+                                   @RequestParam UUID uploadedById,
+                                   @RequestParam EvidenceFormat format,
+                                   @RequestParam(required = false) String formatVersion,
+                                   @RequestParam MultipartFile file) {
+        return evidenceService.uploadEvidence(caseId, uploadedById, file, format, formatVersion);
     }
 
     @GetMapping("/{evidenceId}")
