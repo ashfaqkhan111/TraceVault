@@ -32,7 +32,7 @@ public class InvestigationCaseService {
                                 
             User user = userRepository.findById(userID).orElseThrow(() -> new RuntimeException("User not found."));
 
-            if (caseRepository.existByCaseNumber(caseNumber)){
+            if (caseRepository.existsByCaseNumber(caseNumber)){
                 throw new RuntimeException("Case number already exist.");
             }
 
