@@ -32,17 +32,17 @@ public class NotificationController {
                     return notificationService.createNotification(userId, category, title, body, actionLabel, targetType, targetId);
                                            }
     @GetMapping ("/user/{user_id}")
-    public List<Notification> getUserNotifications(@PathVariable UUID userId){
+    public List<Notification> getUserNotifications(@PathVariable("user_id") UUID userId){
         return notificationService.getUserNotifications(userId);
     }
 
     @GetMapping ("/user/{user_id}/unread")
-    public List<Notification> getUnreadNotification(@PathVariable UUID userId){
+    public List<Notification> getUnreadNotification(@PathVariable("user_id") UUID userId){
         return notificationService.getUnreadNotifications(userId);
     }
 
     @GetMapping ("/user/{user_id}/unread/count")
-    public long countUnreadNotifications(@PathVariable UUID userId){
+    public long countUnreadNotifications(@PathVariable("user_id") UUID userId){
         return notificationService.countUnreadNotifications(userId);
     }
 
@@ -58,9 +58,9 @@ public class NotificationController {
         return "All notification marked as read.";
     }
 
-    @PutMapping ("/{notification}/user/{userId}")
-    public String deleteNotification(@PathVariable UUID notifcationId, @PathVariable UUID userId){
-        notificationService.deleteNotification(notifcationId, userId);
+    @DeleteMapping ("/{notificationId}/user/{userId}")
+    public String deleteNotification(@PathVariable UUID notificationId, @PathVariable UUID userId){
+        notificationService.deleteNotification(notificationId, userId);
 
         return "Notification deleted successfully.";
     }
