@@ -27,15 +27,12 @@ public class CustodyEventService {
     }
 
     @Transactional
-    public CustodyEvent append(UUID evidenceId, CustodyEventInput input) {
+    public CustodyEvent appendUserEvent(UUID evidenceId, String authenticatedEmail, CustodyEventInput input) {
         var evidence = evidenceRepository.findById(evidenceId)
                 .orElseThrow(() -> new RuntimeException("Evidence not found."));
-
-        if (input.actorType() == CustodyActorType.USER && input.actorUserId() == null) {
-            throw new IllegalArgumentException("User actor requires an actor user ID.");
-        }
-        if (input.actorType() != CustodyActorType.USER && input.actorUserId() != null) {
-            throw new IllegalArgumentException("System and AI actors must not have an actor user ID.");
+        if (authenticatedEmail == null || authenticatedEmail.isBlank()
+                || "anonymousUser".equals(authenticatedEmail)) {
+            throw new IllegalArgumentException("An authenticated user is required to add a custody event.");
         }
         if (input.hashAtEvent() != null && !input.hashAtEvent().matches("(?i)[0-9a-f]{64}")) {
             throw new IllegalArgumentException("Event hash must contain exactly 64 hexadecimal characters.");
@@ -43,11 +40,9 @@ public class CustodyEventService {
 
         CustodyEvent event = new CustodyEvent();
         event.setEvidence(evidence);
-        event.setActorType(input.actorType());
-        if (input.actorUserId() != null) {
-            event.setActorUser(userRepository.findById(input.actorUserId())
-                    .orElseThrow(() -> new RuntimeException("Actor user not found.")));
-        }
+        event.setActorType(CustodyActorType.USER);
+        event.setActorUser(userRepository.findByEmail(authenticatedEmail)
+                .orElseThrow(() -> new RuntimeException("Authenticated user was not found.")));
         event.setAction(input.action());
         event.setHashAtEvent(input.hashAtEvent() == null ? null : input.hashAtEvent().toLowerCase());
         return custodyEventRepository.save(event);
@@ -58,6 +53,5 @@ public class CustodyEventService {
         return custodyEventRepository.findByEvidence_EvidenceIdOrderByOccurredAtAsc(evidenceId);
     }
 
-    public record CustodyEventInput(CustodyActorType actorType, UUID actorUserId,
-                                    String action, String hashAtEvent) {}
+    public record CustodyEventInput(String action, String hashAtEvent) {}
 }
