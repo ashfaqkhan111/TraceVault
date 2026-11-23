@@ -44,7 +44,7 @@ public class SignInSessionService {
     }
 
     public List<SignInSession> getActiveSessions(UUID userId){
-        return sessionRepository.findByUser_UserIdAndSignOutAtIsNUll(userId);
+        return sessionRepository.findByUser_UserIdAndSignedOutAtIsNull(userId);
     }
 
     @Transactional 
