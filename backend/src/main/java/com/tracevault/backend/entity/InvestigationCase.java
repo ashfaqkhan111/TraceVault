@@ -27,6 +27,10 @@ public class InvestigationCase {
     @Column (name = "case_number", nullable = false, unique = true, length = 255)
     private String caseNumber;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by", nullable = false)
+    private User createdBy;
+
     @Column (name = "title", nullable = false, length = 255)
     private String title;
 
