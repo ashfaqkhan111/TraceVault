@@ -60,7 +60,7 @@ public class InvestigationCaseController {
         return caseService.closeCase(caseId);
     }
 
-    @PutMapping ("/{caseId}")
+    @DeleteMapping  ("/{caseId}")
     public String deleteCase(@PathVariable UUID caseId){
         caseService.deleteCase(caseId);
 
