@@ -1,6 +1,7 @@
 package com.tracevault.backend.entity;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class UserSettings {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId 
     @JoinColumn (name = "user_id")
+    @JsonIgnore
     private User user;
 
     @Column (name = "push_enabled", nullable = false)

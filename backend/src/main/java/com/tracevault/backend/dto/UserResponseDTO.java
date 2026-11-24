@@ -23,7 +23,7 @@ public class UserResponseDTO {
         this.accountCode = accountCode;
         this.fullName = fullName;
         this.email = email;
-        this.accountCode = accountCode;
+        this.accountStatus = accountStatus;
         this.createdAt = createdAt;
 
     }
@@ -33,6 +33,9 @@ public class UserResponseDTO {
     }
     public String getAccountCode(){
         return accountCode;
+    }
+    public String getFullName(){
+        return fullName;
     }
     public String getEmail(){
         return email;
