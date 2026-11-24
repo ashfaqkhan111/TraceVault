@@ -6,6 +6,8 @@ import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 import java.util.Base64;
 import java.util.UUID;
+import java.util.Locale;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.*;
@@ -93,6 +95,22 @@ public void resetPassword(String rawToken, String newPassword){
     tokenRepository.save(resetToken);
 }
 
+@Transactional
+public String createResetTokenForEmail(String email) {
+
+    String normalizedEmail = email.trim()
+            .toLowerCase(Locale.ROOT);
+
+    Optional<User> optionalUser =
+            userRepository.findByEmailIgnoreCase(normalizedEmail);
+  
+    if (optionalUser.isEmpty()) {
+        return null;
+    }
+
+    User user = optionalUser.get();
+    return createResetToken(user.getUserId());
+}
 
     
 }
